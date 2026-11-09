@@ -1,0 +1,627 @@
+[Licensing::Module] Trying to connect to existing licensing client channel...
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-SuperWords" at "2026-11-04T11:50:44.454529Z"
+[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 1912, path: "D:/Unity/Unity Hub/UnityLicensingClient_V1/Unity.Licensing.Client.exe")
+[Licensing::Module] LicensingClient has failed validation; ignoring
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.18.3+d7ffd15
+  Session Id:              43ad6afe88d247109afc7fdf4d2bb97a
+  Correlation Id:          8b5b69d37dabfcc4b275d4b6711f12a2
+  External correlation Id: 504945767555917091
+  Machine Id:              rCFQBYUahulUAHruKkcxKjcWkKY=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-SuperWords" (connect: 0.00s, validation: 0.01s, handshake: 0.02s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-SuperWords-notifications" at "2026-11-04T11:50:44.4841959Z"
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Successfully updated license
+Built from '2022.3/respin/2022.3.62f2-4af31df585-v2' branch; Version is '2022.3.62f3 (96770f904ca7) revision 9860879'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19045) 64bit Professional' Language: 'zh' Physical Memory: 32611 MB
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] Serial number assigned to: "ewogICJzdWJzR3JvdXAiIDogInVuaXR5IGVkaXRvciIsCiAgIm5hbWVzcGFjZSIgOiAidW5pdHlfZWRpdG9yIiwKICAidHlwZSIgOiAiRURJVE9SIiwKICAidGFnIiA6ICJVbml0eVBlcnNvbmFsXXXX"
+BatchMode: 0, IsHumanControllingUs: 1, StartBugReporterOnCrash: 1, Is64bit: 1, IsPro: 0
+[Licensing::Client] Successfully resolved entitlement details
+
+COMMAND LINE ARGUMENTS:
+D:\Unityanzhuang\2022.3.62f3\Editor\Unity.exe
+-projectPath
+D:\UnityProjects\KeyBoard1015
+-logFile
+D:\UnityProjects\KeyBoard1015\f3_launch.log
+Successfully changed project path to: D:\UnityProjects\KeyBoard1015
+D:/UnityProjects/KeyBoard1015
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [31984]  Target information:
+
+Player connection [31984]  * "[IP] 10.168.1.56 [Port] 55504 [Flags] 2 [Guid] 2045313552 [EditorId] 2045313552 [Version] 1048832 [Id] WindowsEditor(7,liveroom) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [31984] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [31984] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Input System module state changed to: Initialized.
+[PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+[Package Manager] UpmClient::Connect -- Connected to IPC stream "Upm-37428" after 0.2 seconds.
+[Package Manager] Restoring resolved packages state from cache
+[Licensing::Client] Successfully resolved entitlement details
+[Package Manager] Registered 67 packages:
+  Packages from [https://packages.unity.com]:
+    com.unity.collab-proxy@2.12.4 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.collab-proxy@2.12.4)
+    com.unity.textmeshpro@3.0.7 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.textmeshpro@3.0.7)
+    com.unity.timeline@1.7.7 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.timeline@1.7.7)
+    com.unity.visualscripting@1.9.4 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.visualscripting@1.9.4)
+    com.unity.mathematics@1.2.6 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.mathematics@1.2.6)
+    com.unity.burst@1.8.21 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.burst@1.8.21)
+    com.unity.ide.visualstudio@2.0.22 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.ide.visualstudio@2.0.22)
+    com.unity.ide.rider@3.0.36 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.ide.rider@3.0.36)
+    com.unity.ide.vscode@1.2.5 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.ide.vscode@1.2.5)
+    com.unity.editorcoroutines@1.0.0 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.editorcoroutines@1.0.0)
+    com.unity.performance.profile-analyzer@1.2.3 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.performance.profile-analyzer@1.2.3)
+    com.unity.test-framework@1.1.33 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.test-framework@1.1.33)
+    com.unity.testtools.codecoverage@1.2.6 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.testtools.codecoverage@1.2.6)
+    com.unity.2d.animation@9.2.0 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.2d.animation@9.2.0)
+    com.unity.2d.pixel-perfect@5.1.0 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.2d.pixel-perfect@5.1.0)
+    com.unity.2d.psdimporter@8.1.0 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.2d.psdimporter@8.1.0)
+    com.unity.2d.spriteshape@9.1.0 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.2d.spriteshape@9.1.0)
+    com.unity.2d.tilemap.extras@3.1.3 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.2d.tilemap.extras@3.1.3)
+    com.unity.2d.aseprite@1.1.9 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.2d.aseprite@1.1.9)
+    com.unity.nuget.newtonsoft-json@3.2.1 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.nuget.newtonsoft-json@3.2.1)
+    com.unity.searcher@4.9.2 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.searcher@4.9.2)
+    com.unity.settings-manager@2.1.0 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.settings-manager@2.1.0)
+    com.unity.ext.nunit@1.0.6 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.ext.nunit@1.0.6)
+    com.unity.2d.common@8.1.0 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.2d.common@8.1.0)
+    com.unity.collections@1.2.4 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.collections@1.2.4)
+  Built-in packages:
+    com.unity.feature.2d@2.0.1 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.feature.2d@2.0.1)
+    com.unity.feature.development@1.0.1 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.feature.development@1.0.1)
+    com.unity.render-pipelines.universal@14.0.12 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.render-pipelines.universal@14.0.12)
+    com.unity.ugui@1.0.0 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.ugui@1.0.0)
+    com.unity.modules.ai@1.0.0 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.modules.ai@1.0.0)
+    com.unity.modules.androidjni@1.0.0 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.modules.androidjni@1.0.0)
+    com.unity.modules.animation@1.0.0 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.modules.animation@1.0.0)
+    com.unity.modules.assetbundle@1.0.0 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.modules.assetbundle@1.0.0)
+    com.unity.modules.audio@1.0.0 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.modules.audio@1.0.0)
+    com.unity.modules.cloth@1.0.0 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.modules.cloth@1.0.0)
+    com.unity.modules.director@1.0.0 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.modules.director@1.0.0)
+    com.unity.modules.imageconversion@1.0.0 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.modules.imageconversion@1.0.0)
+    com.unity.modules.imgui@1.0.0 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.modules.imgui@1.0.0)
+    com.unity.modules.jsonserialize@1.0.0 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.modules.jsonserialize@1.0.0)
+    com.unity.modules.particlesystem@1.0.0 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.modules.particlesystem@1.0.0)
+    com.unity.modules.physics@1.0.0 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.modules.physics@1.0.0)
+    com.unity.modules.physics2d@1.0.0 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.modules.physics2d@1.0.0)
+    com.unity.modules.screencapture@1.0.0 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.modules.screencapture@1.0.0)
+    com.unity.modules.terrain@1.0.0 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.modules.terrain@1.0.0)
+    com.unity.modules.terrainphysics@1.0.0 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.modules.terrainphysics@1.0.0)
+    com.unity.modules.tilemap@1.0.0 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.modules.tilemap@1.0.0)
+    com.unity.modules.ui@1.0.0 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.modules.ui@1.0.0)
+    com.unity.modules.uielements@1.0.0 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.modules.uielements@1.0.0)
+    com.unity.modules.umbra@1.0.0 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.modules.umbra@1.0.0)
+    com.unity.modules.unityanalytics@1.0.0 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.modules.unityanalytics@1.0.0)
+    com.unity.modules.unitywebrequest@1.0.0 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.modules.unitywebrequest@1.0.0)
+    com.unity.modules.unitywebrequestassetbundle@1.0.0 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.modules.unitywebrequestassetbundle@1.0.0)
+    com.unity.modules.unitywebrequestaudio@1.0.0 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.modules.unitywebrequestaudio@1.0.0)
+    com.unity.modules.unitywebrequesttexture@1.0.0 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.modules.unitywebrequesttexture@1.0.0)
+    com.unity.modules.unitywebrequestwww@1.0.0 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.modules.unitywebrequestwww@1.0.0)
+    com.unity.modules.vehicles@1.0.0 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.modules.vehicles@1.0.0)
+    com.unity.modules.video@1.0.0 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.modules.video@1.0.0)
+    com.unity.modules.vr@1.0.0 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.modules.vr@1.0.0)
+    com.unity.modules.wind@1.0.0 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.modules.wind@1.0.0)
+    com.unity.modules.xr@1.0.0 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.modules.xr@1.0.0)
+    com.unity.modules.subsystems@1.0.0 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.modules.subsystems@1.0.0)
+    com.unity.render-pipelines.core@14.0.12 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.render-pipelines.core@14.0.12)
+    com.unity.shadergraph@14.0.12 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.shadergraph@14.0.12)
+    com.unity.render-pipelines.universal-config@14.0.10 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.render-pipelines.universal-config@14.0.10)
+    com.unity.2d.sprite@1.0.0 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.2d.sprite@1.0.0)
+    com.unity.2d.tilemap@1.0.0 (location: D:\UnityProjects\KeyBoard1015\Library\PackageCache\com.unity.2d.tilemap@1.0.0)
+  Local packages:
+    com.coplaydev.unity-mcp@file:D:\unity-mcp-main\unity-mcp-main\MCPForUnity (location: D:\unity-mcp-main\unity-mcp-main\MCPForUnity)
+[Subsystems] No new subsystems found in resolved package list.
+Package Manager log level set to [2]
+[Package Manager] Done registering packages in 0.05 seconds
+Refreshing native plugins compatible for Editor in 13.90 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2022.3.62f3 (96770f904ca7)
+[Subsystems] Discovering subsystems at path D:/Unityanzhuang/2022.3.62f3/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/UnityProjects/KeyBoard1015/Assets
+GfxDevice: creating device client; threaded=1; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: AMD Radeon RX 5700 XT (ID=0x731f)
+    Vendor:   ATI
+    VRAM:     8150 MB
+    Driver:   32.0.21030.2001
+[Licensing::Client] Successfully resolved entitlement details
+Initialize mono
+Mono path[0] = 'D:/Unityanzhuang/2022.3.62f3/Editor/Data/Managed'
+Mono path[1] = 'D:/Unityanzhuang/2022.3.62f3/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'D:/Unityanzhuang/2022.3.62f3/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56428
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+ImportWorker Server TCP listen port: 0
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: D:/Unityanzhuang/2022.3.62f3/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+[Licensing::Client] Successfully resolved entitlement details
+Register platform support module: D:/Unityanzhuang/2022.3.62f3/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+Register platform support module: D:/Unityanzhuang/2022.3.62f3/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.021500 seconds.
+- Loaded All Assemblies, in  0.298 seconds
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.250 seconds
+Domain Reload Profiling: 546ms
+	BeginReloadAssembly (90ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (1ms)
+	RebuildCommonClasses (25ms)
+	RebuildNativeTypeToScriptingClass (7ms)
+	initialDomainReloadingComplete (63ms)
+	LoadAllAssembliesAndSetupDomain (110ms)
+		LoadAssemblies (88ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (108ms)
+			TypeCache.Refresh (107ms)
+				TypeCache.ScanAssembly (97ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (0ms)
+	FinalizeReload (250ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (216ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (86ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (2ms)
+			ProcessInitializeOnLoadAttributes (87ms)
+			ProcessInitializeOnLoadMethodAttributes (38ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+[Licensing::Client] Successfully resolved entitlement details
+Application.AssetDatabase Initial Refresh Start
+Starting: D:\Unityanzhuang\2022.3.62f3\Editor\Data\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: D:/UnityProjects/KeyBoard1015
+ExitCode: 0 Duration: 0s227ms
+[701/909    0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+*** Tundra build success (0.20 seconds), 1 items updated, 909 evaluated
+AssetDatabase: script compilation time: 0.602365s
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.680 seconds
+Refreshing native plugins compatible for Editor in 6.68 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Refreshing native plugins compatible for Editor in 6.73 ms, found 5 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.153 seconds
+Domain Reload Profiling: 1829ms
+	BeginReloadAssembly (118ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (4ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (19ms)
+	RebuildCommonClasses (24ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (29ms)
+	LoadAllAssembliesAndSetupDomain (496ms)
+		LoadAssemblies (340ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (228ms)
+			TypeCache.Refresh (194ms)
+				TypeCache.ScanAssembly (178ms)
+			ScanForSourceGeneratedMonoScriptInfo (24ms)
+			ResolveRequiredComponents (8ms)
+	FinalizeReload (1154ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (1010ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (20ms)
+			SetLoadedEditorAssemblies (5ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (80ms)
+			ProcessInitializeOnLoadAttributes (795ms)
+			ProcessInitializeOnLoadMethodAttributes (99ms)
+			AfterProcessingInitializeOnLoad (11ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (9ms)
+Main Object Name 'Open curved forward energy shield' does not match filename 'EnergyShield'
+Shader 'Universal Render Pipeline/Lit': fallback shader 'Hidden/Universal Render Pipeline/FallbackError' not found
+Main Object Name 'UrpLitPlaceholder' does not match filename 'UrpLitKeeper'
+Shader 'Universal Render Pipeline/Particles/Unlit': fallback shader 'Hidden/Universal Render Pipeline/FallbackError' not found
+Main Object Name 'UrpParticlesPlaceholder' does not match filename 'UrpParticlesKeeper'
+Start importing Assets/Models/Keyboard68_Gloss.fbx using Guid(592e5ece5a440b246a2b45d4f69b2421) Importer(-1,00000000000000000000000000000000) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
+ImportFBX Warnings:
+Can't import tangents and binormals, because mesh 'Cube.005' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.006' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.007' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.008' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.009' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.010' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.011' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.012' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.013' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.014' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.015' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.016' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.017' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.018' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.019' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.020' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.021' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.022' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.023' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.024' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.025' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.026' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.027' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.028' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.029' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.030' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.031' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.032' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.033' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.034' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.035' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.036' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.037' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.038' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.039' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.040' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.041' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.042' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.043' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.044' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.045' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.046' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.047' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.048' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.049' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.050' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.051' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.052' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.053' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.054' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.055' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.056' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.057' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.058' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.059' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.060' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.061' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.062' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.063' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.064' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.065' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.066' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.067' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.068' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.069' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.070' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.071' doesn't have any.
+Can't import tangents and binormals, because mesh 'Rectangle 4' doesn't have any.
+Can't import tangents and binormals, because mesh 'Rectangle 4.001' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.005' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.006' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.007' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.008' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.009' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.010' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.011' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.012' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.013' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.014' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.015' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.016' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.017' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.018' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.019' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.020' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.021' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.022' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.023' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.024' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.025' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.026' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.027' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.028' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.029' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.030' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.031' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.032' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.033' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.034' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.035' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.036' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.037' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.038' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.039' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.040' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.041' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.042' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.043' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.044' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.045' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.046' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.047' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.048' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.049' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.050' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.051' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.052' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.053' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.054' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.055' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.056' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.057' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.058' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.059' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.060' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.061' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.062' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.063' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.064' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.065' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.066' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.067' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.068' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.069' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.070' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.071' doesn't have any.
+ -> (artifact id: '97115199a4ed7700d8acb535cc91eb51') in 2.311895 seconds
+Start importing Assets/Keyboard3D/Effects/Models/Letter.fbx using Guid(1d1c8ff21f9d3bf47959f20529c78aec) Importer(-1,00000000000000000000000000000000) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+Identifier uniqueness violation: 'Name:Model, Type:Mesh'. Multiple Objects with the same name/type are generated by this Importer. There is no guarantee that subsequent imports of this asset will properly re-link to these targets.
+ -> (artifact id: 'b5ee3a138499c6640f8cfa337487283b') in 0.085391 seconds
+ImportFBX Warnings:
+Can't import tangents and binormals, because mesh 'Cube.005' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.006' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.007' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.008' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.009' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.010' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.011' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.012' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.013' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.014' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.015' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.016' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.017' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.018' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.019' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.020' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.021' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.022' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.023' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.024' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.025' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.026' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.027' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.028' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.029' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.030' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.031' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.032' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.033' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.034' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.035' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.036' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.037' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.038' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.039' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.040' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.041' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.042' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.043' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.044' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.045' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.046' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.047' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.048' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.049' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.050' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.051' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.052' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.053' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.054' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.055' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.056' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.057' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.058' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.059' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.060' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.061' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.062' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.063' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.064' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.065' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.066' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.067' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.068' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.069' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.070' doesn't have any.
+Can't import tangents and binormals, because mesh 'Cube.071' doesn't have any.
+Can't import tangents and binormals, because mesh 'Rectangle 4' doesn't have any.
+Can't import tangents and binormals, because mesh 'Rectangle 4.001' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.005' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.006' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.007' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.008' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.009' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.010' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.011' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.012' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.013' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.014' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.015' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.016' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.017' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.018' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.019' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.020' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.021' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.022' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.023' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.024' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.025' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.026' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.027' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.028' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.029' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.030' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.031' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.032' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.033' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.034' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.035' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.036' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.037' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.038' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.039' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.040' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.041' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.042' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.043' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.044' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.045' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.046' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.047' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.048' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.049' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.050' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.051' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.052' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.053' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.054' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.055' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.056' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.057' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.058' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.059' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.060' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.061' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.062' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.063' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.064' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.065' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.066' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.067' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.068' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.069' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.070' doesn't have any.
+Can't import tangents and binormals, because mesh 'Text.071' doesn't have any.
+Start importing Assets/ByteTyping/Resources/Audio/word_en/246.mp3 using Guid(f2ddbd204033b814496869d9e63800cd) Importer(-1,00000000000000000000000000000000) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'bbf2d86d5ae72bef82c0548229e6a71b') in 0.079240 seconds
+Start importing Assets/ByteTyping/Resources/Audio/uk/k.mp3 using Guid(f22e684d44c17834eb1655cc281f21c9) Importer(-1,00000000000000000000000000000000) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '1f2dd852857022368bd865e24671397a') in 0.078622 seconds
+Start importing Assets/ByteTyping/Resources/Audio/word_en/1.mp3 using Guid(23b0fe7149ad8c74384e842c1669a648) Importer(-1,00000000000000000000000000000000) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '1080b2f1189c7acbf559756d4956a5f4') in 0.093759 seconds
+Start importing Assets/ByteTyping/Resources/Audio/word_en/54.mp3 using Guid(2354b360120e8c640a5d7e254d21e093) Importer(-1,00000000000000000000000000000000) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'd12eb0fe64aa444e595a5d7c76fc97cc') in 0.094202 seconds
+Start importing Assets/ByteTyping/Resources/Audio/word_en/146.mp3 using Guid(3362d67728b377147b439c40a80826ee) Importer(-1,00000000000000000000000000000000) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'ebc01bdff905ceab8f5a00ca46fad18c') in 0.095290 seconds
+Start importing Assets/ByteTyping/Resources/Audio/uk/nt.mp3 using Guid(337c2e4d6497a404f8080957243bb53b) Importer(-1,00000000000000000000000000000000) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '094cc8fa62c60c17c45a5fd993f03d34') in 0.092340 seconds
+Start importing Assets/ShootingSound/laser_01.wav using Guid(4310474905e266640852f43bd609a1a4) Importer(-1,00000000000000000000000000000000) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '5084d10c9801a8b1d5737f6596b96bde') in 0.093397 seconds
+Start importing Assets/ByteTyping/Resources/Audio/word_en/247.mp3 using Guid(432a96c079ce23944877191ec0c12f38) Importer(-1,00000000000000000000000000000000) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '6c1b8bc2c7f0219e3f93d231f60b6502') in 0.092161 seconds
+Start importing Assets/ByteTyping/Resources/Audio/uk/dʒ.mp3 using Guid(437a48fba159601478b1baa569deb871) Importer(-1,00000000000000000000000000000000) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'a02af5c3ac24f7d3945a7458d60abbb7') in 0.090371 seconds
+Start importing Assets/ByteTyping/Resources/Audio/uk/kʃ.mp3 using Guid(43ebb1d5d21bd3d44a3db3b63f72c4a3) Importer(-1,00000000000000000000000000000000) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '6019d266edccd19b3a9161495ff45daf') in 0.093717 seconds
+Start importing Assets/ByteTyping/Resources/Audio/word_en/110.mp3 using Guid(435ec3ce834a50943a03abc2f33f7258) Importer(-1,00000000000000000000000000000000) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '4c6c7860a2a57e1829b938698dfd6d29') in 0.090489 seconds
+Start importing Assets/ByteTyping/Resources/Audio/word_en/237.mp3 using Guid(637dedc33d1b6ff45bd5c025099062d0) Importer(-1,00000000000000000000000000000000) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '1a1456fbca4ad18aabe1824961ce028d') in 0.095551 seconds
+Start importing Assets/ByteTyping/Resources/Audio/uk/spr.mp3 using Guid(73a4835f0d80a8f4a94c7dd3b049bcf6) Importer(-1,00000000000000000000000000000000) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: '591f3fb340f6a053f5b53d094da0ed5b') in 0.110115 seconds
+Start importing Assets/ByteTyping/Resources/Audio/uk/ɔɪ.mp3 using Guid(83c3be2442bc7ed41bfdbc403c983528) Importer(-1,00000000000000000000000000000000) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.
+ -> (artifact id: 'c64aab47f1b976cd4ce95fb107831ad1') in 0.109207 seconds
+Start importing Assets/ByteTyping/Resources/Audio/uk/z.mp3 using Guid(8374c08a08c0b9945a037dc17915743f) Importer(-1,00000000000000000000000000000000) [PhysX] Initialized MultithreadedTaskDispatcher with 12 workers.

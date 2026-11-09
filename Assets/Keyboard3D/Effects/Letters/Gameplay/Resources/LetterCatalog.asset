@@ -1,0 +1,1610 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d3e8a4a1fbecaa4582062d2e4276075, type: 3}
+  m_Name: LetterCatalog
+  m_EditorClassIdentifier: 
+  entries:
+  - character: A
+    mesh: {fileID: -9032557090061056480, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.10779965
+    landingOffset: {x: 0.015131958, y: 0.06462223, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.1105
+    fontOriginOffset: 0.055268336
+    fontLeftBearing: 0.0011666667
+    fontOutlineMin: 0.0011666667
+    fontOutlineMax: 0.10916667
+  - character: B
+    mesh: {fileID: -2359922764142062032, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.08794131
+    landingOffset: {x: 0.004055761, y: 0.055755507, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.10216667
+    fontOriginOffset: 0.05366667
+    fontLeftBearing: 0.009666667
+    fontOutlineMin: 0.009666667
+    fontOutlineMax: 0.097666666
+  - character: C
+    mesh: {fileID: -111369019197229965, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.08933334
+    landingOffset: {x: 0.026755512, y: 0.052348834, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.098000005
+    fontOriginOffset: 0.05033334
+    fontLeftBearing: 0.0056666667
+    fontOutlineMin: 0.0056666667
+    fontOutlineMax: 0.095000006
+  - character: D
+    mesh: {fileID: 6317006625612124780, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.088499986
+    landingOffset: {x: 0.026306406, y: 0.062464263, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.10366667
+    fontOriginOffset: 0.053916667
+    fontLeftBearing: 0.009666667
+    fontOutlineMin: 0.009666667
+    fontOutlineMax: 0.09816667
+  - character: E
+    mesh: {fileID: -1536539860089364218, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.08283333
+    landingOffset: {x: 0.0018717954, y: 0.06246686, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.098000005
+    fontOriginOffset: 0.051083338
+    fontLeftBearing: 0.009666667
+    fontOutlineMin: 0.009666667
+    fontOutlineMax: 0.0925
+  - character: F
+    mesh: {fileID: -3387048865150757827, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.08266662
+    landingOffset: {x: 0.0017915344, y: 0.06246698, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.09583334
+    fontOriginOffset: 0.051000003
+    fontLeftBearing: 0.009666667
+    fontOutlineMin: 0.009666667
+    fontOutlineMax: 0.09233334
+  - character: G
+    mesh: {fileID: -8868556867474923648, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.089166716
+    landingOffset: {x: -0.005313492, y: 0.056921225, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.10016667
+    fontOriginOffset: 0.050083335
+    fontLeftBearing: 0.0055
+    fontOutlineMin: 0.0055
+    fontOutlineMax: 0.09466667
+  - character: H
+    mesh: {fileID: 2158006570743879237, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.08816673
+    landingOffset: {x: -0.0052206926, y: 0.055588137, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.1075
+    fontOriginOffset: 0.05375
+    fontLeftBearing: 0.009666667
+    fontOutlineMin: 0.009666667
+    fontOutlineMax: 0.097833335
+  - character: I
+    mesh: {fileID: 7648041608565642142, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.027666625
+    landingOffset: {x: -0.004059194, y: 0.077160016, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.047166668
+    fontOriginOffset: 0.023500001
+    fontLeftBearing: 0.009666667
+    fontOutlineMin: 0.009666667
+    fontOutlineMax: 0.037333336
+  - character: J
+    mesh: {fileID: 246873769186418934, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.08683334
+    landingOffset: {x: 0.017413685, y: 0.047587242, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.09883334
+    fontOriginOffset: 0.04658334
+    fontLeftBearing: 0.0031666667
+    fontOutlineMin: 0.0031666667
+    fontOutlineMax: 0.09
+  - character: K
+    mesh: {fileID: 4759318358520728541, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.09466675
+    landingOffset: {x: 0.003600261, y: 0.0532971, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.10433333
+    fontOriginOffset: 0.057
+    fontLeftBearing: 0.009666667
+    fontOutlineMin: 0.009666667
+    fontOutlineMax: 0.10433333
+  - character: L
+    mesh: {fileID: 240814895444268450, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.083833314
+    landingOffset: {x: 0.016033122, y: 0.08466079, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.09616667
+    fontOriginOffset: 0.051583335
+    fontLeftBearing: 0.009666667
+    fontOutlineMin: 0.009666667
+    fontOutlineMax: 0.0935
+  - character: M
+    mesh: {fileID: 5969534379217307475, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.102666624
+    landingOffset: {x: -0.002337901, y: 0.06126663, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.122
+    fontOriginOffset: 0.061
+    fontLeftBearing: 0.009666667
+    fontOutlineMin: 0.009666667
+    fontOutlineMax: 0.112333335
+  - character: N
+    mesh: {fileID: 7678273513848098148, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.093833335
+    landingOffset: {x: -0.005896872, y: 0.056013867, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.11316667
+    fontOriginOffset: 0.056583334
+    fontLeftBearing: 0.009666667
+    fontOutlineMin: 0.009666667
+    fontOutlineMax: 0.1035
+  - character: O
+    mesh: {fileID: 5871213924500716687, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.09099999
+    landingOffset: {x: 0.027334252, y: 0.052664936, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.102000006
+    fontOriginOffset: 0.051000003
+    fontLeftBearing: 0.0055
+    fontOutlineMin: 0.0055
+    fontOutlineMax: 0.0965
+  - character: P
+    mesh: {fileID: -2517851684861919879, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.08858143
+    landingOffset: {x: -0.003960037, y: 0.057255883, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.10166667
+    fontOriginOffset: 0.054000005
+    fontLeftBearing: 0.009666667
+    fontOutlineMin: 0.009666667
+    fontOutlineMax: 0.09833334
+  - character: Q
+    mesh: {fileID: 3088846079883086512, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.088166654
+    landingOffset: {x: 0.026054509, y: 0.050351005, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.09933334
+    fontOriginOffset: 0.049583334
+    fontLeftBearing: 0.0055
+    fontOutlineMin: 0.0055
+    fontOutlineMax: 0.09366667
+  - character: R
+    mesh: {fileID: 7646058522902561827, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.08931945
+    landingOffset: {x: -0.0018924713, y: 0.05995373, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.10283334
+    fontOriginOffset: 0.05432667
+    fontLeftBearing: 0.009666667
+    fontOutlineMin: 0.009666667
+    fontOutlineMax: 0.099
+  - character: S
+    mesh: {fileID: 8410213259273964387, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.08940048
+    landingOffset: {x: -0.0012179565, y: 0.061481845, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.09483334
+    fontOriginOffset: 0.04675
+    fontLeftBearing: 0.002
+    fontOutlineMin: 0.002
+    fontOutlineMax: 0.0915
+  - character: T
+    mesh: {fileID: -4374393528731904006, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.09066665
+    landingOffset: {x: -0.0035786945, y: 0.062138427, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.09633333
+    fontOriginOffset: 0.04816667
+    fontLeftBearing: 0.0028333333
+    fontOutlineMin: 0.0028333333
+    fontOutlineMax: 0.0935
+  - character: U
+    mesh: {fileID: -5986520360808107445, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.088999934
+    landingOffset: {x: 0.026588693, y: 0.064591445, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.10633334
+    fontOriginOffset: 0.05316667
+    fontLeftBearing: 0.008666667
+    fontOutlineMin: 0.008666667
+    fontOutlineMax: 0.097666666
+  - character: V
+    mesh: {fileID: -5571752000041144601, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.09779708
+    landingOffset: {x: 0.011894328, y: 0.051573727, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.10066667
+    fontOriginOffset: 0.050395
+    fontLeftBearing: 0.0015
+    fontOutlineMin: 0.0015
+    fontOutlineMax: 0.0995
+  - character: W
+    mesh: {fileID: -1386989888829613106, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.14291534
+    landingOffset: {x: 0.0095755, y: 0.062250603, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.146
+    fontOriginOffset: 0.072960004
+    fontLeftBearing: 0.0015
+    fontOutlineMin: 0.0015
+    fontOutlineMax: 0.14483334
+  - character: X
+    mesh: {fileID: -6399293967902058226, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.09862609
+    landingOffset: {x: 0.0053086337, y: 0.058216106, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.100833334
+    fontOriginOffset: 0.05049917
+    fontLeftBearing: 0.001
+    fontOutlineMin: 0.001
+    fontOutlineMax: 0.1
+  - character: Y
+    mesh: {fileID: -3471600159250040946, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.09724167
+    landingOffset: {x: 0.004701131, y: 0.061824497, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.10116667
+    fontOriginOffset: 0.05064084
+    fontLeftBearing: 0.002
+    fontOutlineMin: 0.002
+    fontOutlineMax: 0.0995
+  - character: Z
+    mesh: {fileID: 3166533645425383161, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.08316681
+    landingOffset: {x: 0.0041498817, y: 0.047129046, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.094166666
+    fontOriginOffset: 0.047083333
+    fontLeftBearing: 0.0055
+    fontOutlineMin: 0.0055
+    fontOutlineMax: 0.08866667
+  - character: a
+    mesh: {fileID: 110849330873291225, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.079475045
+    landingOffset: {x: -0.0025579114, y: 0.044633385, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.09066667
+    fontOriginOffset: 0.043583337
+    fontLeftBearing: 0.0038333335
+    fontOutlineMin: 0.0038333335
+    fontOutlineMax: 0.083333336
+  - character: b
+    mesh: {fileID: -2307466796673654134, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.08330962
+    landingOffset: {x: 0.008184967, y: 0.068474114, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.096
+    fontOriginOffset: 0.04966667
+    fontLeftBearing: 0.008
+    fontOutlineMin: 0.008
+    fontOutlineMax: 0.09133334
+  - character: c
+    mesh: {fileID: -1340655570311464850, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.08146408
+    landingOffset: {x: -0.015012525, y: 0.032694984, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.08916667
+    fontOriginOffset: 0.045416668
+    fontLeftBearing: 0.004666667
+    fontOutlineMin: 0.004666667
+    fontOutlineMax: 0.08616667
+  - character: d
+    mesh: {fileID: -6398859734092537688, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.083163984
+    landingOffset: {x: -0.0059693656, y: 0.0694595, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.0955
+    fontOriginOffset: 0.04575
+    fontLeftBearing: 0.004166667
+    fontOutlineMin: 0.004166667
+    fontOutlineMax: 0.08733334
+  - character: e
+    mesh: {fileID: 7922068532204982002, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.08196777
+    landingOffset: {x: -0.004654642, y: 0.041303057, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.090333335
+    fontOriginOffset: 0.045500003
+    fontLeftBearing: 0.0045000003
+    fontOutlineMin: 0.0045000003
+    fontOutlineMax: 0.086500004
+  - character: f
+    mesh: {fileID: 7137884851399946038, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.05833328
+    landingOffset: {x: 0.0071096797, y: 0.0631848, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.064166665
+    fontOriginOffset: 0.03316667
+    fontLeftBearing: 0.004
+    fontOutlineMin: 0.004
+    fontOutlineMax: 0.062333334
+  - character: g
+    mesh: {fileID: 1145140915660130912, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.08233047
+    landingOffset: {x: -0.004172567, y: 0.017375315, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.095000006
+    fontOriginOffset: 0.045833334
+    fontLeftBearing: 0.004666667
+    fontOutlineMin: 0.004666667
+    fontOutlineMax: 0.087000005
+  - character: h
+    mesh: {fileID: -8372812214562707207, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.078333355
+    landingOffset: {x: 0.0042166645, y: 0.068739094, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.093833335
+    fontOriginOffset: 0.04716667
+    fontLeftBearing: 0.008
+    fontOutlineMin: 0.008
+    fontOutlineMax: 0.086333334
+  - character: i
+    mesh: {fileID: 1876046781669418695, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.02876953
+    landingOffset: {x: -0.0036440531, y: 0.057060365, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.04416667
+    fontOriginOffset: 0.0225
+    fontLeftBearing: 0.008
+    fontOutlineMin: 0.008
+    fontOutlineMax: 0.037
+  - character: j
+    mesh: {fileID: 2431665149869807528, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.04771652
+    landingOffset: {x: -0.0053574624, y: 0.056949735, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.044
+    fontOriginOffset: 0.012750002
+    fontLeftBearing: -0.011166667
+    fontOutlineMin: -0.011166667
+    fontOutlineMax: 0.03666667
+  - character: k
+    mesh: {fileID: 7306967759214586063, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.0811528
+    landingOffset: {x: 0.0028701273, y: 0.058832053, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.08966667
+    fontOriginOffset: 0.048576668
+    fontLeftBearing: 0.008
+    fontOutlineMin: 0.008
+    fontOutlineMax: 0.08916667
+  - character: l
+    mesh: {fileID: -4931234570986339831, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.027666625
+    landingOffset: {x: -0.004059194, y: 0.077160016, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.043833334
+    fontOriginOffset: 0.021833334
+    fontLeftBearing: 0.008
+    fontOutlineMin: 0.008
+    fontOutlineMax: 0.035666667
+  - character: m
+    mesh: {fileID: 2610075504545533409, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.12666656
+    landingOffset: {x: -0.0045180763, y: 0.05228338, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.14233334
+    fontOriginOffset: 0.0715
+    fontLeftBearing: 0.008166667
+    fontOutlineMin: 0.008166667
+    fontOutlineMax: 0.13483334
+  - character: n
+    mesh: {fileID: 5847286252806205768, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.07833333
+    landingOffset: {x: 0.012652766, y: 0.052101348, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.093833335
+    fontOriginOffset: 0.04716667
+    fontLeftBearing: 0.008
+    fontOutlineMin: 0.008
+    fontOutlineMax: 0.086333334
+  - character: o
+    mesh: {fileID: -3610171772341706772, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.08281041
+    landingOffset: {x: -0.006960344, y: 0.022314275, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.09216667
+    fontOriginOffset: 0.04608334
+    fontLeftBearing: 0.004666667
+    fontOutlineMin: 0.004666667
+    fontOutlineMax: 0.087500006
+  - character: p
+    mesh: {fileID: 1766379651085944635, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.083164826
+    landingOffset: {x: 0.007898266, y: 0.017430598, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.09566667
+    fontOriginOffset: 0.04991667
+    fontLeftBearing: 0.008333334
+    fontOutlineMin: 0.008333334
+    fontOutlineMax: 0.0915
+  - character: q
+    mesh: {fileID: -1499669695324763090, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.083164826
+    landingOffset: {x: -0.00642582, y: 0.016954638, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.09566667
+    fontOriginOffset: 0.04575
+    fontLeftBearing: 0.004166667
+    fontOutlineMin: 0.004166667
+    fontOutlineMax: 0.08733334
+  - character: r
+    mesh: {fileID: 1110934373047279547, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.056216426
+    landingOffset: {x: 0.009064636, y: 0.044168487, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.06533334
+    fontOriginOffset: 0.036281668
+    fontLeftBearing: 0.008166667
+    fontOutlineMin: 0.008166667
+    fontOutlineMax: 0.064666666
+  - character: s
+    mesh: {fileID: -7928404616442656446, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.07659759
+    landingOffset: {x: -0.00055720005, y: 0.045517553, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.0845
+    fontOriginOffset: 0.041833337
+    fontLeftBearing: 0.0035
+    fontOutlineMin: 0.0035
+    fontOutlineMax: 0.08016667
+  - character: t
+    mesh: {fileID: -7212697017026295856, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.05683334
+    landingOffset: {x: -0.0010500591, y: 0.053104687, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.06383333
+    fontOriginOffset: 0.031583335
+    fontLeftBearing: 0.0031666667
+    fontOutlineMin: 0.0031666667
+    fontOutlineMax: 0.060000002
+  - character: u
+    mesh: {fileID: 684407757069373792, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.07799995
+    landingOffset: {x: -0.020736644, y: 0.048443045, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.0935
+    fontOriginOffset: 0.046333335
+    fontLeftBearing: 0.0073333336
+    fontOutlineMin: 0.0073333336
+    fontOutlineMax: 0.08533333
+  - character: v
+    mesh: {fileID: 6717139038737105226, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.08329956
+    landingOffset: {x: 0.009598591, y: 0.041535366, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.08733334
+    fontOriginOffset: 0.0436475
+    fontLeftBearing: 0.002
+    fontOutlineMin: 0.002
+    fontOutlineMax: 0.0855
+  - character: w
+    mesh: {fileID: -10557450098545964, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.12803298
+    landingOffset: {x: 0.009518738, y: 0.04065315, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.13216667
+    fontOriginOffset: 0.0660225
+    fontLeftBearing: 0.002
+    fontOutlineMin: 0.002
+    fontOutlineMax: 0.13016666
+  - character: x
+    mesh: {fileID: -2961922906132337483, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.08694626
+    landingOffset: {x: 0.0048834733, y: 0.043053422, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.08916667
+    fontOriginOffset: 0.044582505
+    fontLeftBearing: 0.00083333335
+    fontOutlineMin: 0.00083333335
+    fontOutlineMax: 0.08833334
+  - character: y
+    mesh: {fileID: -7006726619769583760, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.08196625
+    landingOffset: {x: 0.0044632973, y: 0.022487411, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.08516667
+    fontOriginOffset: 0.0426475
+    fontLeftBearing: 0.0016666667
+    fontOutlineMin: 0.0016666667
+    fontOutlineMax: 0.08383334
+  - character: z
+    mesh: {fileID: 8954499838118241075, guid: 1d1c8ff21f9d3bf47959f20529c78aec, type: 3}
+    layoutWidth: 0.070166625
+    landingOffset: {x: 0.0023139955, y: 0.037410814, z: 0.0011666666}
+    bevelSlot: 0
+    frontSlot: 2
+    fontAdvance: 0.081
+    fontOriginOffset: 0.040583335
+    fontLeftBearing: 0.0055
+    fontOutlineMin: 0.0055
+    fontOutlineMax: 0.075666666
+  capHeight: 0.11666667
+  hasNativeSpacing: 1
+  sourceFont: Barlow ExtraBold
+  sourceFontSha256: 9688a9d5cd4e5f62668c11a3d9add6ec1630ba16a8803cb63a08afea3510cb93
+  fontToMeshScale: 0.00016666666
+  kerningPairs:
+  - first: A
+    second: J
+    adjustment: -0.0023333335
+  - first: A
+    second: S
+    adjustment: -0.0016666667
+  - first: A
+    second: T
+    adjustment: -0.013166667
+  - first: A
+    second: U
+    adjustment: -0.004166667
+  - first: A
+    second: V
+    adjustment: -0.0115
+  - first: A
+    second: Y
+    adjustment: -0.015000001
+  - first: A
+    second: f
+    adjustment: -0.004666667
+  - first: A
+    second: g
+    adjustment: -0.0013333333
+  - first: A
+    second: q
+    adjustment: -0.0013333333
+  - first: A
+    second: t
+    adjustment: -0.004666667
+  - first: A
+    second: u
+    adjustment: -0.00066666666
+  - first: A
+    second: v
+    adjustment: -0.0035
+  - first: B
+    second: A
+    adjustment: -0.0025000002
+  - first: B
+    second: T
+    adjustment: -0.003
+  - first: B
+    second: V
+    adjustment: -0.0038333335
+  - first: B
+    second: W
+    adjustment: -0.0026666666
+  - first: B
+    second: X
+    adjustment: -0.0050000004
+  - first: B
+    second: Y
+    adjustment: -0.0063333334
+  - first: B
+    second: Z
+    adjustment: -0.00016666666
+  - first: C
+    second: A
+    adjustment: -0.0038333335
+  - first: C
+    second: T
+    adjustment: -0.0036666668
+  - first: C
+    second: V
+    adjustment: -0.002
+  - first: C
+    second: X
+    adjustment: -0.0045000003
+  - first: C
+    second: Y
+    adjustment: -0.0073333336
+  - first: C
+    second: Z
+    adjustment: -0.0016666667
+  - first: D
+    second: V
+    adjustment: -0.004166667
+  - first: D
+    second: X
+    adjustment: -0.0053333333
+  - first: D
+    second: x
+    adjustment: -0.00083333335
+  - first: E
+    second: v
+    adjustment: -0.00083333335
+  - first: F
+    second: A
+    adjustment: -0.0123333335
+  - first: F
+    second: C
+    adjustment: -0.0026666666
+  - first: F
+    second: G
+    adjustment: -0.0026666666
+  - first: F
+    second: J
+    adjustment: -0.012
+  - first: F
+    second: O
+    adjustment: -0.0026666666
+  - first: F
+    second: Q
+    adjustment: -0.0026666666
+  - first: F
+    second: S
+    adjustment: -0.0021666668
+  - first: F
+    second: a
+    adjustment: -0.010833333
+  - first: F
+    second: b
+    adjustment: -0.00016666666
+  - first: F
+    second: c
+    adjustment: -0.008833334
+  - first: F
+    second: d
+    adjustment: -0.008666667
+  - first: F
+    second: e
+    adjustment: -0.008833334
+  - first: F
+    second: f
+    adjustment: -0.0016666667
+  - first: F
+    second: g
+    adjustment: -0.008666667
+  - first: F
+    second: h
+    adjustment: -0.00016666666
+  - first: F
+    second: k
+    adjustment: -0.00016666666
+  - first: F
+    second: l
+    adjustment: -0.00016666666
+  - first: F
+    second: m
+    adjustment: -0.004166667
+  - first: F
+    second: n
+    adjustment: -0.004166667
+  - first: F
+    second: o
+    adjustment: -0.008833334
+  - first: F
+    second: p
+    adjustment: -0.004166667
+  - first: F
+    second: q
+    adjustment: -0.008666667
+  - first: F
+    second: r
+    adjustment: -0.004166667
+  - first: F
+    second: s
+    adjustment: -0.009000001
+  - first: F
+    second: t
+    adjustment: -0.0011666667
+  - first: F
+    second: u
+    adjustment: -0.0036666668
+  - first: F
+    second: v
+    adjustment: -0.001
+  - first: F
+    second: w
+    adjustment: -0.001
+  - first: F
+    second: x
+    adjustment: -0.0013333333
+  - first: F
+    second: y
+    adjustment: -0.001
+  - first: F
+    second: z
+    adjustment: -0.004166667
+  - first: G
+    second: A
+    adjustment: -0.0038333335
+  - first: G
+    second: T
+    adjustment: -0.0036666668
+  - first: G
+    second: V
+    adjustment: -0.0036666668
+  - first: G
+    second: X
+    adjustment: -0.0051666666
+  - first: G
+    second: Y
+    adjustment: -0.0073333336
+  - first: G
+    second: Z
+    adjustment: -0.0016666667
+  - first: J
+    second: A
+    adjustment: -0.004166667
+  - first: K
+    second: J
+    adjustment: -0.0058333334
+  - first: K
+    second: S
+    adjustment: -0.0028333333
+  - first: K
+    second: X
+    adjustment: 0.0028333333
+  - first: K
+    second: a
+    adjustment: -0.001
+  - first: K
+    second: f
+    adjustment: -0.0048333337
+  - first: K
+    second: g
+    adjustment: -0.0053333333
+  - first: K
+    second: q
+    adjustment: -0.0053333333
+  - first: K
+    second: t
+    adjustment: -0.0048333337
+  - first: K
+    second: u
+    adjustment: -0.0025000002
+  - first: K
+    second: v
+    adjustment: -0.007
+  - first: L
+    second: J
+    adjustment: -0.00016666666
+  - first: L
+    second: T
+    adjustment: -0.016333334
+  - first: L
+    second: U
+    adjustment: -0.0038333335
+  - first: L
+    second: V
+    adjustment: -0.014166667
+  - first: L
+    second: Y
+    adjustment: -0.017333334
+  - first: L
+    second: f
+    adjustment: -0.0065
+  - first: L
+    second: g
+    adjustment: -0.00083333335
+  - first: L
+    second: q
+    adjustment: -0.00083333335
+  - first: L
+    second: t
+    adjustment: -0.0065
+  - first: L
+    second: u
+    adjustment: -0.0005
+  - first: L
+    second: v
+    adjustment: -0.009833334
+  - first: O
+    second: A
+    adjustment: -0.0038333335
+  - first: O
+    second: T
+    adjustment: -0.0036666668
+  - first: O
+    second: V
+    adjustment: -0.004
+  - first: O
+    second: X
+    adjustment: -0.0051666666
+  - first: O
+    second: Y
+    adjustment: -0.0073333336
+  - first: O
+    second: Z
+    adjustment: -0.0016666667
+  - first: O
+    second: x
+    adjustment: -0.00066666666
+  - first: P
+    second: A
+    adjustment: -0.0105
+  - first: P
+    second: J
+    adjustment: -0.012833334
+  - first: P
+    second: T
+    adjustment: -0.00016666666
+  - first: P
+    second: V
+    adjustment: -0.0023333335
+  - first: P
+    second: W
+    adjustment: -0.0018333334
+  - first: P
+    second: X
+    adjustment: -0.0065
+  - first: P
+    second: Y
+    adjustment: -0.0035
+  - first: P
+    second: Z
+    adjustment: -0.00066666666
+  - first: P
+    second: a
+    adjustment: -0.0018333334
+  - first: P
+    second: c
+    adjustment: -0.002
+  - first: P
+    second: d
+    adjustment: -0.0016666667
+  - first: P
+    second: e
+    adjustment: -0.002
+  - first: P
+    second: g
+    adjustment: -0.0018333334
+  - first: P
+    second: o
+    adjustment: -0.002
+  - first: P
+    second: q
+    adjustment: -0.0016666667
+  - first: P
+    second: s
+    adjustment: -0.001
+  - first: Q
+    second: A
+    adjustment: -0.0038333335
+  - first: Q
+    second: T
+    adjustment: -0.0036666668
+  - first: Q
+    second: V
+    adjustment: -0.004
+  - first: Q
+    second: X
+    adjustment: -0.0051666666
+  - first: Q
+    second: Y
+    adjustment: -0.0073333336
+  - first: Q
+    second: Z
+    adjustment: -0.0016666667
+  - first: Q
+    second: x
+    adjustment: -0.00066666666
+  - first: R
+    second: J
+    adjustment: -0.0048333337
+  - first: R
+    second: T
+    adjustment: -0.0023333335
+  - first: R
+    second: U
+    adjustment: -0.00066666666
+  - first: R
+    second: V
+    adjustment: -0.0031666667
+  - first: R
+    second: Y
+    adjustment: -0.0051666666
+  - first: R
+    second: g
+    adjustment: -0.0016666667
+  - first: R
+    second: q
+    adjustment: -0.0016666667
+  - first: S
+    second: A
+    adjustment: -0.0021666668
+  - first: S
+    second: T
+    adjustment: -0.0023333335
+  - first: S
+    second: V
+    adjustment: -0.0028333333
+  - first: S
+    second: X
+    adjustment: -0.004
+  - first: S
+    second: Y
+    adjustment: -0.0035
+  - first: S
+    second: f
+    adjustment: -0.0016666667
+  - first: S
+    second: t
+    adjustment: -0.0016666667
+  - first: S
+    second: v
+    adjustment: -0.002
+  - first: S
+    second: x
+    adjustment: -0.0031666667
+  - first: S
+    second: z
+    adjustment: -0.00016666666
+  - first: T
+    second: A
+    adjustment: -0.013333334
+  - first: T
+    second: J
+    adjustment: -0.015500001
+  - first: T
+    second: S
+    adjustment: -0.002
+  - first: T
+    second: a
+    adjustment: -0.015500001
+  - first: T
+    second: f
+    adjustment: -0.0050000004
+  - first: T
+    second: g
+    adjustment: -0.016333334
+  - first: T
+    second: i
+    adjustment: -0.00066666666
+  - first: T
+    second: q
+    adjustment: -0.016333334
+  - first: T
+    second: s
+    adjustment: -0.015666667
+  - first: T
+    second: t
+    adjustment: -0.0050000004
+  - first: T
+    second: u
+    adjustment: -0.012833334
+  - first: T
+    second: v
+    adjustment: -0.010000001
+  - first: T
+    second: x
+    adjustment: -0.008333334
+  - first: T
+    second: z
+    adjustment: -0.011833333
+  - first: U
+    second: A
+    adjustment: -0.004166667
+  - first: V
+    second: A
+    adjustment: -0.0115
+  - first: V
+    second: C
+    adjustment: -0.004166667
+  - first: V
+    second: G
+    adjustment: -0.004166667
+  - first: V
+    second: J
+    adjustment: -0.0123333335
+  - first: V
+    second: O
+    adjustment: -0.004166667
+  - first: V
+    second: Q
+    adjustment: -0.004166667
+  - first: V
+    second: S
+    adjustment: -0.0028333333
+  - first: V
+    second: a
+    adjustment: -0.009000001
+  - first: V
+    second: c
+    adjustment: -0.009166667
+  - first: V
+    second: d
+    adjustment: -0.008833334
+  - first: V
+    second: e
+    adjustment: -0.009166667
+  - first: V
+    second: f
+    adjustment: -0.0025000002
+  - first: V
+    second: g
+    adjustment: -0.009000001
+  - first: V
+    second: m
+    adjustment: -0.0050000004
+  - first: V
+    second: n
+    adjustment: -0.0050000004
+  - first: V
+    second: o
+    adjustment: -0.009166667
+  - first: V
+    second: p
+    adjustment: -0.0050000004
+  - first: V
+    second: q
+    adjustment: -0.008833334
+  - first: V
+    second: r
+    adjustment: -0.0050000004
+  - first: V
+    second: s
+    adjustment: -0.008333334
+  - first: V
+    second: t
+    adjustment: -0.0016666667
+  - first: V
+    second: u
+    adjustment: -0.0045000003
+  - first: V
+    second: z
+    adjustment: -0.004166667
+  - first: X
+    second: C
+    adjustment: -0.0050000004
+  - first: X
+    second: G
+    adjustment: -0.0050000004
+  - first: X
+    second: J
+    adjustment: -0.0065
+  - first: X
+    second: O
+    adjustment: -0.0050000004
+  - first: X
+    second: Q
+    adjustment: -0.0050000004
+  - first: X
+    second: S
+    adjustment: -0.0031666667
+  - first: X
+    second: X
+    adjustment: 0.0026666666
+  - first: X
+    second: a
+    adjustment: -0.0016666667
+  - first: X
+    second: c
+    adjustment: -0.0065
+  - first: X
+    second: d
+    adjustment: -0.0058333334
+  - first: X
+    second: e
+    adjustment: -0.0065
+  - first: X
+    second: f
+    adjustment: -0.0036666668
+  - first: X
+    second: g
+    adjustment: -0.0068333335
+  - first: X
+    second: o
+    adjustment: -0.0065
+  - first: X
+    second: q
+    adjustment: -0.0058333334
+  - first: X
+    second: s
+    adjustment: -0.0011666667
+  - first: X
+    second: t
+    adjustment: -0.0035
+  - first: X
+    second: u
+    adjustment: -0.0026666666
+  - first: X
+    second: v
+    adjustment: -0.004666667
+  - first: X
+    second: w
+    adjustment: -0.0045000003
+  - first: X
+    second: y
+    adjustment: -0.0048333337
+  - first: Y
+    second: A
+    adjustment: -0.015000001
+  - first: Y
+    second: J
+    adjustment: -0.015333334
+  - first: Y
+    second: S
+    adjustment: -0.004666667
+  - first: Y
+    second: a
+    adjustment: -0.0145000005
+  - first: Y
+    second: f
+    adjustment: -0.0051666666
+  - first: Y
+    second: g
+    adjustment: -0.014
+  - first: Y
+    second: i
+    adjustment: -0.00066666666
+  - first: Y
+    second: q
+    adjustment: -0.014
+  - first: Y
+    second: s
+    adjustment: -0.013833334
+  - first: Y
+    second: t
+    adjustment: -0.0051666666
+  - first: Y
+    second: u
+    adjustment: -0.009666667
+  - first: Y
+    second: v
+    adjustment: -0.0051666666
+  - first: Y
+    second: x
+    adjustment: -0.0043333336
+  - first: Y
+    second: z
+    adjustment: -0.009500001
+  - first: Z
+    second: J
+    adjustment: -0.00083333335
+  - first: Z
+    second: f
+    adjustment: -0.001
+  - first: Z
+    second: g
+    adjustment: -0.0015
+  - first: Z
+    second: q
+    adjustment: -0.0015
+  - first: Z
+    second: t
+    adjustment: -0.001
+  - first: Z
+    second: u
+    adjustment: -0.0005
+  - first: Z
+    second: v
+    adjustment: -0.00083333335
+  - first: a
+    second: T
+    adjustment: -0.015666667
+  - first: a
+    second: V
+    adjustment: -0.008166667
+  - first: a
+    second: Y
+    adjustment: -0.014
+  - first: a
+    second: Z
+    adjustment: -0.0005
+  - first: a
+    second: f
+    adjustment: -0.0011666667
+  - first: a
+    second: s
+    adjustment: -0.0005
+  - first: a
+    second: t
+    adjustment: -0.0011666667
+  - first: a
+    second: v
+    adjustment: -0.0028333333
+  - first: a
+    second: z
+    adjustment: -0.0011666667
+  - first: b
+    second: V
+    adjustment: -0.008833334
+  - first: b
+    second: X
+    adjustment: -0.0058333334
+  - first: b
+    second: v
+    adjustment: -0.0028333333
+  - first: b
+    second: x
+    adjustment: -0.0050000004
+  - first: c
+    second: T
+    adjustment: -0.014333334
+  - first: c
+    second: V
+    adjustment: -0.007
+  - first: c
+    second: X
+    adjustment: -0.0031666667
+  - first: c
+    second: Y
+    adjustment: -0.014333334
+  - first: c
+    second: v
+    adjustment: -0.0023333335
+  - first: c
+    second: x
+    adjustment: -0.0031666667
+  - first: e
+    second: V
+    adjustment: -0.009166667
+  - first: e
+    second: X
+    adjustment: -0.0036666668
+  - first: e
+    second: v
+    adjustment: -0.0031666667
+  - first: e
+    second: x
+    adjustment: -0.0045000003
+  - first: f
+    second: A
+    adjustment: -0.0053333333
+  - first: f
+    second: J
+    adjustment: -0.0085
+  - first: f
+    second: a
+    adjustment: -0.0026666666
+  - first: f
+    second: c
+    adjustment: -0.0025000002
+  - first: f
+    second: d
+    adjustment: -0.0023333335
+  - first: f
+    second: e
+    adjustment: -0.0025000002
+  - first: f
+    second: g
+    adjustment: -0.0025000002
+  - first: f
+    second: o
+    adjustment: -0.0025000002
+  - first: f
+    second: q
+    adjustment: -0.0023333335
+  - first: f
+    second: s
+    adjustment: -0.0015
+  - first: f
+    second: x
+    adjustment: 0.0011666667
+  - first: g
+    second: T
+    adjustment: -0.0123333335
+  - first: g
+    second: V
+    adjustment: -0.0050000004
+  - first: g
+    second: Y
+    adjustment: -0.010166667
+  - first: g
+    second: j
+    adjustment: 0.0038333335
+  - first: h
+    second: V
+    adjustment: -0.007833334
+  - first: h
+    second: v
+    adjustment: -0.002
+  - first: j
+    second: j
+    adjustment: 0.0035
+  - first: k
+    second: J
+    adjustment: -0.003
+  - first: k
+    second: T
+    adjustment: -0.009000001
+  - first: k
+    second: V
+    adjustment: -0.0016666667
+  - first: k
+    second: Y
+    adjustment: -0.0063333334
+  - first: k
+    second: a
+    adjustment: -0.0023333335
+  - first: k
+    second: g
+    adjustment: -0.004166667
+  - first: k
+    second: q
+    adjustment: -0.004166667
+  - first: k
+    second: s
+    adjustment: -0.0016666667
+  - first: k
+    second: x
+    adjustment: 0.0015
+  - first: m
+    second: V
+    adjustment: -0.007833334
+  - first: m
+    second: v
+    adjustment: -0.002
+  - first: n
+    second: V
+    adjustment: -0.007833334
+  - first: n
+    second: v
+    adjustment: -0.002
+  - first: o
+    second: V
+    adjustment: -0.009166667
+  - first: o
+    second: X
+    adjustment: -0.006666667
+  - first: o
+    second: v
+    adjustment: -0.003
+  - first: o
+    second: x
+    adjustment: -0.0055
+  - first: p
+    second: V
+    adjustment: -0.008833334
+  - first: p
+    second: X
+    adjustment: -0.0058333334
+  - first: p
+    second: v
+    adjustment: -0.0028333333
+  - first: p
+    second: x
+    adjustment: -0.0050000004
+  - first: q
+    second: T
+    adjustment: -0.0123333335
+  - first: q
+    second: V
+    adjustment: -0.0050000004
+  - first: q
+    second: Y
+    adjustment: -0.010166667
+  - first: q
+    second: j
+    adjustment: 0.006
+  - first: r
+    second: A
+    adjustment: -0.007833334
+  - first: r
+    second: J
+    adjustment: -0.012166667
+  - first: r
+    second: T
+    adjustment: -0.011166667
+  - first: r
+    second: X
+    adjustment: -0.0068333335
+  - first: r
+    second: Y
+    adjustment: -0.0061666667
+  - first: r
+    second: Z
+    adjustment: -0.0013333333
+  - first: r
+    second: a
+    adjustment: -0.0025000002
+  - first: r
+    second: g
+    adjustment: -0.0023333335
+  - first: r
+    second: q
+    adjustment: -0.0023333335
+  - first: r
+    second: s
+    adjustment: -0.0016666667
+  - first: r
+    second: v
+    adjustment: 0.00083333335
+  - first: r
+    second: x
+    adjustment: 0.0013333333
+  - first: s
+    second: T
+    adjustment: -0.013833334
+  - first: s
+    second: V
+    adjustment: -0.0075000003
+  - first: s
+    second: X
+    adjustment: -0.0025000002
+  - first: s
+    second: Y
+    adjustment: -0.0135
+  - first: s
+    second: f
+    adjustment: -0.00016666666
+  - first: s
+    second: g
+    adjustment: -0.0005
+  - first: s
+    second: q
+    adjustment: -0.0005
+  - first: s
+    second: s
+    adjustment: -0.00083333335
+  - first: s
+    second: t
+    adjustment: -0.00016666666
+  - first: s
+    second: v
+    adjustment: -0.0026666666
+  - first: s
+    second: x
+    adjustment: -0.0028333333
+  - first: t
+    second: T
+    adjustment: -0.0075000003
+  - first: t
+    second: V
+    adjustment: -0.0023333335
+  - first: t
+    second: Y
+    adjustment: -0.007
+  - first: t
+    second: g
+    adjustment: -0.00083333335
+  - first: t
+    second: q
+    adjustment: -0.00083333335
+  - first: u
+    second: V
+    adjustment: -0.0050000004
+  - first: v
+    second: A
+    adjustment: -0.0035
+  - first: v
+    second: J
+    adjustment: -0.0036666668
+  - first: v
+    second: T
+    adjustment: -0.009666667
+  - first: v
+    second: X
+    adjustment: -0.0051666666
+  - first: v
+    second: Y
+    adjustment: -0.0055
+  - first: v
+    second: Z
+    adjustment: -0.00083333335
+  - first: v
+    second: a
+    adjustment: -0.0033333334
+  - first: v
+    second: c
+    adjustment: -0.003
+  - first: v
+    second: d
+    adjustment: -0.0028333333
+  - first: v
+    second: e
+    adjustment: -0.003
+  - first: v
+    second: g
+    adjustment: -0.0028333333
+  - first: v
+    second: o
+    adjustment: -0.003
+  - first: v
+    second: q
+    adjustment: -0.0028333333
+  - first: v
+    second: s
+    adjustment: -0.0028333333
+  - first: w
+    second: X
+    adjustment: -0.0048333337
+  - first: x
+    second: J
+    adjustment: -0.0058333334
+  - first: x
+    second: T
+    adjustment: -0.007833334
+  - first: x
+    second: Y
+    adjustment: -0.0043333336
+  - first: x
+    second: a
+    adjustment: -0.0028333333
+  - first: x
+    second: c
+    adjustment: -0.0055
+  - first: x
+    second: d
+    adjustment: -0.0048333337
+  - first: x
+    second: e
+    adjustment: -0.0055
+  - first: x
+    second: g
+    adjustment: -0.0058333334
+  - first: x
+    second: o
+    adjustment: -0.0055
+  - first: x
+    second: q
+    adjustment: -0.0048333337
+  - first: x
+    second: s
+    adjustment: -0.0021666668
+  - first: x
+    second: x
+    adjustment: 0.0033333334
+  - first: y
+    second: X
+    adjustment: -0.0048333337
+  - first: z
+    second: V
+    adjustment: -0.004

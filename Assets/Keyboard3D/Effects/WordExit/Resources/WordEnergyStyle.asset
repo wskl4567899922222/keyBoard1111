@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9e5aabd283f48c49ac7b1057775c428, type: 3}
+  m_Name: WordEnergyStyle
+  m_EditorClassIdentifier: 
+  enabled: 1
+  wordWidthFraction: 1
+  extraLetterWidthPerEnd: 1.2
+  belowWord: 0.075
+  coreThickness: 0.015
+  haloHeight: 0.082
+  brightness: 2.23
+  saturation: 0.82
+  releaseHold: 0.055
+  collapseDuration: 0.22
+  pointHold: 0.045
+  extinguishDuration: 0.09
+  clearPause: 0.05
+  pointRadius: 0.035
+  pressAttack: 0.03
+  pressBrightnessKick: 0.3
+  chargeCoreBoost: 0.2
+  finishFlashDuration: 0.075
+  finishFlashGain: 0.7
+  finishFlashScale: 0.08
+  gatherPointScale: 2.25
+  weaveHeightInHeights: 0
+  pointDisturbance: 0.1
+  promptDuration: 0.16
+  promptRiseInHeights: 0.12

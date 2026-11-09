@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c756dfa4623c6d94ebf79b812c43f4ca, type: 3}
+  m_Name: WordExitStyle
+  m_EditorClassIdentifier: 
+  mode: 2
+  wholeWordJump: 1
+  wholeWordSquat: 0.085
+  wholeWordOutDuration: 0.25
+  wholeWordSquash: {x: 1.14, y: 0.7}
+  wholeWordStretch: {x: 0.88, y: 1.33}
+  quickJump: 1
+  quickSquat: 0.06
+  quickOutDuration: 0.23
+  quickLetterDelay: 0.012
+  quickMaximumStagger: 0.06
+  quickDirectionAngle: 8
+  quickRotationRange: {x: 6, y: 10}
+  letterFlightDuration: 0.62
+  flightTilt: 7
+  flightBank: 11
+  maximumFaceAngle: 24
+  letterFanSpread: 0.055
+  flightArc: 0.28
+  anticipation: 0.07
+  stretchDuration: 0.1
+  recoilDuration: 0.055
+  gatherDuration: 0.095
+  squashHeight: 0.8
+  squashWidth: 1.12
+  stretchHeight: 1.2
+  stretchWidth: 0.9
+  jumpHeight: 0.48
+  letterDelay: 0.03
+  maximumStagger: 0.15
+  flyDuration: 0.34
+  fanOut: 0.025
+  headRadius: 0.25
+  brightness: 1.25
+  disturbance: 0.055
+  smallPointCount: 12
+  totalSmallPointBudget: 240
+  smallPointRadius: 0.035
+  clusterSpread: 0.4
+  tailLifetime: 0.22
+  inheritedVelocity: 0.38
+  drag: 5

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
@@ -72,6 +73,10 @@ namespace Keyboard3D
         [Tooltip("邻键溢光范围（2 左右：罩住相邻一圈键）")]
         public float spillLightRange = 2.2f;
 
+        [Header("单词打字特效（参考视频：粒子飞向字母 + Enter 单词动画）")]
+        [Tooltip("启用后：键盘上方悬浮目标单词（未输入灰、命中变彩色），按键发射发光粒子沿弧线飞向对应字母；整词输完按 Enter 播放彩虹扫光+收拢动画。多键盘场景只有第一个键盘生效")]
+        public bool enableWordTyping = true;
+
         [Header("粒子尘埃（辅助反馈）")]
         public bool enableParticles = true;
         [Tooltip("松开按键后，旧目标键粒子保留漂浮的秒数（0=立即开始渐隐）")]
@@ -106,6 +111,8 @@ namespace Keyboard3D
         public float rotateSpeed = 0.25f;
         [Tooltip("俯仰角限制（度），180 = 可以完全上下颠倒")]
         public float maxPitch = 180f;
+        [Tooltip("偏航角限制（度）：绕竖直轴左右转动的最大幅度，相对初始朝向对称（2 = 只能左右各转 2°）")]
+        public float maxYaw = 2f;
         [Tooltip("滚轮缩放速度")]
         public float zoomSpeed = 4f;
         [Tooltip("启用拖动旋转/滚轮缩放（场景里有多个键盘实例时只给一个开，避免转速/缩放速度翻倍；按压与发光不受影响）")]
@@ -197,7 +204,6 @@ namespace Keyboard3D
         int capMismatchCount; // 键帽网格名未匹配 "Cube" 的键数（构建诊断用，浏览器 F12 看 Console）
         readonly Dictionary<KeyCode, KeySlot> byCode = new Dictionary<KeyCode, KeySlot>();
         readonly Dictionary<Transform, KeySlot> byRoot = new Dictionary<Transform, KeySlot>();
-        KeySlot mouseSlot;
         bool inputUnavailable;
         KeySlot targetSlot; // 当前目标键：唯一发光、唯一有粒子、唯一挂点光源
         Light targetLight;  // 顶部聚光灯：照出键帽顶亮侧暗的光影渐变
@@ -462,34 +468,18 @@ namespace Keyboard3D
             glowIntensity = 1.5f;       // 发光强度定稿值（2026-10-19 参考图调优）。旧值 2.6 会在 Play 时
                                         // 冲掉"应用样式"菜单序列化的 1.5，导致侧壁整面亮绿+中心过曝
             blackKeycaps = true;        // 强制黑键白字（用户指定，不再依赖 Inspector 勾选）
+            enableMouseClick = false;   // 鼠标不可点击按键（用户指定，只认物理键盘；场景序列化的 true 在此覆盖）
             keycapBlack = new Color(0f, 0f, 0f); // 纯黑键帽（用户 10-22 反馈深灰不够黑；强制覆盖场景序列化旧值）
             // 糖果配色自动开关：仅 Candy 场景（或键盘对象名含 "Candy"）启用，主场景保持黑键纯黑
             candyKeycaps = gameObject.name.Contains("Candy")
                 || UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.Contains("Candy");
             glowColor = new Color(0f, 1f, 0.12f); // 强制纯绿（场景里序列化的是带蓝浅绿，会偏薄荷色）
-            // Candy 场景糖果分支：发光全链路换黄（用户 10-22 要求，仅糖果模式生效）。
-            // 注意：本块位于全局参数赋值之前，数值会被下方黑键默认值覆盖（10-22 16:00 前的原始状态，
-            // 当时的"顶面太亮/侧壁太暗"即由此而来；如需糖果值生效须把本块移到全局赋值之后）
+            // Candy 场景糖果参数：见下方"糖果覆盖块"（必须位于全局定稿块之后才能生效——
+            // 10-22/10-23 的"顶面怎么调都亮"即因本块原来放在全局块之前被整体覆盖）
             if (candyKeycaps)
             {
-                keycapSmoothness = 0.62f;   // 糖果键帽恢复半哑光塑料质感（0.35 哑光是黑键纯黑专用）
-                sideSmoothnessMask = 0.62f; // 侧壁同步恢复
-                glowColor = new Color(1f, 0.88f, 0f);      // 自发光金黄（键帽顶面/侧壁的亮光）
+                glowColor = new Color(1f, 0.88f, 0f);      // 自发光金黄
                 pointLightColor = new Color(1f, 0.9f, 0f); // 顶灯/泛光/溢光灯同步黄
-                GlowAlbedo = new Color(0.55f, 0.45f, 0f);  // 发光时键帽染色深黄（对应黑键模式的深绿）
-                idleTopScale = 0f;          // 顶面不自发光（顶面太亮/字符糊多轮收敛）
-                sideGlowTop = 1.0f;         // 侧壁顶缘黄光拉满
-                sideGlowBottom = 0.3f;      // 侧壁黄光柱占比最大化
-                sideGlowCurve = 1.2f;       // 侧壁缓渐变
-                sideGlowPressDim = 1.0f;    // 按下时侧壁不压暗（糖果光柱）
-                pressGlowBoost = 0.15f;     // 按压顶面增亮收敛
-                pressGlowCore = 0.3f;       // 按压中心亮斑收敛
-                glowAlbedoLerp = 0.1f;      // 发光时键帽保持糖果本色
-                lightPressBase = 0.12f;     // 按压顶灯浅色键帽只给一点暖光
-                lightPressPeak = 0.3f;      // 按到底顶灯峰值收敛
-                haloPressDim = 0f;          // 初始泛光熄灭（浅色键帽成片亮黄真凶）
-                haloPressPeak = 0.15f;      // 按到底泛光只恢复 15%
-                spillLightIntensity = 0.5f; // 溢光减弱：防邻键互射糊字符
             }
             // —— 参考图样式定稿参数（2026-10-19，代码级强制）——
             // 场景序列化的旧值会盖掉脚本字段默认值，这里统一强制，Play 即生效；
@@ -526,6 +516,21 @@ namespace Keyboard3D
             fillLightAngles = new Vector3(35f, 55f, 0f);
             enableSpillLight = true;    // 邻键溢光：发光键把绿光洒到邻键侧壁
             spillLightIntensity = 1.6f;
+            // —— Candy 糖果覆盖块（必须放在全局定稿块之后，否则被上面赋值覆盖）——
+            // 发光形态（顶面亮度/侧壁光带/衰减/染色权重/按压链路）完全沿用全局定稿值——
+            // 用户 10-23 参考图（黑键模式绿色发光的 A 键）就是这套参数的形态，糖果只换颜色
+            if (candyKeycaps)
+            {
+                glowColor = new Color(1f, 0.88f, 0f);      // 自发光金黄（对应黑键模式的绿）
+                pointLightColor = new Color(1f, 0.9f, 0f); // 顶灯/泛光/溢光灯同步黄
+                GlowAlbedo = new Color(0.55f, 0.45f, 0f);  // 发光时键帽染色基准深黄（对应深绿）
+                // 仅两处针对浅色键帽的保护：高 albedo 会被贴键光冲刷糊掉黑字符
+                haloPressDim = 0.15f;       // 初始泛光 0.35→0.15（黑键哑光不反光，糖果浅色键帽会被打亮）
+                haloPressPeak = 0.2f;       // 按到底泛光 0.3→0.2
+                spillLightIntensity = 0.5f; // 溢光 1.6→0.5：防相邻发光键互射糊字符
+                // 相机由场景中手动摆放（Candy 场景 Main Camera：pos(-2.1,21.3,-1.6) rot(75.68,-180,0)），
+                // 运行时相机摆位代码已按用户要求移除（2026-10-23）
+            }
             // 粒子（2026-10-20 用户反馈：尺寸小一点，初始范围大一点，按下范围小一点）
             particleSize = 0.035f;      // 0.05 → 0.035：用户反馈可以再小一点
             particleRadius = 0.8f;      // 初始汇聚范围 0.5 → 0.8：尘埃绕得更开
@@ -560,8 +565,9 @@ namespace Keyboard3D
             {
                 var mf0 = GetComponentInChildren<MeshFilter>();
                 if (mf0 != null && mf0.sharedMesh != null)
+                    // 原始 FBX 网格 CPU 副本已在构建完成后释放，非 readable 状态读 uv 会抛异常
                     Debug.LogWarning("[Keyboard3D] Diag mesh=" + mf0.sharedMesh.name + " readable=" + mf0.sharedMesh.isReadable
-                        + " uv=" + mf0.sharedMesh.uv.Length);
+                        + (mf0.sharedMesh.isReadable ? " uv=" + mf0.sharedMesh.uv.Length : " uv=(freed)"));
                 var mr0 = GetComponentInChildren<MeshRenderer>();
                 if (mr0 != null && mr0.sharedMaterial != null)
                 {
@@ -582,6 +588,10 @@ namespace Keyboard3D
             catch (System.Exception ex) { Debug.LogWarning("[Keyboard3D] Diag fail: " + ex.Message); }
             try { Input.GetKey(KeyCode.A); }
             catch { inputUnavailable = true; Debug.LogWarning("[模型键盘] 新 Input System 下旧 Input 不可用，物理键盘输入已禁用（鼠标点击仍有效）。可在 Player Settings 把 Active Input Handling 改为 Both。"); }
+
+            // 单词打字特效（参考视频）：多键盘场景（如 Candy 双键盘）只挂第一份，防重复显示
+            if (enableWordTyping && WordTrailTyping.Instance == null)
+                gameObject.AddComponent<WordTrailTyping>();
         }
 
         // URP 迁移：把键盘下所有内置管线材质替换为 URP/Lit 实例（保留颜色/贴图）
@@ -709,6 +719,30 @@ namespace Keyboard3D
             return center + upDir * (keyHeight * (0.5f - convergeSink));
         }
 
+        // 键帽顶面中心（粒子发射点）：单词打字特效（WordTrailTyping）用。
+        // 返回 false = 该键不在映射表里（功能键/方向键/未识别键帽）
+        public bool TryGetKeyTop(KeyCode code, out Vector3 pos)
+        {
+            pos = default;
+            if (!byCode.TryGetValue(code, out var s) || s.root == null) return false;
+            pos = ParticleOrigin(s.root, s.height);
+            return true;
+        }
+
+        /// <summary>距 worldPos 最近的键帽根节点（单词打字特效的水波纹定位用；找不到返回 null）</summary>
+        public Transform GetNearestKeycap(Vector3 worldPos)
+        {
+            Transform best = null;
+            float nearest = float.PositiveInfinity;
+            foreach (var s in byCode.Values)
+            {
+                if (s.root == null) continue;
+                float d = (s.root.position - worldPos).sqrMagnitude;
+                if (d < nearest) { nearest = d; best = s.root; }
+            }
+            return best;
+        }
+
         // 键帽 UV 重写：顶面（法线沿高度轴分量 >= topNormalMinY，含看不见的底面）映射到遮罩的径向渐变区，
         // 其余（侧面+倒角肩部）映射到左下角深灰区 → 顶面"中央亮、边缘稍暗"，侧面自发光只有 ~15%。
         // 高度轴自动检测（bounds 跨度最小的轴）：FBX 网格局部朝向随导出管线不同
@@ -717,6 +751,11 @@ namespace Keyboard3D
         // topNormalMinY：顶面判定阈值。默认 0.707（≈45°，原键盘行为不变）；
         // 高光泽倒角键帽应调高（如 0.82≈35°）——倒角肩部法线从 0°~90° 过渡，
         // 阈值低时大半肩部被当"顶面"（白反照率+0.92 镜面）→ 亮一圈灰边，调高后肩部归侧面变哑光黑
+        // WebGL 内存优化：被克隆改写过的原始 FBX 网格记录在此，全部键位构建完成后统一释放
+        // CPU 侧副本（isReadable:1 的网格会常驻 CPU+GPU 双份，键盘只需 GPU 数据渲染）。
+        // 前提：运行时不再切换场景（Change.cs 已弃用），且 BuildKeyMap 只在 Awake 跑一次。
+        static readonly System.Collections.Generic.HashSet<Mesh> pendingFreeSrcMeshes = new HashSet<Mesh>();
+
         static void RewriteCapUv(MeshFilter mf, float topNormalMinY = 0.707f, float shortSqueeze = 1f)
         {
             var src = mf.sharedMesh;
@@ -730,6 +769,7 @@ namespace Keyboard3D
             }
             var mesh = Object.Instantiate(src);
             mesh.name = src.name + "_GlowUV";
+            pendingFreeSrcMeshes.Add(src); // 记录原始网格，构建完成后释放 CPU 副本
             var verts = mesh.vertices;
             var norms = mesh.normals;
             var uvs = new Vector2[verts.Length];
@@ -784,6 +824,10 @@ namespace Keyboard3D
             }
             mesh.uv = uvs;
             mf.mesh = mesh;
+            // WebGL 内存优化：UV 重写完成后释放 CPU 侧网格副本（只留 GPU 数据）。
+            // 网格 isReadable 时 Unity 会常驻一份 CPU 副本；68 个键帽克隆各留一份，
+            // 全部改写完成后无任何代码再读顶点（全工程 grep _GlowUV 无读取方），可安全释放。
+            mesh.UploadMeshData(true);
         }
         static float AxisOf(Vector3 v, int i) => i == 0 ? v.x : i == 1 ? v.y : v.z;
 
@@ -1306,6 +1350,18 @@ namespace Keyboard3D
             // 未匹配说明 FBX 网格命名变了（不再以 "Cube" 开头），材质分支全部没走
             Debug.Log($"[Keyboard3D] CreateSlots 完成：共 {slots.Count} 键，键帽网格匹配 {slots.Count - capMismatchCount}，未匹配 {capMismatchCount}；enableGlow={enableGlow}, blackKeycaps={blackKeycaps}");
             MatteChassis(); // 底座哑光+法线平滑：消除点光在底座上的锯齿状高光斑
+
+            // WebGL 内存优化：所有网格改写/克隆已结束，释放原始 FBX 网格的 CPU 侧副本。
+            // 释放后渲染不受影响（GPU 数据已上传），但再读顶点会抛异常——
+            // 全工程运行时唯一读者是 Awake 下方的诊断日志（已加 readable 防护）。
+            int freedMeshes = 0;
+            foreach (var m in pendingFreeSrcMeshes)
+            {
+                if (m != null) { m.UploadMeshData(true); freedMeshes++; }
+            }
+            pendingFreeSrcMeshes.Clear();
+            if (freedMeshes > 0)
+                Debug.Log($"[Keyboard3D] 已释放 {freedMeshes} 个原始 FBX 网格的 CPU 副本（WebGL 内存优化）");
         }
 
         // 底座处理（用户反馈底座上出现锯齿状光影）：
@@ -1349,6 +1405,7 @@ namespace Keyboard3D
                 if (src == null || !src.isReadable || src.name.EndsWith("_SmoothN")) continue;
                 var mesh = Object.Instantiate(src);
                 mesh.name = src.name + "_SmoothN";
+                pendingFreeSrcMeshes.Add(src); // 记录原始网格，构建完成后释放 CPU 副本
                 var verts = mesh.vertices;
                 var norms = mesh.normals;
                 // 按位置（量化到 0.1mm）合并平均法线：硬边顶点共享平滑法线
@@ -1368,6 +1425,8 @@ namespace Keyboard3D
                     norms[i] = acc[keyOf[i]].normalized;
                 mesh.normals = norms;
                 mf.mesh = mesh;
+                // WebGL 内存优化：法线平滑完成后释放 CPU 侧网格副本（同 _GlowUV，_SmoothN 克隆无后续读取方）
+                mesh.UploadMeshData(true);
                 meshCount++;
             }
             Debug.Log($"[Keyboard3D] 底座处理完成：哑光材质 {matCount} 个 renderer，法线平滑 {meshCount} 个 mesh（chassisSmoothness={chassisSmoothness}）");
@@ -1385,6 +1444,17 @@ namespace Keyboard3D
             float dt = Time.deltaTime;
             foreach (var s in slots) s.driven = false;
 
+            // 11-06：按 Enter 提交单词时 UI 按钮被误触发。机制：UGUI 的 Submit 虚拟轴
+            // 绑定 Enter+Space（InputManager.asset），鼠标点过的按钮会永久保持
+            // EventSystem 的选中状态 → 打字按 Enter 时 StandaloneInputModule 把 Submit
+            // 事件投给选中按钮 → 播放按下动画并误触发 onClick（音效/音节拆分开关被
+            // 键盘误切换）。改绑不存在的轴会抛 ArgumentException（已实测），标准解法是
+            // 每帧清除选中：没有选中物体，Submit 事件就没有投递目标；鼠标点击按钮走
+            // Pointer 事件、不依赖选中状态，完全不受影响。
+            var uiEs = EventSystem.current;
+            if (uiEs != null && uiEs.currentSelectedGameObject != null)
+                uiEs.SetSelectedGameObject(null);
+
             // 物理键盘
             if (!inputUnavailable)
             {
@@ -1399,38 +1469,32 @@ namespace Keyboard3D
             if (inputUnavailable)
                 foreach (var s in slots) DriveSlot(s, false, dt);
 
-            // 鼠标：点击键帽=按压；左键拖动空白处=旋转；右键拖动=旋转；滚轮=缩放
+            // 鼠标：左键拖动=旋转；右键拖动=旋转；滚轮=缩放（点击键帽不按压——只认物理键盘）
+            // 指针悬在 UI 上（如音效 Dropdown）时不响应旋转/缩放，避免切换 UI 误转键盘
             try
             {
-                if (Input.GetMouseButtonDown(0) && Camera.main != null)
+                bool overUi = EventSystem.current != null && EventSystem.current.IsPointerOverGameObject();
+                if (Input.GetMouseButtonDown(0) && !overUi && Camera.main != null)
                 {
                     leftDownPos = Input.mousePosition;
                     leftRotating = false;
-                    // 按在键帽上 → 按压该键；按在空白处 → 准备旋转
-                    mouseSlot = TryRaycastKey(out var slot) ? slot : null;
                 }
-                if (Input.GetMouseButton(0))
+                if (Input.GetMouseButton(0) && !overUi)
                 {
                     if (!leftRotating && (Input.mousePosition - leftDownPos).magnitude > 6f)
-                    {
                         leftRotating = true;
-                        mouseSlot = null; // 拖动开始后取消按压
-                    }
                     if (leftRotating && enableOrbit)
                         ApplyRotate(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
                 }
                 if (Input.GetMouseButtonUp(0))
-                {
-                    mouseSlot = null;
                     leftRotating = false;
-                }
 
                 // 右键拖动：任意位置旋转
-                if (Input.GetMouseButton(1) && enableOrbit)
+                if (Input.GetMouseButton(1) && !overUi && enableOrbit)
                     ApplyRotate(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
 
                 // 滚轮缩放（推近/拉远相机，距离限制在初始值的 0.35~2.5 倍）
-                float scroll = Input.GetAxis("Mouse ScrollWheel");
+                float scroll = overUi ? 0f : Input.GetAxis("Mouse ScrollWheel");
                 if (Mathf.Abs(scroll) > 0.0001f && Camera.main != null && enableOrbit)
                 {
                     var camT = Camera.main.transform;
@@ -1442,9 +1506,8 @@ namespace Keyboard3D
                 }
             }
             catch { /* 新 Input System 下不可用 */ }
-            if (mouseSlot != null) DriveSlot(mouseSlot, true, dt);
 
-            // 本帧未被任何输入驱动的键（如鼠标专用键）弹回
+            // 本帧未被任何输入驱动的键弹回
             foreach (var s in slots)
                 if (!s.driven) DriveSlot(s, false, dt);
 
@@ -1672,32 +1735,83 @@ namespace Keyboard3D
         void ApplyRotate(float dx, float dy)
         {
             if (Mathf.Abs(dx) < 0.0001f && Mathf.Abs(dy) < 0.0001f) return;
-            yaw += dx * rotateSpeed;
+            yaw = Mathf.Clamp(yaw + dx * rotateSpeed, -maxYaw, maxYaw);
             pitch = Mathf.Clamp(pitch - dy * rotateSpeed, -maxPitch, maxPitch);
             transform.rotation = Quaternion.AngleAxis(yaw, Vector3.up)
                                * Quaternion.AngleAxis(pitch, Vector3.right)
                                * baseRot;
         }
 
-        bool TryRaycastKey(out KeySlot slot)
+        // —— 外部驱动接口（ByteTyping.TypingHands 指法手 / 练习控制器用）——
+        // 强制指定发光目标键；KeyCode.None = 恢复自动随机。下次 PickTarget 生效（含按键松开后的自动切换）。
+        KeyCode forcedTarget = KeyCode.None;
+        bool targetSuspended; // 单词退场动画期间挂起目标发光（WordTrailTyping 用，防止回落到随机）
+        public void SetForcedTarget(KeyCode code)
         {
-            slot = null;
-            if (Camera.main == null) return false;
-            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out var hit, 100f))
+            forcedTarget = code;
+            targetSuspended = false;
+            if (code != KeyCode.None)
             {
-                var t = hit.transform;
-                while (t != null && !byRoot.ContainsKey(t)) t = t.parent;
-                if (t != null) { slot = byRoot[t]; return true; }
+                var f = slots.Find(s => s.code == code);
+                if (f != null) { targetSlot = f; AttachTargetLight(f); } // 立即生效（不等到松键触发 PickTarget）
+                if (code != lastForcedLogged) // 诊断：确认槽位/材质/开关状态
+                {
+                    lastForcedLogged = code;
+                    Debug.Log($"[KBInput] SetForcedTarget({code}) slot={(f != null ? "OK" : "未找到")} " +
+                              $"glowMat={(f != null && f.glowMat != null)} enableGlow={enableGlow} lightOnPressOnly={lightOnPressOnly}", this);
+                }
+            }
+        }
+        KeyCode lastForcedLogged = (KeyCode)(-1);
+
+        /// <summary>熄灭目标键发光并挂起自动选键（随机/强制都不生效），直到下次 SetForcedTarget</summary>
+        public void SuspendTargetGlow()
+        {
+            targetSuspended = true;
+            forcedTarget = KeyCode.None;
+            targetSlot = null; // 光强随 targetSlot==null 归零，旧键粒子走正常渐隐
+        }
+
+        // 键盘表面法线（底座 → 键帽方向，世界空间）。外部叠加层（指法手）用它对齐键盘平面，
+        // 不能用 transform.up——根物体常带 ±90° 轴向旋转，local up 未必是表面法线。
+        public Vector3 SurfaceNormal => -pressSign * PressAxisWorld;
+
+        // 查询键帽根节点与键帽高度（世界单位）。找不到（未映射/键不存在）返回 false。
+        public bool TryGetKeyInfo(KeyCode code, out Transform root, out float height)
+        {
+            root = null; height = 0f;
+            if (byCode.TryGetValue(code, out var s) && s.root != null)
+            {
+                root = s.root; height = s.height;
+                return true;
             }
             return false;
         }
 
+        // 查询某键的实时按压量（0 = 静止，1 = 全行程）——外部叠加层（指法手左右分半下压）用，
+        // 与键帽下沉共用同一驱动，视觉上严格同步
+        public float PressAmountOf(KeyCode code) => byCode.TryGetValue(code, out var s) ? s.amount : 0f;
+
+        // 按压行程系数（全行程下沉距离 = PressDepthRatio × 键高），与 pressDepthRatio 同源
+        public float PressDepthRatio => pressDepthRatio;
+
         void PickTarget()
         {
+            if (targetSuspended) return; // 单词退场动画期间不选目标（WordTrailTyping 接管时序）
             var pool = slots.FindAll(s => s != targetSlot && s.code != KeyCode.None);
             if (pool.Count == 0) pool = slots.FindAll(s => s != targetSlot);
             if (pool.Count == 0) return;
+            // 外部强制目标（指法手同步绿光 = 当前要按的键）优先于调试与随机
+            if (forcedTarget != KeyCode.None)
+            {
+                var f = slots.Find(s => s.code == forcedTarget);
+                if (f != null)
+                {
+                    targetSlot = f;
+                    AttachTargetLight(targetSlot);
+                    return;
+                }
+            }
             // 调试：指定目标键（名称/键码包含即命中，如 "Space"），留空则纯随机
             if (!string.IsNullOrEmpty(debugTargetKey))
             {
@@ -1710,6 +1824,9 @@ namespace Keyboard3D
                     return;
                 }
             }
+            // 单词打字模式：随机选键停用（发光完全由 WordTrailTyping 按单词进度驱动，
+            // 包括首个单词生成前的空窗期，避免出现与单词无关的随机发光）
+            if (WordTrailTyping.Instance != null && WordTrailTyping.Instance.isActiveAndEnabled) return;
             targetSlot = pool[Random.Range(0, pool.Count)];
             AttachTargetLight(targetSlot); // 点光源"卸载旧目标 → 挂载新目标"
         }

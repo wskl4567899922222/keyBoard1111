@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
-using TMPro;
 
 namespace Keyboard3D
 {
@@ -325,27 +324,24 @@ namespace Keyboard3D
         void CreateLabel(Transform parent, string text)
         {
             if (string.IsNullOrEmpty(text)) return;
-            if (TMP_Settings.defaultFontAsset == null)
-            {
-                Debug.LogWarning("[MiniKeyboard] TMP 默认字体缺失，跳过键帽文字（Window > TextMeshPro > Import TMP Essential Resources）");
-                return;
-            }
             var go = new GameObject("Label");
             go.transform.SetParent(parent, false);
             // 顶面浅凹中心略上方；Euler(-90,0,0)：文字正面朝上、字头朝 -Z（面向 +Z 方向的相机正读）
             go.transform.localPosition = new Vector3(0f, keyHeight - dishDepth + 0.003f, 0f);
             go.transform.localRotation = Quaternion.Euler(-90f, 0f, 0f);
-            var tmp = go.AddComponent<TextMeshPro>();
-            tmp.text = text;
-            tmp.fontStyle = FontStyles.Bold;
-            tmp.enableAutoSizing = true;
-            tmp.fontSizeMin = 4f;
-            tmp.fontSizeMax = 26f;
-            tmp.alignment = TextAlignmentOptions.Center;
-            tmp.color = Color.white;
-            var rt = tmp.rectTransform;
-            rt.sizeDelta = new Vector2(keyWidth * 0.7f, keyWidth * 0.35f);
-            var rend = tmp.renderer;
+            // 内置 TextMesh（不再依赖 TMP）：fontSize 64 × characterSize 0.1 ≈ 0.64 键宽级字号
+            var tm = go.AddComponent<TextMesh>();
+            tm.text = text;
+            tm.fontStyle = FontStyle.Bold;
+            tm.fontSize = 64;
+            tm.characterSize = 0.1f;
+            tm.anchor = TextAnchor.MiddleCenter;
+            tm.alignment = TextAlignment.Center;
+            tm.color = Color.white;
+            var font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+            tm.font = font;
+            var rend = go.GetComponent<MeshRenderer>();
+            rend.sharedMaterial = font.material;
             rend.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
             rend.receiveShadows = false;
         }

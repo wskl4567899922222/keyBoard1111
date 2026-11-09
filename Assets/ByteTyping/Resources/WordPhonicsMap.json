@@ -1,0 +1,6882 @@
+{
+ "entries": [
+  {
+   "wid": 1,
+   "word": "emotion",
+   "audio": "word_en/1",
+   "phonemes": [
+    {
+     "sound": "ɪ",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "m_front",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "əʊ",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "ʃn",
+     "positions": [
+      3,
+      4,
+      5,
+      6
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 2,
+   "word": "coach",
+   "audio": "word_en/2",
+   "phonemes": [
+    {
+     "sound": "k",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "əʊ",
+     "positions": [
+      1,
+      2
+     ]
+    },
+    {
+     "sound": "tʃ",
+     "positions": [
+      3,
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 5,
+   "word": "global",
+   "audio": "word_en/5",
+   "phonemes": [
+    {
+     "sound": "ɡl",
+     "positions": [
+      0,
+      1
+     ]
+    },
+    {
+     "sound": "əʊ",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "b",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "l_back",
+     "positions": [
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 6,
+   "word": "vary",
+   "audio": "word_en/6",
+   "phonemes": [
+    {
+     "sound": "v",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "eə",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "r_front",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "i",
+     "positions": [
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 7,
+   "word": "focus",
+   "audio": "word_en/7",
+   "phonemes": [
+    {
+     "sound": "f",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "əʊ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "k",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "s",
+     "positions": [
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 8,
+   "word": "mild",
+   "audio": "word_en/8",
+   "phonemes": [
+    {
+     "sound": "m_front",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "aɪ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "ld",
+     "positions": [
+      2,
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 10,
+   "word": "identify",
+   "audio": "word_en/10",
+   "phonemes": [
+    {
+     "sound": "aɪ",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "d",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "e",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "f",
+     "positions": [
+      6
+     ]
+    },
+    {
+     "sound": "aɪ",
+     "positions": [
+      7
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 11,
+   "word": "victim",
+   "audio": "word_en/11",
+   "phonemes": [
+    {
+     "sound": "v",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "k",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "m_back",
+     "positions": [
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 15,
+   "word": "tendency",
+   "audio": "word_en/15",
+   "phonemes": [
+    {
+     "sound": "t",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "e",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "d",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "s",
+     "positions": [
+      6
+     ]
+    },
+    {
+     "sound": "i",
+     "positions": [
+      7
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 16,
+   "word": "previous",
+   "audio": "word_en/16",
+   "phonemes": [
+    {
+     "sound": "pr",
+     "positions": [
+      0,
+      1
+     ]
+    },
+    {
+     "sound": "iː",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "v",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "i",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      5,
+      6
+     ]
+    },
+    {
+     "sound": "s",
+     "positions": [
+      7
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 17,
+   "word": "discipline",
+   "audio": "word_en/17",
+   "phonemes": [
+    {
+     "sound": "d",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "s",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "null",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "pl",
+     "positions": [
+      5,
+      6
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      7
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      8
+     ]
+    },
+    {
+     "sound": "null",
+     "positions": [
+      9
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 18,
+   "word": "virtue",
+   "audio": "word_en/18",
+   "phonemes": [
+    {
+     "sound": "v",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ɜː",
+     "positions": [
+      1,
+      2
+     ]
+    },
+    {
+     "sound": "tʃ",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "uː",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "null",
+     "positions": [
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 19,
+   "word": "video",
+   "audio": "word_en/19",
+   "phonemes": [
+    {
+     "sound": "v",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "d",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "i",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "əʊ",
+     "positions": [
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 20,
+   "word": "calculate",
+   "audio": "word_en/20",
+   "phonemes": [
+    {
+     "sound": "k",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "æ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "l_back",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "k",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "ju",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "l_front",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "eɪ",
+     "positions": [
+      6,
+      8
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      7
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 21,
+   "word": "candidate",
+   "audio": "word_en/21",
+   "phonemes": [
+    {
+     "sound": "k",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "æ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "d",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "d",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "eɪ",
+     "positions": [
+      6,
+      8
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      7
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 23,
+   "word": "personal",
+   "audio": "word_en/23",
+   "phonemes": [
+    {
+     "sound": "p",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ɜː",
+     "positions": [
+      1,
+      2
+     ]
+    },
+    {
+     "sound": "s",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      6
+     ]
+    },
+    {
+     "sound": "l_back",
+     "positions": [
+      7
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 24,
+   "word": "ruin",
+   "audio": "word_en/24",
+   "phonemes": [
+    {
+     "sound": "r_front",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "uː",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 28,
+   "word": "valid",
+   "audio": "word_en/28",
+   "phonemes": [
+    {
+     "sound": "v",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "æ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "l_back",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "d",
+     "positions": [
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 31,
+   "word": "integrate",
+   "audio": "word_en/31",
+   "phonemes": [
+    {
+     "sound": "ɪ",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "ɡr",
+     "positions": [
+      4,
+      5
+     ]
+    },
+    {
+     "sound": "eɪ",
+     "positions": [
+      6,
+      8
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      7
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 32,
+   "word": "explode",
+   "audio": "word_en/32",
+   "phonemes": [
+    {
+     "sound": "ɪ",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ks",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "pl",
+     "positions": [
+      2,
+      3
+     ]
+    },
+    {
+     "sound": "əʊ",
+     "positions": [
+      4,
+      6
+     ]
+    },
+    {
+     "sound": "d",
+     "positions": [
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 34,
+   "word": "insurance",
+   "audio": "word_en/34",
+   "phonemes": [
+    {
+     "sound": "ɪ",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "ʃ",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "ɔː",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "r_front",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      6
+     ]
+    },
+    {
+     "sound": "s",
+     "positions": [
+      7
+     ]
+    },
+    {
+     "sound": "null",
+     "positions": [
+      8
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 38,
+   "word": "security",
+   "audio": "word_en/38",
+   "phonemes": [
+    {
+     "sound": "s",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "k",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "jʊə",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "r_front",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      6
+     ]
+    },
+    {
+     "sound": "i",
+     "positions": [
+      7
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 42,
+   "word": "domestic",
+   "audio": "word_en/42",
+   "phonemes": [
+    {
+     "sound": "d",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "m_front",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "e",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "s",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      6
+     ]
+    },
+    {
+     "sound": "k",
+     "positions": [
+      7
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 45,
+   "word": "barrier",
+   "audio": "word_en/45",
+   "phonemes": [
+    {
+     "sound": "b",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "æ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "null",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "r_front",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "i",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      5,
+      6
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 46,
+   "word": "community",
+   "audio": "word_en/46",
+   "phonemes": [
+    {
+     "sound": "k",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "null",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "m_front",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "juː",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "n_front",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      6
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      7
+     ]
+    },
+    {
+     "sound": "i",
+     "positions": [
+      8
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 48,
+   "word": "awful",
+   "audio": "word_en/48",
+   "phonemes": [
+    {
+     "sound": "ɔː",
+     "positions": [
+      0,
+      1
+     ]
+    },
+    {
+     "sound": "f",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "l_back",
+     "positions": [
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 52,
+   "word": "encounter",
+   "audio": "word_en/52",
+   "phonemes": [
+    {
+     "sound": "ɪ",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "k",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "aʊ",
+     "positions": [
+      3,
+      4
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      6
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      7,
+      8
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 54,
+   "word": "register",
+   "audio": "word_en/54",
+   "phonemes": [
+    {
+     "sound": "r_front",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "e",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "dʒ",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "st_front",
+     "positions": [
+      4,
+      5
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      6,
+      7
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 56,
+   "word": "disturb",
+   "audio": "word_en/56",
+   "phonemes": [
+    {
+     "sound": "d",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "st",
+     "positions": [
+      2,
+      3
+     ]
+    },
+    {
+     "sound": "ɜː",
+     "positions": [
+      4,
+      5
+     ]
+    },
+    {
+     "sound": "b",
+     "positions": [
+      6
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 57,
+   "word": "resolve",
+   "audio": "word_en/57",
+   "phonemes": [
+    {
+     "sound": "r_front",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "z",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "ɒ",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "l_back",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "v",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "null",
+     "positions": [
+      6
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 58,
+   "word": "scan",
+   "audio": "word_en/58",
+   "phonemes": [
+    {
+     "sound": "sk_front",
+     "positions": [
+      0,
+      1
+     ]
+    },
+    {
+     "sound": "æ",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 59,
+   "word": "organ",
+   "audio": "word_en/59",
+   "phonemes": [
+    {
+     "sound": "ɔː",
+     "positions": [
+      0,
+      1
+     ]
+    },
+    {
+     "sound": "ɡ",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 60,
+   "word": "infer",
+   "audio": "word_en/60",
+   "phonemes": [
+    {
+     "sound": "ɪ",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "f",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "ɜː",
+     "positions": [
+      3,
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 61,
+   "word": "decade",
+   "audio": "word_en/61",
+   "phonemes": [
+    {
+     "sound": "d",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "e",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "k",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "eɪ",
+     "positions": [
+      3,
+      5
+     ]
+    },
+    {
+     "sound": "d",
+     "positions": [
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 62,
+   "word": "attitude",
+   "audio": "word_en/62",
+   "phonemes": [
+    {
+     "sound": "æ",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "null",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "juː",
+     "positions": [
+      5,
+      7
+     ]
+    },
+    {
+     "sound": "d",
+     "positions": [
+      6
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 63,
+   "word": "yield",
+   "audio": "word_en/63",
+   "phonemes": [
+    {
+     "sound": "j",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "iː",
+     "positions": [
+      1,
+      2
+     ]
+    },
+    {
+     "sound": "ld",
+     "positions": [
+      3,
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 66,
+   "word": "network",
+   "audio": "word_en/66",
+   "phonemes": [
+    {
+     "sound": "n_front",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "e",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "w",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "ɜː",
+     "positions": [
+      4,
+      5
+     ]
+    },
+    {
+     "sound": "k",
+     "positions": [
+      6
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 67,
+   "word": "slide",
+   "audio": "word_en/67",
+   "phonemes": [
+    {
+     "sound": "sl",
+     "positions": [
+      0,
+      1
+     ]
+    },
+    {
+     "sound": "aɪ",
+     "positions": [
+      2,
+      4
+     ]
+    },
+    {
+     "sound": "d",
+     "positions": [
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 68,
+   "word": "trap",
+   "audio": "word_en/68",
+   "phonemes": [
+    {
+     "sound": "tr",
+     "positions": [
+      0,
+      1
+     ]
+    },
+    {
+     "sound": "æ",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "p",
+     "positions": [
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 70,
+   "word": "ban",
+   "audio": "word_en/70",
+   "phonemes": [
+    {
+     "sound": "b",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "æ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      2
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 73,
+   "word": "zone",
+   "audio": "word_en/73",
+   "phonemes": [
+    {
+     "sound": "z",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "əʊ",
+     "positions": [
+      1,
+      3
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      2
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 76,
+   "word": "racial",
+   "audio": "word_en/76",
+   "phonemes": [
+    {
+     "sound": "r_front",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "eɪ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "ʃ",
+     "positions": [
+      2,
+      3
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "l_back",
+     "positions": [
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 77,
+   "word": "burst",
+   "audio": "word_en/77",
+   "phonemes": [
+    {
+     "sound": "b",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ɜː",
+     "positions": [
+      1,
+      2
+     ]
+    },
+    {
+     "sound": "st_back",
+     "positions": [
+      3,
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 78,
+   "word": "consistent",
+   "audio": "word_en/78",
+   "phonemes": [
+    {
+     "sound": "k",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "s",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "s",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      6
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      7
+     ]
+    },
+    {
+     "sound": "nt",
+     "positions": [
+      8,
+      9
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 79,
+   "word": "competition",
+   "audio": "word_en/79",
+   "phonemes": [
+    {
+     "sound": "k",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ɒ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "m_back",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "p",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      6
+     ]
+    },
+    {
+     "sound": "ʃn",
+     "positions": [
+      7,
+      8,
+      9,
+      10
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 81,
+   "word": "cancel",
+   "audio": "word_en/81",
+   "phonemes": [
+    {
+     "sound": "k",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "æ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "s",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "l_back",
+     "positions": [
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 82,
+   "word": "individual",
+   "audio": "word_en/82",
+   "phonemes": [
+    {
+     "sound": "ɪ",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "d",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "v",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "dʒ",
+     "positions": [
+      6
+     ]
+    },
+    {
+     "sound": "u",
+     "positions": [
+      7
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      8
+     ]
+    },
+    {
+     "sound": "l_back",
+     "positions": [
+      9
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 83,
+   "word": "export",
+   "audio": "word_en/83",
+   "phonemes": [
+    {
+     "sound": "ɪ",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ks",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "p",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "ɔː",
+     "positions": [
+      3,
+      4
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 87,
+   "word": "calendar",
+   "audio": "word_en/87",
+   "phonemes": [
+    {
+     "sound": "k",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "æ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "l_back",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "d",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      6,
+      7
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 88,
+   "word": "acid",
+   "audio": "word_en/88",
+   "phonemes": [
+    {
+     "sound": "æ",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "s",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "d",
+     "positions": [
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 89,
+   "word": "bacteria",
+   "audio": "word_en/89",
+   "phonemes": [
+    {
+     "sound": "b",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "æ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "k",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "ɪə",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "r_front",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "ɪə",
+     "positions": [
+      6,
+      7
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 90,
+   "word": "transport",
+   "audio": "word_en/90",
+   "phonemes": [
+    {
+     "sound": "tr",
+     "positions": [
+      0,
+      1
+     ]
+    },
+    {
+     "sound": "æ",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "s",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "p",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "ɔː",
+     "positions": [
+      6,
+      7
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      8
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 91,
+   "word": "wonder",
+   "audio": "word_en/91",
+   "phonemes": [
+    {
+     "sound": "w",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ʌ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "d",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      4,
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 94,
+   "word": "scale",
+   "audio": "word_en/94",
+   "phonemes": [
+    {
+     "sound": "sk_front",
+     "positions": [
+      0,
+      1
+     ]
+    },
+    {
+     "sound": "eɪ",
+     "positions": [
+      2,
+      4
+     ]
+    },
+    {
+     "sound": "l_back",
+     "positions": [
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 96,
+   "word": "alcohol",
+   "audio": "word_en/96",
+   "phonemes": [
+    {
+     "sound": "æ",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "l_back",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "k",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "h",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "ɒ",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "l_back",
+     "positions": [
+      6
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 99,
+   "word": "subsequent",
+   "audio": "word_en/99",
+   "phonemes": [
+    {
+     "sound": "s",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ʌ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "b",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "s",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "kw",
+     "positions": [
+      5,
+      6
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      7
+     ]
+    },
+    {
+     "sound": "nt",
+     "positions": [
+      8,
+      9
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 102,
+   "word": "tend",
+   "audio": "word_en/102",
+   "phonemes": [
+    {
+     "sound": "t",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "e",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "nd",
+     "positions": [
+      2,
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 104,
+   "word": "version",
+   "audio": "word_en/104",
+   "phonemes": [
+    {
+     "sound": "v",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ɜː",
+     "positions": [
+      1,
+      2
+     ]
+    },
+    {
+     "sound": "ʃn",
+     "positions": [
+      3,
+      4,
+      5,
+      6
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 105,
+   "word": "adapt",
+   "audio": "word_en/105",
+   "phonemes": [
+    {
+     "sound": "ə",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "d",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "æ",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "pt",
+     "positions": [
+      3,
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 106,
+   "word": "import",
+   "audio": "word_en/106",
+   "phonemes": [
+    {
+     "sound": "ɪ",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "m_back",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "p",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "ɔː",
+     "positions": [
+      3,
+      4
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 107,
+   "word": "boundary",
+   "audio": "word_en/107",
+   "phonemes": [
+    {
+     "sound": "b",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "aʊ",
+     "positions": [
+      1,
+      2
+     ]
+    },
+    {
+     "sound": "nd",
+     "positions": [
+      3,
+      4
+     ]
+    },
+    {
+     "sound": "null",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "r_front",
+     "positions": [
+      6
+     ]
+    },
+    {
+     "sound": "i",
+     "positions": [
+      7
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 108,
+   "word": "appeal",
+   "audio": "word_en/108",
+   "phonemes": [
+    {
+     "sound": "ə",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "null",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "p",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "iː",
+     "positions": [
+      3,
+      4
+     ]
+    },
+    {
+     "sound": "l_back",
+     "positions": [
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 109,
+   "word": "issue",
+   "audio": "word_en/109",
+   "phonemes": [
+    {
+     "sound": "ɪ",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "null",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "ʃ",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "uː",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "null",
+     "positions": [
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 110,
+   "word": "temple",
+   "audio": "word_en/110",
+   "phonemes": [
+    {
+     "sound": "t",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "e",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "m_back",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "p",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "l_back",
+     "positions": [
+      4,
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 112,
+   "word": "preserve",
+   "audio": "word_en/112",
+   "phonemes": [
+    {
+     "sound": "pr",
+     "positions": [
+      0,
+      1
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "z",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "ɜː",
+     "positions": [
+      4,
+      5
+     ]
+    },
+    {
+     "sound": "v",
+     "positions": [
+      6
+     ]
+    },
+    {
+     "sound": "null",
+     "positions": [
+      7
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 113,
+   "word": "core",
+   "audio": "word_en/113",
+   "phonemes": [
+    {
+     "sound": "k",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ɔː",
+     "positions": [
+      1,
+      2,
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 118,
+   "word": "expansion",
+   "audio": "word_en/118",
+   "phonemes": [
+    {
+     "sound": "ɪ",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ks",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "p",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "æ",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "ʃn",
+     "positions": [
+      5,
+      6,
+      7,
+      8
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 120,
+   "word": "extraordinary",
+   "audio": "word_en/120",
+   "phonemes": [
+    {
+     "sound": "ɪ",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ks",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "tr",
+     "positions": [
+      2,
+      3
+     ]
+    },
+    {
+     "sound": "null",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "ɔː",
+     "positions": [
+      5,
+      6
+     ]
+    },
+    {
+     "sound": "d",
+     "positions": [
+      7
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      8
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      9
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      10
+     ]
+    },
+    {
+     "sound": "r_front",
+     "positions": [
+      11
+     ]
+    },
+    {
+     "sound": "i",
+     "positions": [
+      12
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 122,
+   "word": "poverty",
+   "audio": "word_en/122",
+   "phonemes": [
+    {
+     "sound": "p",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ɒ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "v",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      3,
+      4
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "i",
+     "positions": [
+      6
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 123,
+   "word": "extent",
+   "audio": "word_en/123",
+   "phonemes": [
+    {
+     "sound": "ɪ",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ks",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "e",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "nt",
+     "positions": [
+      4,
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 126,
+   "word": "debt",
+   "audio": "word_en/126",
+   "phonemes": [
+    {
+     "sound": "d",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "e",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "null",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 130,
+   "word": "substance",
+   "audio": "word_en/130",
+   "phonemes": [
+    {
+     "sound": "s",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ʌ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "b",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "st_front",
+     "positions": [
+      3,
+      4
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      6
+     ]
+    },
+    {
+     "sound": "s",
+     "positions": [
+      7
+     ]
+    },
+    {
+     "sound": "null",
+     "positions": [
+      8
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 131,
+   "word": "talent",
+   "audio": "word_en/131",
+   "phonemes": [
+    {
+     "sound": "t",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "æ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "l_back",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "nt",
+     "positions": [
+      4,
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 134,
+   "word": "career",
+   "audio": "word_en/134",
+   "phonemes": [
+    {
+     "sound": "k",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "r_front",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "ɪə",
+     "positions": [
+      3,
+      4,
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 135,
+   "word": "shift",
+   "audio": "word_en/135",
+   "phonemes": [
+    {
+     "sound": "ʃ",
+     "positions": [
+      0,
+      1
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "ft",
+     "positions": [
+      3,
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 136,
+   "word": "route",
+   "audio": "word_en/136",
+   "phonemes": [
+    {
+     "sound": "r_front",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "uː",
+     "positions": [
+      1,
+      2
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "null",
+     "positions": [
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 137,
+   "word": "acknowledge",
+   "audio": "word_en/137",
+   "phonemes": [
+    {
+     "sound": "ə",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "k",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "n_front",
+     "positions": [
+      2,
+      3
+     ]
+    },
+    {
+     "sound": "ɒ",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "null",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "l_back",
+     "positions": [
+      6
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      7
+     ]
+    },
+    {
+     "sound": "dʒ",
+     "positions": [
+      8,
+      9
+     ]
+    },
+    {
+     "sound": "null",
+     "positions": [
+      10
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 138,
+   "word": "explore",
+   "audio": "word_en/138",
+   "phonemes": [
+    {
+     "sound": "ɪ",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ks",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "pl",
+     "positions": [
+      2,
+      3
+     ]
+    },
+    {
+     "sound": "ɔː",
+     "positions": [
+      4,
+      5,
+      6
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 139,
+   "word": "comment",
+   "audio": "word_en/139",
+   "phonemes": [
+    {
+     "sound": "k",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ɒ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "null",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "m_front",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "e",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "nt",
+     "positions": [
+      5,
+      6
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 140,
+   "word": "range",
+   "audio": "word_en/140",
+   "phonemes": [
+    {
+     "sound": "r_front",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "eɪ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "dʒ",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "null",
+     "positions": [
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 141,
+   "word": "abuse",
+   "audio": "word_en/141",
+   "phonemes": [
+    {
+     "sound": "ə",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "b",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "juː",
+     "positions": [
+      2,
+      4
+     ]
+    },
+    {
+     "sound": "s",
+     "positions": [
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 142,
+   "word": "discrimination",
+   "audio": "word_en/142",
+   "phonemes": [
+    {
+     "sound": "d",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "skr",
+     "positions": [
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "m_back",
+     "positions": [
+      6
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      7
+     ]
+    },
+    {
+     "sound": "n_front",
+     "positions": [
+      8
+     ]
+    },
+    {
+     "sound": "eɪ",
+     "positions": [
+      9
+     ]
+    },
+    {
+     "sound": "ʃn",
+     "positions": [
+      10,
+      11,
+      12,
+      13
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 143,
+   "word": "commit",
+   "audio": "word_en/143",
+   "phonemes": [
+    {
+     "sound": "k",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "null",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "m_front",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 146,
+   "word": "approve",
+   "audio": "word_en/146",
+   "phonemes": [
+    {
+     "sound": "ə",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "null",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "pr",
+     "positions": [
+      2,
+      3
+     ]
+    },
+    {
+     "sound": "uː",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "v",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "null",
+     "positions": [
+      6
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 148,
+   "word": "vocabulary",
+   "audio": "word_en/148",
+   "phonemes": [
+    {
+     "sound": "v",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "k",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "æ",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "b",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "jə",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "l_front",
+     "positions": [
+      6
+     ]
+    },
+    {
+     "sound": "ər",
+     "positions": [
+      7,
+      8
+     ]
+    },
+    {
+     "sound": "i",
+     "positions": [
+      9
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 150,
+   "word": "origin",
+   "audio": "word_en/150",
+   "phonemes": [
+    {
+     "sound": "ɒr",
+     "positions": [
+      0,
+      1
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "dʒ",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 151,
+   "word": "prospect",
+   "audio": "word_en/151",
+   "phonemes": [
+    {
+     "sound": "pr",
+     "positions": [
+      0,
+      1
+     ]
+    },
+    {
+     "sound": "ɒ",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "s",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "p",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "e",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "kt",
+     "positions": [
+      6,
+      7
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 153,
+   "word": "consume",
+   "audio": "word_en/153",
+   "phonemes": [
+    {
+     "sound": "k",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "s",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "juː",
+     "positions": [
+      4,
+      6
+     ]
+    },
+    {
+     "sound": "m_back",
+     "positions": [
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 155,
+   "word": "facility",
+   "audio": "word_en/155",
+   "phonemes": [
+    {
+     "sound": "f",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "s",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "l_back",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      6
+     ]
+    },
+    {
+     "sound": "i",
+     "positions": [
+      7
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 156,
+   "word": "battery",
+   "audio": "word_en/156",
+   "phonemes": [
+    {
+     "sound": "b",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "æ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "null",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "null",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "r_front",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "i",
+     "positions": [
+      6
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 159,
+   "word": "private",
+   "audio": "word_en/159",
+   "phonemes": [
+    {
+     "sound": "pr",
+     "positions": [
+      0,
+      1
+     ]
+    },
+    {
+     "sound": "aɪ",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "v",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "null",
+     "positions": [
+      6
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 160,
+   "word": "transform",
+   "audio": "word_en/160",
+   "phonemes": [
+    {
+     "sound": "tr",
+     "positions": [
+      0,
+      1
+     ]
+    },
+    {
+     "sound": "æ",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "s",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "f",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "ɔː",
+     "positions": [
+      6,
+      7
+     ]
+    },
+    {
+     "sound": "m_back",
+     "positions": [
+      8
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 164,
+   "word": "moral",
+   "audio": "word_en/164",
+   "phonemes": [
+    {
+     "sound": "m_front",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ɒ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "r_back",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "l_back",
+     "positions": [
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 165,
+   "word": "aspect",
+   "audio": "word_en/165",
+   "phonemes": [
+    {
+     "sound": "æ",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "s",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "p",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "e",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "kt",
+     "positions": [
+      4,
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 169,
+   "word": "expensive",
+   "audio": "word_en/169",
+   "phonemes": [
+    {
+     "sound": "ɪ",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ks",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "p",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "e",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "s",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      6
+     ]
+    },
+    {
+     "sound": "v",
+     "positions": [
+      7
+     ]
+    },
+    {
+     "sound": "null",
+     "positions": [
+      8
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 171,
+   "word": "decline",
+   "audio": "word_en/171",
+   "phonemes": [
+    {
+     "sound": "d",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "kl",
+     "positions": [
+      2,
+      3
+     ]
+    },
+    {
+     "sound": "aɪ",
+     "positions": [
+      4,
+      6
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 173,
+   "word": "vivid",
+   "audio": "word_en/173",
+   "phonemes": [
+    {
+     "sound": "v",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "v",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "d",
+     "positions": [
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 175,
+   "word": "decent",
+   "audio": "word_en/175",
+   "phonemes": [
+    {
+     "sound": "d",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "iː",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "s",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "nt",
+     "positions": [
+      4,
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 178,
+   "word": "negative",
+   "audio": "word_en/178",
+   "phonemes": [
+    {
+     "sound": "n_front",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "e",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "ɡ",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "v",
+     "positions": [
+      6
+     ]
+    },
+    {
+     "sound": "null",
+     "positions": [
+      7
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 179,
+   "word": "strategy",
+   "audio": "word_en/179",
+   "phonemes": [
+    {
+     "sound": "str",
+     "positions": [
+      0,
+      1,
+      2
+     ]
+    },
+    {
+     "sound": "æ",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "dʒ",
+     "positions": [
+      6
+     ]
+    },
+    {
+     "sound": "i",
+     "positions": [
+      7
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 183,
+   "word": "mood",
+   "audio": "word_en/183",
+   "phonemes": [
+    {
+     "sound": "m_front",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "uː",
+     "positions": [
+      1,
+      2
+     ]
+    },
+    {
+     "sound": "d",
+     "positions": [
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 184,
+   "word": "valley",
+   "audio": "word_en/184",
+   "phonemes": [
+    {
+     "sound": "v",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "æ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "null",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "l_front",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "i",
+     "positions": [
+      4,
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 185,
+   "word": "globe",
+   "audio": "word_en/185",
+   "phonemes": [
+    {
+     "sound": "ɡl",
+     "positions": [
+      0,
+      1
+     ]
+    },
+    {
+     "sound": "əʊ",
+     "positions": [
+      2,
+      4
+     ]
+    },
+    {
+     "sound": "b",
+     "positions": [
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 187,
+   "word": "medium",
+   "audio": "word_en/187",
+   "phonemes": [
+    {
+     "sound": "m_front",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "iː",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "d",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "m_back",
+     "positions": [
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 191,
+   "word": "acquire",
+   "audio": "word_en/191",
+   "phonemes": [
+    {
+     "sound": "ə",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "null",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "kw",
+     "positions": [
+      2,
+      3
+     ]
+    },
+    {
+     "sound": "aɪə",
+     "positions": [
+      4,
+      5,
+      6
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 192,
+   "word": "debate",
+   "audio": "word_en/192",
+   "phonemes": [
+    {
+     "sound": "d",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "b",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "eɪ",
+     "positions": [
+      3,
+      5
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 193,
+   "word": "clue",
+   "audio": "word_en/193",
+   "phonemes": [
+    {
+     "sound": "kl",
+     "positions": [
+      0,
+      1
+     ]
+    },
+    {
+     "sound": "uː",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "null",
+     "positions": [
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 194,
+   "word": "neutral",
+   "audio": "word_en/194",
+   "phonemes": [
+    {
+     "sound": "n_front",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "juː",
+     "positions": [
+      1,
+      2
+     ]
+    },
+    {
+     "sound": "tr",
+     "positions": [
+      3,
+      4
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "l_back",
+     "positions": [
+      6
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 196,
+   "word": "external",
+   "audio": "word_en/196",
+   "phonemes": [
+    {
+     "sound": "ɪ",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ks",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "ɜː",
+     "positions": [
+      3,
+      4
+     ]
+    },
+    {
+     "sound": "n_front",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      6
+     ]
+    },
+    {
+     "sound": "l_back",
+     "positions": [
+      7
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 199,
+   "word": "promote",
+   "audio": "word_en/199",
+   "phonemes": [
+    {
+     "sound": "pr",
+     "positions": [
+      0,
+      1
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "m_front",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "əʊ",
+     "positions": [
+      4,
+      6
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 200,
+   "word": "splendid",
+   "audio": "word_en/200",
+   "phonemes": [
+    {
+     "sound": "spl",
+     "positions": [
+      0,
+      1,
+      2
+     ]
+    },
+    {
+     "sound": "e",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "d",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      6
+     ]
+    },
+    {
+     "sound": "d",
+     "positions": [
+      7
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 201,
+   "word": "target",
+   "audio": "word_en/201",
+   "phonemes": [
+    {
+     "sound": "t",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ɑː",
+     "positions": [
+      1,
+      2
+     ]
+    },
+    {
+     "sound": "ɡ",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 202,
+   "word": "pursue",
+   "audio": "word_en/202",
+   "phonemes": [
+    {
+     "sound": "p",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      1,
+      2
+     ]
+    },
+    {
+     "sound": "s",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "juː",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "null",
+     "positions": [
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 203,
+   "word": "bother",
+   "audio": "word_en/203",
+   "phonemes": [
+    {
+     "sound": "b",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ɒ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "ð",
+     "positions": [
+      2,
+      3
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      4,
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 204,
+   "word": "device",
+   "audio": "word_en/204",
+   "phonemes": [
+    {
+     "sound": "d",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "v",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "aɪ",
+     "positions": [
+      3,
+      5
+     ]
+    },
+    {
+     "sound": "s",
+     "positions": [
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 205,
+   "word": "budget",
+   "audio": "word_en/205",
+   "phonemes": [
+    {
+     "sound": "b",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ʌ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "dʒ",
+     "positions": [
+      2,
+      3
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 209,
+   "word": "substantial",
+   "audio": "word_en/209",
+   "phonemes": [
+    {
+     "sound": "s",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "b",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "st_front",
+     "positions": [
+      3,
+      4
+     ]
+    },
+    {
+     "sound": "æ",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      6
+     ]
+    },
+    {
+     "sound": "ʃ",
+     "positions": [
+      7,
+      8
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      9
+     ]
+    },
+    {
+     "sound": "l_back",
+     "positions": [
+      10
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 211,
+   "word": "religion",
+   "audio": "word_en/211",
+   "phonemes": [
+    {
+     "sound": "r_front",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "l_front",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "dʒ",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "null",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      6
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      7
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 213,
+   "word": "region",
+   "audio": "word_en/213",
+   "phonemes": [
+    {
+     "sound": "r_front",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "iː",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "dʒ",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "null",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "ən",
+     "positions": [
+      4,
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 219,
+   "word": "outstanding",
+   "audio": "word_en/219",
+   "phonemes": [
+    {
+     "sound": "aʊ",
+     "positions": [
+      0,
+      1
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "st_front",
+     "positions": [
+      3,
+      4
+     ]
+    },
+    {
+     "sound": "æ",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      6
+     ]
+    },
+    {
+     "sound": "d",
+     "positions": [
+      7
+     ]
+    },
+    {
+     "sound": "ɪŋ",
+     "positions": [
+      8,
+      9,
+      10
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 222,
+   "word": "tidy",
+   "audio": "word_en/222",
+   "phonemes": [
+    {
+     "sound": "t",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "aɪ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "d",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "i",
+     "positions": [
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 226,
+   "word": "mixture",
+   "audio": "word_en/226",
+   "phonemes": [
+    {
+     "sound": "m_front",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "ks",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "tʃə",
+     "positions": [
+      3,
+      4,
+      5,
+      6
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 228,
+   "word": "optimistic",
+   "audio": "word_en/228",
+   "phonemes": [
+    {
+     "sound": "ɒ",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "p",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "m_front",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "s",
+     "positions": [
+      6
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      7
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      8
+     ]
+    },
+    {
+     "sound": "k",
+     "positions": [
+      9
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 229,
+   "word": "slip",
+   "audio": "word_en/229",
+   "phonemes": [
+    {
+     "sound": "sl",
+     "positions": [
+      0,
+      1
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "p",
+     "positions": [
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 231,
+   "word": "campus",
+   "audio": "word_en/231",
+   "phonemes": [
+    {
+     "sound": "k",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "æ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "m_back",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "p",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "s",
+     "positions": [
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 232,
+   "word": "authority",
+   "audio": "word_en/232",
+   "phonemes": [
+    {
+     "sound": "ɔː",
+     "positions": [
+      0,
+      1
+     ]
+    },
+    {
+     "sound": "θ",
+     "positions": [
+      2,
+      3
+     ]
+    },
+    {
+     "sound": "ɒr",
+     "positions": [
+      4,
+      5
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      6
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      7
+     ]
+    },
+    {
+     "sound": "i",
+     "positions": [
+      8
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 235,
+   "word": "capture",
+   "audio": "word_en/235",
+   "phonemes": [
+    {
+     "sound": "k",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "æ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "p",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "tʃə",
+     "positions": [
+      3,
+      4,
+      5,
+      6
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 236,
+   "word": "secure",
+   "audio": "word_en/236",
+   "phonemes": [
+    {
+     "sound": "s",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "k",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "jʊə",
+     "positions": [
+      3,
+      4,
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 237,
+   "word": "distinguish",
+   "audio": "word_en/237",
+   "phonemes": [
+    {
+     "sound": "d",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "st_front",
+     "positions": [
+      2,
+      3
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "ŋ",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "ɡ",
+     "positions": [
+      6
+     ]
+    },
+    {
+     "sound": "w",
+     "positions": [
+      7
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      8
+     ]
+    },
+    {
+     "sound": "ʃ",
+     "positions": [
+      9,
+      10
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 238,
+   "word": "awkward",
+   "audio": "word_en/238",
+   "phonemes": [
+    {
+     "sound": "ɔː",
+     "positions": [
+      0,
+      1
+     ]
+    },
+    {
+     "sound": "k",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "w",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      4,
+      5
+     ]
+    },
+    {
+     "sound": "d",
+     "positions": [
+      6
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 241,
+   "word": "agency",
+   "audio": "word_en/241",
+   "phonemes": [
+    {
+     "sound": "eɪ",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "dʒ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "s",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "i",
+     "positions": [
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 242,
+   "word": "radiation",
+   "audio": "word_en/242",
+   "phonemes": [
+    {
+     "sound": "r_front",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "eɪ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "d",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "i",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "eɪ",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "ʃn",
+     "positions": [
+      5,
+      6,
+      7,
+      8
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 243,
+   "word": "virtual",
+   "audio": "word_en/243",
+   "phonemes": [
+    {
+     "sound": "v",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ɜː",
+     "positions": [
+      1,
+      2
+     ]
+    },
+    {
+     "sound": "tʃ",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "u",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "l_back",
+     "positions": [
+      6
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 244,
+   "word": "wander",
+   "audio": "word_en/244",
+   "phonemes": [
+    {
+     "sound": "w",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ɒ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "d",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      4,
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 245,
+   "word": "delay",
+   "audio": "word_en/245",
+   "phonemes": [
+    {
+     "sound": "d",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "l_front",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "eɪ",
+     "positions": [
+      3,
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 246,
+   "word": "automatic",
+   "audio": "word_en/246",
+   "phonemes": [
+    {
+     "sound": "ɔː",
+     "positions": [
+      0,
+      1
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "m_front",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "æ",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      6
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      7
+     ]
+    },
+    {
+     "sound": "k",
+     "positions": [
+      8
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 247,
+   "word": "internal",
+   "audio": "word_en/247",
+   "phonemes": [
+    {
+     "sound": "ɪ",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "ɜː",
+     "positions": [
+      3,
+      4
+     ]
+    },
+    {
+     "sound": "n_front",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      6
+     ]
+    },
+    {
+     "sound": "l_back",
+     "positions": [
+      7
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 248,
+   "word": "split",
+   "audio": "word_en/248",
+   "phonemes": [
+    {
+     "sound": "spl",
+     "positions": [
+      0,
+      1,
+      2
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 249,
+   "word": "grand",
+   "audio": "word_en/249",
+   "phonemes": [
+    {
+     "sound": "ɡr",
+     "positions": [
+      0,
+      1
+     ]
+    },
+    {
+     "sound": "æ",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "nd",
+     "positions": [
+      3,
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 254,
+   "word": "tension",
+   "audio": "word_en/254",
+   "phonemes": [
+    {
+     "sound": "t",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "e",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "ʃn",
+     "positions": [
+      3,
+      4,
+      5,
+      6
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 255,
+   "word": "satellite",
+   "audio": "word_en/255",
+   "phonemes": [
+    {
+     "sound": "s",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "æ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "null",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "l_front",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "aɪ",
+     "positions": [
+      6,
+      8
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      7
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 258,
+   "word": "prosperity",
+   "audio": "word_en/258",
+   "phonemes": [
+    {
+     "sound": "pr",
+     "positions": [
+      0,
+      1
+     ]
+    },
+    {
+     "sound": "ɒ",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "sp_front",
+     "positions": [
+      3,
+      4
+     ]
+    },
+    {
+     "sound": "e",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "r_back",
+     "positions": [
+      6
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      7
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      8
+     ]
+    },
+    {
+     "sound": "i",
+     "positions": [
+      9
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 259,
+   "word": "petrol",
+   "audio": "word_en/259",
+   "phonemes": [
+    {
+     "sound": "p",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "e",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "tr",
+     "positions": [
+      2,
+      3
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "l_back",
+     "positions": [
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 260,
+   "word": "waist",
+   "audio": "word_en/260",
+   "phonemes": [
+    {
+     "sound": "w",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "eɪ",
+     "positions": [
+      1,
+      2
+     ]
+    },
+    {
+     "sound": "st_back",
+     "positions": [
+      3,
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 261,
+   "word": "spot",
+   "audio": "word_en/261",
+   "phonemes": [
+    {
+     "sound": "sp_front",
+     "positions": [
+      0,
+      1
+     ]
+    },
+    {
+     "sound": "ɒ",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 269,
+   "word": "advertise",
+   "audio": "word_en/269",
+   "phonemes": [
+    {
+     "sound": "æ",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "d",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "v",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      3,
+      4
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "aɪ",
+     "positions": [
+      6,
+      8
+     ]
+    },
+    {
+     "sound": "z",
+     "positions": [
+      7
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 273,
+   "word": "expand",
+   "audio": "word_en/273",
+   "phonemes": [
+    {
+     "sound": "ɪ",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ks",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "p",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "æ",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "nd",
+     "positions": [
+      4,
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 276,
+   "word": "constant",
+   "audio": "word_en/276",
+   "phonemes": [
+    {
+     "sound": "k",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ɒ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "st_front",
+     "positions": [
+      3,
+      4
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "nt",
+     "positions": [
+      6,
+      7
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 278,
+   "word": "expense",
+   "audio": "word_en/278",
+   "phonemes": [
+    {
+     "sound": "ɪ",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ks",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "p",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "e",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "s",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "null",
+     "positions": [
+      6
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 279,
+   "word": "remote",
+   "audio": "word_en/279",
+   "phonemes": [
+    {
+     "sound": "r_front",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "m_front",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "əʊ",
+     "positions": [
+      3,
+      5
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 281,
+   "word": "nevertheless",
+   "audio": "word_en/281",
+   "phonemes": [
+    {
+     "sound": "n_front",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "e",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "v",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      3,
+      4
+     ]
+    },
+    {
+     "sound": "ð",
+     "positions": [
+      5,
+      6
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      7
+     ]
+    },
+    {
+     "sound": "l_front",
+     "positions": [
+      8
+     ]
+    },
+    {
+     "sound": "e",
+     "positions": [
+      9
+     ]
+    },
+    {
+     "sound": "s",
+     "positions": [
+      10,
+      11
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 283,
+   "word": "adopt",
+   "audio": "word_en/283",
+   "phonemes": [
+    {
+     "sound": "ə",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "d",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "ɒ",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "pt",
+     "positions": [
+      3,
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 284,
+   "word": "appreciate",
+   "audio": "word_en/284",
+   "phonemes": [
+    {
+     "sound": "ə",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "null",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "pr",
+     "positions": [
+      2,
+      3
+     ]
+    },
+    {
+     "sound": "iː",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "ʃ",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "i",
+     "positions": [
+      6
+     ]
+    },
+    {
+     "sound": "eɪ",
+     "positions": [
+      7,
+      9
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      8
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 285,
+   "word": "stimulate",
+   "audio": "word_en/285",
+   "phonemes": [
+    {
+     "sound": "st_front",
+     "positions": [
+      0,
+      1
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "m_back",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "ju",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "l_front",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "eɪ",
+     "positions": [
+      6,
+      8
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      7
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 286,
+   "word": "casual",
+   "audio": "word_en/286",
+   "phonemes": [
+    {
+     "sound": "k",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "æ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "ʒ",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "u",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "l_back",
+     "positions": [
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 287,
+   "word": "academic",
+   "audio": "word_en/287",
+   "phonemes": [
+    {
+     "sound": "æ",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "k",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "d",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "e",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "m_back",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      6
+     ]
+    },
+    {
+     "sound": "k",
+     "positions": [
+      7
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 289,
+   "word": "maintain",
+   "audio": "word_en/289",
+   "phonemes": [
+    {
+     "sound": "m_front",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "eɪ",
+     "positions": [
+      1,
+      2
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "eɪ",
+     "positions": [
+      5,
+      6
+     ]
+    },
+    {
+     "sound": "n_back",
+     "positions": [
+      7
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 290,
+   "word": "compete",
+   "audio": "word_en/290",
+   "phonemes": [
+    {
+     "sound": "k",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "m_back",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "p",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "iː",
+     "positions": [
+      4,
+      6
+     ]
+    },
+    {
+     "sound": "t",
+     "positions": [
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 292,
+   "word": "deserve",
+   "audio": "word_en/292",
+   "phonemes": [
+    {
+     "sound": "d",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "z",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "ɜː",
+     "positions": [
+      3,
+      4
+     ]
+    },
+    {
+     "sound": "v",
+     "positions": [
+      5
+     ]
+    },
+    {
+     "sound": "null",
+     "positions": [
+      6
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 293,
+   "word": "offend",
+   "audio": "word_en/293",
+   "phonemes": [
+    {
+     "sound": "ə",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "null",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "f",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "e",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "nd",
+     "positions": [
+      4,
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 294,
+   "word": "professional",
+   "audio": "word_en/294",
+   "phonemes": [
+    {
+     "sound": "pr",
+     "positions": [
+      0,
+      1
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "f",
+     "positions": [
+      3
+     ]
+    },
+    {
+     "sound": "e",
+     "positions": [
+      4
+     ]
+    },
+    {
+     "sound": "ʃən",
+     "positions": [
+      5,
+      6,
+      7,
+      8,
+      9
+     ]
+    },
+    {
+     "sound": "ə",
+     "positions": [
+      10
+     ]
+    },
+    {
+     "sound": "l_back",
+     "positions": [
+      11
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 299,
+   "word": "adult",
+   "audio": "word_en/299",
+   "phonemes": [
+    {
+     "sound": "æ",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "d",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "ʌ",
+     "positions": [
+      2
+     ]
+    },
+    {
+     "sound": "lt",
+     "positions": [
+      3,
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "wid": 300,
+   "word": "degree",
+   "audio": "word_en/300",
+   "phonemes": [
+    {
+     "sound": "d",
+     "positions": [
+      0
+     ]
+    },
+    {
+     "sound": "ɪ",
+     "positions": [
+      1
+     ]
+    },
+    {
+     "sound": "ɡr",
+     "positions": [
+      2,
+      3
+     ]
+    },
+    {
+     "sound": "iː",
+     "positions": [
+      4,
+      5
+     ]
+    }
+   ]
+  }
+ ]
+}

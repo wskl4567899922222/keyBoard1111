@@ -1,0 +1,941 @@
+using System.Collections.Generic;
+using System.Text;
+using UnityEngine;
+using UnityEngine.Rendering;
+using Keyboard3D;
+
+namespace ByteTyping
+{
+    /// <summary>
+    /// 指法手（键盘手）：双手图叠在 3D 键盘上，按练习文本逐字符提前高亮
+    /// "该用哪根手指 / 哪只手 Shift"（粉描边手指 = 按下之前的预备提示），
+    /// 同时把键盘绿光目标键同步为当前要按的键。
+    /// 手位：手掌固定——画布锚点钉在主键位区（F/J 中点）键帽顶面上方，不随目标键滑动
+    /// （参考站行为：手不动、只有粉描边高亮换手指）；目标键由键盘绿光指示。
+    /// 手部图 = Inspector「手势图素材」容器拖入的 hl_Base（底图）+ hl_*（按键合成层），
+    /// 2026-11-05 换新版素材：全部 27 张统一 1960x1040 同画布、静态双手像素级对齐（ox=oy=0）；
+    /// 素材只做 26 字母 + Enter（用户指定：其他键没有手势图，只亮键盘绿光）；
+    /// 层名 = hl_<键帽名>（hl_F、hl_Enter…）。
+    /// 练习文本逐字符推进：按对 → 下一字符；按错（非修饰键）→ 手部红闪。
+    /// 打完自动从头循环。手指-键位映射来自 FingerMap。
+    /// 手部/进度文字的位姿每帧根据 F/J/Q/Space 键帽实时重算——键盘拖动旋转后仍贴合键盘平面。
+    /// 挂在键盘根物体（与 KeyboardModelInput 同物体，Test 场景 Keyboard68_GlossGame）。
+    /// </summary>
+    [AddComponentMenu("ByteTyping/Typing Hands (指法手)")]
+    [RequireComponent(typeof(KeyboardModelInput))]
+    public class TypingHands : MonoBehaviour
+    {
+        [Header("练习内容")]
+        [Tooltip("练习文本（逐字符推进，空格也算一键；打完自动循环）")]
+        public string practiceText = "ffff jjjj ff jj fff jjj fj fj jjf ffj fff jj";
+
+        [Header("手位对齐（现场调优）")]
+        [Tooltip("手部画布宽度 ÷ 键盘外壳宽度（手比键盘略宽，默认 1.6）")]
+        public float widthRatio = 1.6f;
+        [Tooltip("纵向压缩系数（× 贴图原始高宽比 1040/1960）。参考站的手是压扁的：1 = 原比例（手腕会伸到键盘前方很远），0.55 ≈ 手刚好盖住键盘深度")]
+        public float heightRatio = 0.55f;
+        [Tooltip("沿键盘横向平移（单位 = 键距，Start 会强制为校准值）")]
+        public float offsetX = 0f;
+        [Tooltip("沿键盘纵深平移（单位 = 键距，正 = 朝数字行方向）")]
+        public float offsetZ = 0f;
+        [Tooltip("指尖悬空高度（× 键帽高，从键帽顶面中心起算，0.1~0.2 轻悬空防穿模）")]
+        public float hoverHeight = 0.15f;
+        [Tooltip("旋转 180°（手指指向不对时勾选）")]
+        public bool flip180 = false;
+
+        [Header("外观")]
+        [Tooltip("底图不透明度（素材自带 0.4 暗填充+灰描边，网站叠加层整体 0.7）")]
+        [Range(0f, 1f)] public float baseOpacity = 0.7f;
+        [Tooltip("高亮层不透明度（粉描边手指已烘焙进各按键图）")]
+        [Range(0f, 1f)] public float highlightOpacity = 0.9f;
+        [Tooltip("打错时闪烁的红色")]
+        public Color errorColor = new Color(1f, 0.15f, 0.1f);
+        [Tooltip("打错红闪时长（秒）")]
+        public float errorFlashDuration = 0.35f;
+        [Tooltip("诊断开关：按键提示手指层（白手指+粉描边，烘焙在各 hl_* 图里）。关闭后若\"手裂开\"白线消失，即证明该线来自这层美术")]
+        public bool showKeyLayers = true;
+
+        [Header("手势图素材（Inspector 拖入，不再走 Resources）")]
+        [Tooltip("双手静止底图（hands_base.png）")]
+        public Texture2D handsBase;
+        [Tooltip("按键手势图层容器：全部 hl_*.png 拖进来，贴图名即图层键（hl_F、hl_Space…）")]
+        public List<Texture2D> handLayers = new List<Texture2D>();
+        [Tooltip("指尖元数据（hands_meta.txt：每行 = 层名 指尖u 指尖v）")]
+        public TextAsset handsMeta;
+
+#if UNITY_EDITOR
+        /// <summary>右键组件标题 → 把 Resources/Art/Hands 的手势图自动填进上面三个槽位（之后素材可整包挪出 Resources）。</summary>
+        [ContextMenu("自动收集 Resources/Art/Hands 手势图")]
+        void AutoCollectHandArt()
+        {
+            const string folder = "Assets/ByteTyping/Resources/Art/Hands";
+            handsBase = UnityEditor.AssetDatabase.LoadAssetAtPath<Texture2D>(folder + "/hands_base.png");
+            handsMeta = UnityEditor.AssetDatabase.LoadAssetAtPath<TextAsset>(folder + "/hands_meta.txt");
+            handLayers.Clear();
+            foreach (var guid in UnityEditor.AssetDatabase.FindAssets("t:Texture2D", new[] { folder }))
+            {
+                var tex = UnityEditor.AssetDatabase.LoadAssetAtPath<Texture2D>(UnityEditor.AssetDatabase.GUIDToAssetPath(guid));
+                if (tex != null && tex.name != "hands_base") handLayers.Add(tex);
+            }
+            UnityEditor.EditorUtility.SetDirty(this);
+            Debug.Log($"[TypingHands] 自动收集完成：底图 {(handsBase ? "OK" : "缺")} / meta {(handsMeta ? "OK" : "缺")} / 按键层 {handLayers.Count} 张。", this);
+        }
+#endif
+
+        [Header("入场动画（由 IntroAnimation 组件驱动，无需手调）")]
+        [Tooltip("全局淡入系数：0=整手隐藏，1=常态。入场动画期间为 0，键盘到位后渐入")]
+        [Range(0f, 1f)] public float introFade = 1f;
+        [Tooltip("沿键盘法线的额外抬升（米），入场浮起用，动画结束后归 0")]
+        public float introLift = 0f;
+
+        [Header("练习进度文字（键盘前侧地面投影）")]
+        public bool showProgressText = true;
+        [Tooltip("进度文字宽度（× 键盘外壳宽度）")]
+        public float textWidthRatio = 1.1f;
+
+        class HandLayer
+        {
+            public string name;      // 图层名，如 hl_F
+            public Material mat;
+            public bool active;
+            public float tipU = 0.5f;  // 指尖在画布内的归一化坐标（hands_meta.txt，u 右 v 上）
+            public float tipV = 0.83f;
+        }
+
+        KeyboardModelInput kb;
+        readonly List<HandLayer> allLayers = new List<HandLayer>();
+        readonly Dictionary<string, HandLayer> layerByName = new Dictionary<string, HandLayer>();
+        Material baseMat;
+        float baseTipU = 0.4924f, baseTipV = 0.8301f; // （已废弃，仅 hands_meta 解析回填）旧画布锚点
+
+        // —— 分手精确锚定（2026-11-05 换 1960x1040 新素材后重测）——
+        // 指尖像素坐标（hl_Base 画布，y 向下；上包络线局部极小值检测：每手 4 个极小值 = 4 根手指）：
+        // 左手 p/r/m/i = (564,259)(666,248)(744,246)(852,252)，右手 i/m/r/p = (1138,237)(1216,228)(1314,235)(1405,250)
+        static readonly Vector2 LIndexTipPx = new Vector2(852f, 252f);
+        static readonly Vector2 LPinkyTipPx = new Vector2(564f, 259f);
+        static readonly Vector2 RIndexTipPx = new Vector2(1138f, 237f);
+        static readonly Vector2 RPinkyTipPx = new Vector2(1405f, 250f);
+        float uLIndex, vLIndex, uLPinky, uRIndex, vRIndex, uRPinky; // BuildHands 按贴图尺寸归一化
+        Vector3 anchorL, anchorR; // 左右组的锚定偏移（UpdateHandsTransform 算，UpdateHandDip 叠加下压）
+        Vector3 fTopRestLocal;    // F 键帽顶面中心的静止位姿（父节点局部空间，Start 用 TryGetKeyTop 实测缓存）
+        bool handsSnap = true;   // 首帧直接落位，不参与平滑
+
+        // 锚点键（Start 缓存，Update 里读实时位置 → 跟随键盘旋转/拖动）
+        Transform fRoot, jRoot, qRoot, spaceRoot;
+
+        // 手部平面坐标系（世界空间，每帧由 UpdateHandsTransform 重算）
+        Vector3 normalAxis;   // 键盘表面法线（底座 → 键帽）
+        Vector3 outAxis;      // 键盘纵深方向：朝数字行
+        Vector3 rightAxis;    // 键盘横向：F → J
+        float keyPitch = 1f;  // 键距（F→J 距离 / 3）
+        float capHeight;      // 键帽高度（世界单位）
+        float caseWidth = 1f; // 键盘外壳宽度
+        float canvasW = 1f, canvasH = 1f; // 手部画布世界尺寸
+        float mirrorSign = 1f;            // 水平镜像自纠偏符号（+1 正常 / -1 翻转）
+
+        Transform handsRoot;
+        Transform leftGroup, rightGroup;  // 左右半幅渲染组（10-28：按键手整组下沉，无关手不动）
+        TextMesh progressText;
+
+        int cursor;                       // 当前练习字符下标
+        KeyCode targetCode = KeyCode.None;
+        KeyCode pressKeyL, pressKeyR;     // 当前目标分配给左/右手的按键（含 Shift 侧），UpdateHandDip 用
+        float errorT;                     // >0 = 红闪进行中（剩余秒数）
+        static readonly int BaseColorID = Shader.PropertyToID("_BaseColor");
+        static readonly int BaseMapID = Shader.PropertyToID("_BaseMap");
+
+        void Start()
+        {
+            kb = GetComponent<KeyboardModelInput>();
+
+            // 素材换新（10-26：官方 SVG 路径重渲，全部图层共用画布）后的强制基准值。
+            // 场景里序列化的旧调参值（0.22/0.15/1.6/0.55 等）与新素材不匹配，一律覆盖；
+            // 现场微调请改这里（与 KeyboardModelInput 的 Awake 强制参数同一模式）。
+            widthRatio = 1.05f;        // 画布宽 ≈ 键盘外壳宽
+            heightRatio = 1f;          // 纵向不再压缩（宽高比取自贴图）
+            hoverHeight = 0.06f;       // 手掌轻悬键帽顶面（手掌固定模式，参考站视觉）
+            // offsetX/offsetZ 已废弃（2026-11-04 分手精确锚定取代"整体画布锚点+手工偏移"方案）
+            baseOpacity = 0.7f;        // 网站叠加层整体透明度
+            highlightOpacity = 0.9f;
+            // 字母练习（2026-11-05）：现有手势图只有 26 字母 + Enter，数字/标点/符号没有
+            // 对应 hl_ 层（只亮键盘绿光、不出粉描边手指），练习文本改为纯字母 + 空格。
+            // Inspector 序列化的旧练习文本会盖掉字段默认值，这里强制覆盖（现场换练习内容改这里）。
+            practiceText = "asdf jkl asdfjkl qwert yuiop zxcv bnm " +
+                           "asdfghjkl qwertyuiop zxcvbnm ";
+
+            // Play 模式中重编译脚本会让 Start 重跑：先清掉上次运行时创建的手部/文字。
+            // 否则残留堆栈叠在一起显示（多只手），且旧 Quad 的包围盒会污染 MeasureCaseWidth
+            // 把"外壳宽度"越量越大，新堆栈也越建越大（10-26 实测翻车）。
+            for (int i = transform.childCount - 1; i >= 0; i--)
+            {
+                var c = transform.GetChild(i);
+                if (c.name == "TypingHands_Root" || c.name == "TypingProgressText" || c.name == "TypingHandsFX")
+                    DestroyImmediate(c.gameObject);
+            }
+            // 上次运行生成的逐层缝线 Mesh（重编译后 Start 重跑，防 GPU 资源泄漏）
+            foreach (var m in builtMeshes)
+                if (m != null) DestroyImmediate(m);
+            builtMeshes.Clear();
+
+            // 锚点键：F/J 定基准与横轴，Q 定纵深方向（指向数字行），Space 定前缘
+            if (!kb.TryGetKeyInfo(KeyCode.F, out fRoot, out capHeight) ||
+                !kb.TryGetKeyInfo(KeyCode.J, out jRoot, out _) ||
+                !kb.TryGetKeyInfo(KeyCode.Q, out qRoot, out _))
+            {
+                Debug.LogError("[TypingHands] 找不到 F/J/Q 键帽（需与 KeyboardModelInput 同物体且键位映射成功），指法手停用。");
+                enabled = false;
+                return;
+            }
+            kb.TryGetKeyInfo(KeyCode.Space, out spaceRoot, out _);
+
+            // 缓存 F/J/Q/空格 的静止局部位姿（Start 时还没发生任何按压）：
+            // UpdateHandsTransform 的锚点必须用静止位姿而不是实时位置——
+            // 按键时键根会沿法线下沉 pressDepthRatio×键高，直接用实时位置
+            // 会把整个手部画布（含无关的那只手）拽着向键盘底座下压（10-28 用户反馈）。
+            // 注意坐标系：localPosition 是相对【键根父节点】（FBX 中间节点）的，
+            // 必须用 fRoot.parent.TransformPoint 还原；用脚本自身 transform 还原
+            // 是坐标系错误（10-28 二次翻车：下压修不掉的可疑点）。
+            fRestLocal = fRoot.localPosition;
+            jRestLocal = jRoot.localPosition;
+            qRestLocal = qRoot.localPosition;
+            spaceRestLocal = spaceRoot != null ? spaceRoot.localPosition : Vector3.zero;
+
+            UpdateHandsTransform();       // 先算出坐标系（rightAxis 量外壳宽度要用）
+            // 锚定基准 = F 键帽顶面中心实测值（Start 时键未按下 = 静止位姿）。
+            // 11-04 翻车两次的根因：键根 pivot 不在键帽顶——KeyboardModelInput 的
+            // ParticleOrigin/TryGetKeyTop 特意用键帽网格包围盒中心 + 半键高求顶面，
+            // 而这里先前用"键根 + capHeight×系数"估算（capHeight 是整键包围盒厚度，
+            // pivot 到键帽顶的实际距离未知），系数 1.06 偏高一行、0.06 又沉到键帽
+            // 底下被键帽遮挡。改为直接实测键帽顶面中心，一次到位。
+            if (kb.TryGetKeyTop(KeyCode.F, out var fTopW))
+                fTopRestLocal = fRoot.parent.InverseTransformPoint(fTopW);
+            else
+                fTopRestLocal = fRestLocal + fRoot.parent.InverseTransformDirection(normalAxis) * capHeight;
+            caseWidth = MeasureCaseWidth();
+            BuildHands();
+            if (showProgressText && spaceRoot != null)
+            {
+                BuildProgressText();
+                targetTextWidth = caseWidth * textWidthRatio; // 宽度由 LateUpdate 每帧适配
+            }
+            cursor = 0;
+            ReshufflePractice();   // 字母三行随机练习（覆盖 Inspector 文本）
+            UpdateTarget();
+            UpdateHandsTransform();
+            // 分手锚定校准日志：一次 Play 即可核对缩放与锚定是否合理
+            if (leftGroup != null)
+                Debug.Log($"[TypingHands] 分手精确锚定：缩放 L×{leftGroup.localScale.x:F2} / R×{rightGroup.localScale.x:F2}，" +
+                          $"画布 {canvasW:F2}×{canvasH:F2}（keyPitch={keyPitch:F3}），左手食指→F、右手食指→J（悬浮 {hoverHeight:F2}）");
+        }
+
+        // 练习字符池：26 字母（2026-11-05 手势图只做字母 + Enter，标点无手指提示不再练）
+        static readonly string PracticePool = "qwertyuiopasdfghjklzxcvbnm";
+
+        // 一轮 48 键：先把字符池整体洗牌（Fisher-Yates，随机顺序且每个字符
+        // 本轮必轮到一次），再随机补足到 48 个（补位避开与前一键相同），打完再洗
+        void ReshufflePractice()
+        {
+            int n = 48;
+            var arr = PracticePool.ToCharArray();
+            for (int i = arr.Length - 1; i > 0; i--)
+            {
+                int j = Random.Range(0, i + 1);
+                (arr[i], arr[j]) = (arr[j], arr[i]);
+            }
+            var sb = new System.Text.StringBuilder(n);
+            sb.Append(arr);
+            while (sb.Length < n)
+            {
+                char c = PracticePool[Random.Range(0, PracticePool.Length)];
+                if (c == sb[sb.Length - 1]) continue;
+                sb.Append(c);
+            }
+            practiceText = sb.ToString();
+        }
+
+        // 每帧根据锚点键实时重算手部/文字位姿——键盘拖动旋转、缩放后仍贴合键盘平面
+        void UpdateHandsTransform()
+        {
+            if (fRoot == null || jRoot == null || qRoot == null) return;
+            normalAxis = kb.SurfaceNormal;
+            // 用 F/J 静止位姿（见 Start 缓存说明）：按压 F/J 不再拽动画布。
+            // TransformPoint 走键根的父节点（localPosition 的真正所属空间），父节点按压时不动，
+            // 键盘拖动/旋转/缩放时父节点跟着动 → 实时跟随。
+            Vector3 fPos = fRoot.parent != null ? fRoot.parent.TransformPoint(fRestLocal) : fRoot.position;
+            Vector3 jPos = jRoot.parent != null ? jRoot.parent.TransformPoint(jRestLocal) : jRoot.position;
+            Vector3 qPos = qRoot.parent != null ? qRoot.parent.TransformPoint(qRestLocal) : qRoot.position;
+            Vector3 fj = jPos - fPos;
+            keyPitch = Mathf.Max(0.01f, Vector3.ProjectOnPlane(fj, normalAxis).magnitude / 3f); // F,G,H,J = 3 个键距
+            rightAxis = Vector3.ProjectOnPlane(fj, normalAxis).normalized;
+            // 纵深轴 = 法线 × 宽度轴（严格垂直）。不能用 Q−F：QWERTY 行错列让 Q 比 F 左移
+            // 约 2.5 键距，直接取 Q−F 会让手部平面/文字在键盘平面内斜转 ~60°（10-26 实测翻车）
+            Vector3 depthDir = Vector3.Cross(normalAxis, rightAxis).normalized;
+            // 符号用 F→Q 校正：Q 一定比 F 深一行（错列只影响横向，深度分量恒为正）。
+            // Q 也用静止位姿：按 Q 时其实时位置沿法线下沉，但深度方向 ⊥ 法线不影响点积——
+            // 用静止位姿更稳，杜绝任何由按压引起的坐标系抖动
+            outAxis = Vector3.Dot(qPos - fPos, depthDir) >= 0 ? depthDir : -depthDir;
+            if (flip180) { rightAxis = -rightAxis; outAxis = -outAxis; }
+
+            // 镜像自检：LookRotation 出的局部 +X 必须与 rightAxis（F→J）同向，否则整个平面
+            // 水平镜像（左手层跑到键盘右侧、文字倒读）。Unity 左手系 + 绕序约定互相纠缠，
+            // 纸面推导易反复——直接实测符号并翻转，约定无关、任何朝向都正确。
+            mirrorSign = Vector3.Dot(Vector3.Cross(outAxis, normalAxis), rightAxis) < 0f ? -1f : 1f;
+
+            // 基准 = F/J 静止位姿中点（进度文字沿用）；手部改为分手精确锚定（2026-11-04）
+            homeCenter = (fPos + jPos) * 0.5f;
+
+            if (handsRoot != null)
+            {
+                // +Z = 表面法线，+Y = 朝数字行 → 子 Quad 的贴图"上方"（指尖）指向数字行
+                handsRoot.rotation = Quaternion.LookRotation(normalAxis, outAxis);
+                handsRoot.localScale = new Vector3(mirrorSign, 1f, 1f); // 水平镜像自纠偏
+                // 分手精确锚定：左手食指尖钉 F 键帽顶、右手食指尖钉 J 键帽顶（悬浮 hoverHeight）。
+                // 每手缩放 = 3 键距 ÷ 该手食指→小指艺术跨距——素材双手间距（食指到食指 235px）
+                // 远小于键盘 F→J 的 3 键距，整体锚定必然两侧手指落不到键心（10-28 挤向中间根因）。
+                // 只横向拉伸对齐键位、纵向不放大（素材是前视透视画，纵向放大手会长到离谱）。
+                // 局部 +X 经上方 mirror 自检后必与 rightAxis（F→J）同向 → 局部 x 即键距坐标。
+                float sL = Mathf.Clamp(3f * keyPitch / (Mathf.Abs(uLIndex - uLPinky) * canvasW), 0.7f, 1.8f);
+                float sR = Mathf.Clamp(3f * keyPitch / (Mathf.Abs(uRIndex - uRPinky) * canvasW), 0.7f, 1.8f);
+                leftGroup.localScale = new Vector3(sL, 1f, 1f);
+                rightGroup.localScale = new Vector3(sR, 1f, 1f);
+
+                // handsRoot 钉在左手食指尖目标点：F 键帽顶面中心（Start 实测的静止位姿，
+                // 经父节点还原 → 跟随键盘旋转/拖动、不受按压下沉影响）+ 悬浮高度 + 入场浮起。
+                // 11-04：键根 pivot 不在键帽顶，用 pivot+capHeight 估高先后翻车两次
+                //（1.06×偏高一行 / 0.06×沉到键帽下），改用 TryGetKeyTop 实测值。
+                Vector3 newPos = fRoot.parent.TransformPoint(fTopRestLocal)
+                               + normalAxis * (capHeight * hoverHeight)
+                               + normalAxis * introLift;
+                if (handsSnap) { handsRoot.position = newPos; handsSnap = false; lastWant = newPos; }
+                else handsRoot.position = Vector3.Lerp(handsRoot.position, newPos,
+                    1f - Mathf.Exp(-Time.deltaTime * 14f)); // 键盘拖动/缩放时指数平滑跟随
+
+                // 组锚定偏移：让指尖 UV 精确落在 F/J 锚点（UpdateHandDip 在此之上叠加下压）
+                float tipLx = (uLIndex - 0.5f) * canvasW, tipLy = (vLIndex - 0.5f) * canvasH;
+                float tipRx = (uRIndex - 0.5f) * canvasW, tipRy = (vRIndex - 0.5f) * canvasH;
+                anchorL = new Vector3(-sL * tipLx, -tipLy, 0f);
+                anchorR = new Vector3(3f * keyPitch - sR * tipRx,
+                                      Vector3.Dot(jPos - fPos, outAxis) - tipRy, 0f);
+                leftGroup.localPosition = anchorL;
+                rightGroup.localPosition = anchorR;
+
+                lastWant = newPos;
+            }
+
+            if (progressText != null && spaceRoot != null)
+            {
+                // 空格键也用静止位姿：练习文本空格极频繁，实时位置会在每次按空格时
+                // 把进度文字朝用户拽一下（10-28 用户反馈"下压"的残留源之一）
+                Vector3 spacePos = spaceRoot.parent != null
+                    ? spaceRoot.parent.TransformPoint(spaceRestLocal)
+                    : spaceRoot.position;
+                float depth = Vector3.ProjectOnPlane(spacePos - homeCenter, normalAxis).magnitude;
+                progressText.transform.rotation = Quaternion.LookRotation(normalAxis, outAxis);
+                // 键盘前缘外（−outAxis = 朝用户一侧，此前 +outAxis 会让文字跑到键盘后方）
+                progressText.transform.position = homeCenter
+                                                - outAxis * (depth + keyPitch * 2f)
+                                                + normalAxis * (capHeight * 1.4f); // 保持原悬空视觉
+            }
+        }
+
+        Vector3 homeCenter; // 基准：F/J 中点的键区中心（含 offsetX/offsetZ 偏移）
+        Vector3 fRestLocal, jRestLocal, qRestLocal, spaceRestLocal; // F/J/Q/空格 静止局部位姿（相对各自父节点，Start 缓存）
+        Vector3 lastWant; float lastDipLogT = -9f; // 诊断：锚点异常移动检测（按压不应移动锚点）
+
+        // 世界包围盒沿 dir 方向的跨度（abs 投影求和，斜向 AABB 的保守近似）
+        float ExtentAlong(Bounds b, Vector3 dir) =>
+            Mathf.Abs(dir.x) * b.size.x + Mathf.Abs(dir.y) * b.size.y + Mathf.Abs(dir.z) * b.size.z;
+
+        float MeasureCaseWidth()
+        {
+            var b = new Bounds(transform.position, Vector3.zero);
+            bool any = false;
+            foreach (var r in GetComponentsInChildren<Renderer>())
+            {
+                if (r is ParticleSystemRenderer) continue;
+                if (!any) { b = r.bounds; any = true; }
+                else b.Encapsulate(r.bounds);
+            }
+            return Mathf.Max(1f, ExtentAlong(b, rightAxis));
+        }
+
+        // ---- 构建 ----
+
+        void BuildHands()
+        {
+            handsRoot = new GameObject("TypingHands_Root").transform;
+            handsRoot.SetParent(transform, false);
+
+            // 素材（typing.byteworld.cn 官方 SVG 重渲）：hands_base = 双手静止姿态，
+            // hl_<键码>[_<Shift>] = 按键时的双手合成姿态（粉描边手指已烘焙）。
+            // 全部图层共用同一画布 → 叠加像素级对齐，不会再出现"多只手"。
+            var baseTex = handsBase;
+            if (baseTex == null)
+            {
+                Debug.LogError("[TypingHands] 未拖入手势底图（Inspector → 手势图素材 → Hands Base），指法手禁用。", this);
+                return;
+            }
+            canvasW = caseWidth * widthRatio;
+            // 画布高宽比用源图常量（统一 1960x1040，2026-11-05）——不能用 baseTex.width/height：
+            // Texture2D.width 返回导入后（MaxSize 缩放）的尺寸，编辑器默认平台 512 / WebGL 2048
+            // 不一致，按它归一化 UV 会导致编辑器与真机行为不同（11-04 确诊：指尖 UV 全错、缩放撞 0.7 下限）
+            canvasH = canvasW * (1040f / 1960f) * Mathf.Max(0.05f, heightRatio);
+
+            // 指尖 UV（源图像素→归一化，v 向上；除数用源图常量，见上）
+            uLIndex = LIndexTipPx.x / 1960f;  vLIndex = 1f - LIndexTipPx.y / 1040f;
+            uLPinky = LPinkyTipPx.x / 1960f;
+            uRIndex = RIndexTipPx.x / 1960f;  vRIndex = 1f - RIndexTipPx.y / 1040f;
+            uRPinky = RPinkyTipPx.x / 1960f;
+
+            // 左右半幅分组（10-28 用户需求：按键手下压、无关手不动）：
+            // 每张贴图拆成左右两个半幅 Quad 分挂两组，按键那只手整组下沉（UpdateHandDip）。
+            // 素材是"整组替换"的完整双手合成图，不改图片就拆不了手——半幅 UV 渲染是
+            // 唯一不动素材的拆法，接缝落在双手之间的空白区，无视觉损失。
+            leftGroup = new GameObject("Hands_Left").transform;
+            leftGroup.SetParent(handsRoot, false);
+            rightGroup = new GameObject("Hands_Right").transform;
+            rightGroup.SetParent(handsRoot, false);
+
+            ParseSeamData();
+            CreateSplitQuad("hands_base", baseTex, 0f, baseOpacity, out baseMat);
+
+            // 其余全部为按键层，名字即加载键：hl_F、hl_Digit1_ShiftRight、hl_Space……
+            int layerIdx = 0;
+            foreach (var tex in handLayers)
+            {
+                if (tex == null || tex.name == "hands_base") continue;
+                var mat = CreateSplitQuad(tex.name, tex, 0.004f * (++layerIdx), 0f, out _);
+                var hl = new HandLayer { name = tex.name, mat = mat, active = false };
+                allLayers.Add(hl);
+                layerByName[tex.name] = hl;
+            }
+
+            // 每层指尖元数据（生成器从粉描边路径导出的最高点，归一化 0..1，u 右 v 上）。
+            // 手掌固定模式下仅 hands_base 行生效（画布锚点）；hl_* 行保留备用。
+            var metaAsset = handsMeta;
+            if (metaAsset != null)
+            {
+                foreach (var line in metaAsset.text.Split('\n'))
+                {
+                    var p = line.Trim().Split(' ');
+                    if (p.Length < 3) continue;
+                    if (!float.TryParse(p[1], out var tu) || !float.TryParse(p[2], out var tv)) continue;
+                    if (p[0] == "hands_base") { baseTipU = tu; baseTipV = tv; }
+                    else if (layerByName.TryGetValue(p[0], out var l)) { l.tipU = tu; l.tipV = tv; }
+                }
+            }
+            else
+            {
+                Debug.LogWarning("[TypingHands] 缺 hands_meta.txt，画布锚点退回默认假设。");
+            }
+            Debug.Log($"[TypingHands] 已加载 {allLayers.Count} 个按键层 + 底图（现有素材 27 层 = 26 字母 + Enter，" +
+                      "Inspector 手势图素材容器拖入；缺层的键自动只亮键盘绿光）。");
+        }
+
+        Material CreateSplitQuad(string name, Texture2D tex, float height, float alpha, out Material mat)
+        {
+            // 左右两个半幅网格共享同一材质实例 → AnimateLayers 的透明度动画照旧一份生效；
+            // 下压是 transform 层级的事（各自挂组），与材质无关
+            mat = NewHandMat(tex, alpha);
+            BuildHalfMesh(name + "_L", leftGroup, mat, height, false, tex);
+            BuildHalfMesh(name + "_R", rightGroup, mat, height, true, tex);
+            return mat;
+        }
+
+        // 逐层折线分割网格（2026-11-04）：
+        // 旧实现用一条全层共用的直线（HandSplitU=0.359）把每层拆成左右两个 Quad——
+        // 但右手拇指横跨该直线（拇指尖在 base 画布 x≈635~750，直线在 ≈675），且每层
+        // 双手姿态各不相同，任何全层共用的直线都必然切开某层的手指（拇指被撕进对面
+        // 组，按键下压时缺口可见，11-04 用户反馈）。改为离线逐层计算折线缝：连通域
+        // 分类左右手像素，缝取每行左右内容之间的空隙中线（步长 20px，数据嵌入
+        // SeamData 常量），运行时按缝线生成左右两个条带 Mesh。
+        // 层的世界矩形/UV 换算与旧 Quad 完全一致（源图常量，11-04：tex.width 是导入
+        // 后尺寸、平台相关不能用于几何换算），只是切割边界从直线变折线。
+        void BuildHalfMesh(string name, Transform parent, Material mat, float height, bool right, Texture2D tex)
+        {
+            var go = new GameObject(name);
+            go.transform.SetParent(parent, false);
+            // 层间高度沿 local +Z（= 表面法线）；local +Y 是"朝数字行"方向，不能用来垫层高
+            // 全部层（含底图 hl_Base）统一 1960x1040 同画布、零偏移（2026-11-05 新素材）
+            float srcW = 1960f;
+            float srcH = 1040f;
+            float ox = 0f;
+            float oy = 0f;
+            // 缝线羽化（2026-11-06 v2 自适应）：新版素材在两手之间铺了 alpha≈36 白光晕，
+            // 且左右组各自独立缩放锚定——缝线两侧变换必有偏差，靠近缝线的实体会被
+            // 两侧各画一份（重影，11-06 用户反馈按 O 时手指出现两份紫描边的根因）。
+            // 解法：半幅网格在缝线处互相延伸并做顶点色 alpha 互补羽化（和恒为 1）；
+            // 羽化半宽逐行从 FeatherData 取——离线按该行到实体（alpha>60）的最小净空
+            // 计算 clamp(净空-10, 8, 80)，保证渐隐在触到实体前完成，实体只被所属
+            // 半幅以全权重绘制。无数据行回退 80。材质 URP/Particles/Unlit 吃顶点色。
+
+            // 缝线采样：base 画布 y 从 oy 到 oy+srcH、步长 20（与离线生成端同一网格）
+            var seam = seamTable.TryGetValue(tex.name, out var s) ? s : null;
+            int n = Mathf.RoundToInt(srcH / 20f) + 1;
+            int cols = 3; // 每行 3 列：左=[0|split|split+FE]，右=[split|split+FE|srcW]
+            var verts = new Vector3[n * cols];
+            var uvs = new Vector2[n * cols];
+            var vcols = new Color32[n * cols];
+            var tris = new int[(n - 1) * (cols - 1) * 6];
+            for (int k = 0; k < n; k++)
+            {
+                float by = oy + k * 20f;                 // 该采样行的 base 画布 y
+                float split = SeamSample(seam, by);      // 缝的 base 画布 x
+                float f = FeatherSample(tex.name, by);   // 该行自适应羽化半宽
+                float xL = Mathf.Max(split - f, ox + 4f);
+                float xR = Mathf.Min(split + f, ox + srcW - 4f);
+                float[] xs;
+                float[] al;
+                if (!right)
+                {
+                    xs = new[] { ox, xL, xR };
+                    al = new[] { 1f, 1f, 0f };
+                }
+                else
+                {
+                    xs = new[] { xL, xR, ox + srcW };
+                    al = new[] { 0f, 1f, 1f };
+                }
+                float v = 1f - (by - oy) / srcH;
+                for (int c = 0; c < cols; c++)
+                {
+                    int i = k * cols + c;
+                    verts[i] = new Vector3((xs[c] / 1960f - 0.5f) * canvasW, (0.5f - by / 1040f) * canvasH, 0f);
+                    uvs[i] = new Vector2((xs[c] - ox) / srcW, v);
+                    vcols[i] = new Color32(255, 255, 255, (byte)Mathf.RoundToInt(al[c] * 255f));
+                }
+            }
+            for (int k = 0; k < n - 1; k++)
+            {
+                int b = k * cols, t = (k + 1) * cols, o = k * (cols - 1) * 6;
+                // 两段四边形，绕序与旧 Quad 相同（TL,TR,BR,BL → (TL,BR,BL)+(TL,TR,BR)）
+                tris[o + 0] = b;     tris[o + 1] = t + 1; tris[o + 2] = t;
+                tris[o + 3] = b;     tris[o + 4] = b + 1; tris[o + 5] = t + 1;
+                tris[o + 6] = b + 1; tris[o + 7] = t + 2; tris[o + 8] = t + 1;
+                tris[o + 9] = b + 1; tris[o + 10] = b + 2; tris[o + 11] = t + 2;
+            }
+            var mesh = new Mesh { name = name };
+            mesh.vertices = verts;
+            mesh.uv = uvs;
+            mesh.colors32 = vcols;
+            mesh.triangles = tris;
+            mesh.RecalculateNormals();
+            mesh.RecalculateBounds();
+            builtMeshes.Add(mesh);
+
+            var mf = go.AddComponent<MeshFilter>();
+            mf.sharedMesh = mesh;
+            var mr = go.AddComponent<MeshRenderer>();
+            mr.shadowCastingMode = ShadowCastingMode.Off;
+            mr.receiveShadows = false;
+            mr.sharedMaterial = mat;
+        }
+
+        class SeamLine { public float y0; public float[] xs; }
+        // 离线生成的逐层折线缝数据（2026-11-06 v6：以旧缝为锚的"信道吸附"法——
+        // 逐行在实体块（alpha>60）之间的间隙里选信道，旧缝所在信道净空≥40 则原地微调，
+        // 否则吸附到最近信道（防钻进掌缘内部 0-alpha 狭缝、防贴指）；行 0-21 指尖区
+        // 对 16 个贴指层（O/P/M/J/K/L/Y/R/T/U/H/F/D/S/I/Enter）整体重定位到空隙中线。
+        // 伸指/拇指与另一手内容物理交叉的层（B/C/Z）保留 v5 值。勿手改）：
+        // hl_B / hl_C / hl_X / hl_Z 四条 2026-11-06 重算（v5）：这四个下排键的伸指/拇指
+        // 软边在 y400~740 处与另一手几乎相触，连通域法输出垃圾值（hl_B 常数 1300 切穿
+        // 右手；hl_C/hl_Z 行 48-52 = 820、hl_X = 829 斜切手腕；hl_C 行 36-37 = 990 切穿
+        // 拇指 alpha153；hl_X 行 22 = 1008 切 alpha169）——左右组分半缩放/下压后呈现为
+        // 手指/手掌上的"莫名白线"（11-06 用户反馈第二例）。改用 alpha 图 Dijkstra 最短
+        // 分离路径重算（2px 网格，代价=±2px 硬 alpha+0.3×±12px 软 alpha），新缝全程
+        // 走透明走廊：hl_X 完全无贴身穿模，hl_B/hl_C/hl_Z 仅剩 ≤123 的半透明软边擦碰。
+        // 条目 = 层名@首行y0:v0,v1,...（v = 该行缝的 base 画布 x，步长 20px），条目以 '|' 分隔
+        const string SeamData =
+            "hl_A@0:990,990,990,990,990,990,990,990,990,990,990,990,944,992,992,990,990,986,982,978,974,932,956,960,962,964,962,964,964,966,966,966,964,964,966,966,964,964,962,960,958,958,956,956,954,952,950,950,950,950,950,950,950|hl_B@0:1039,1039,1039,1039,1039,1039,1039,1039,1039,1039,1039,1039,1039,1039,1039,1039,1039,1039,1039,1039,1039,1013,1003,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999|hl_Base@0:990,990,990,990,990,990,990,990,990,990,990,990,1090,996,1000,1000,1002,1000,998,996,996,956,952,952,956,962,968,972,972,976,976,978,980,984,986,990,990,990,992,992,992,992,992,994,996,996,998,998,820,820,820,820,820|hl_C@0:917,917,917,917,917,917,917,917,917,917,917,917,917,917,950,1000,1035,1050,1058,1062,1064,1067,1067,1068,1070,1072,1074,1075,1076,1077,1078,1078,1078,1079,1080,1081,1082,1083,1020,1020,1020,1020,1020,1020,1020,1020,1020,1020,1020,1020,1020,1020,1020|hl_D@0:980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,974,969,966,970,970,970,970,970,972,972,972,970,970,972,972,970,970,970,968,966,964,964,964,962,960,958,958,958,958,958,958,958|hl_E@0:990,990,990,990,990,990,990,820,820,820,820,897,998,992,990,988,984,978,976,974,972,980,976,976,974,976,976,974,972,972,970,970,968,970,972,974,972,966,960,956,956,954,954,954,952,946,944,948,948,948,948,948,948|hl_Enter@0:984,984,984,984,984,984,984,984,984,984,984,984,984,984,984,984,984,984,984,984,984,984,1008,1032,964,970,978,988,992,994,990,990,992,996,996,1000,1004,1006,1006,1002,996,992,994,1004,1012,1018,1024,1028,820,820,820,820,820|hl_F@0:980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,974,965,960,964,964,964,964,966,966,968,966,966,966,966,966,964,964,964,962,960,958,958,956,956,954,954,952,952,952,952,952,952|hl_G@0:990,990,990,990,990,990,990,990,990,990,990,990,1040,1040,1040,1038,1036,1032,1028,1022,1018,974,986,990,992,992,990,988,986,988,988,988,986,986,986,988,986,984,986,986,984,982,982,982,982,982,980,980,820,820,820,820,820|hl_H@0:980,980,980,980,980,980,980,980,980,980,980,980,974,966,962,962,960,960,960,960,960,960,959,958,960,920,928,940,946,948,946,946,946,950,952,958,962,966,968,964,958,954,956,962,968,970,972,972,820,820,820,820,820|hl_I@0:990,990,990,990,990,990,990,990,990,990,990,990,982,974,966,958,950,942,934,926,928,928,925,918,918,920,928,934,940,944,946,950,950,952,950,956,962,974,982,984,986,988,990,994,998,1000,998,820,820,820,820,820,820|hl_J@0:980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,968,956,960,964,970,974,974,980,980,982,984,988,988,990,990,992,994,996,996,996,994,996,998,998,1000,1000,820,820,820,820,820|hl_K@0:980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,978,966,954,958,964,968,974,974,978,980,980,984,986,988,990,990,990,992,996,994,994,994,994,998,998,1000,1000,820,820,820,820,820|hl_L@0:980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,968,956,960,966,970,974,974,980,980,982,984,988,988,992,992,992,994,996,996,996,994,996,998,998,1002,1000,820,820,820,820,820|hl_M@0:1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,999,996,992,990,992,996,1000,1002,1002,1002,1004,1004,1002,1004,1006,1008,1014,1016,1014,1012,1010,1012,1012,1012,1012,1008,820,820,820,820,820|hl_N@0:990,990,990,990,990,990,990,990,990,990,990,990,1158,1028,1030,1032,1034,986,976,972,970,966,966,964,964,968,932,938,944,950,950,950,950,952,952,960,964,968,972,968,964,958,952,956,964,968,972,974,820,820,820,820,820|hl_O@0:990,990,990,990,990,990,990,990,990,990,990,990,990,990,990,990,990,990,990,990,984,976,977,930,928,934,942,948,948,948,946,946,948,952,952,958,962,962,962,958,954,954,960,966,972,978,986,988,990,990,990,990,990|hl_P@0:990,990,990,990,990,990,990,990,990,990,990,990,990,990,990,990,990,990,990,990,990,990,993,998,932,938,948,958,962,964,962,962,966,972,974,982,986,992,994,992,992,1004,1020,1038,1054,1062,1064,1066,820,820,820,820,820|hl_Q@0:990,990,990,990,990,990,990,990,990,820,820,820,992,990,990,986,984,976,968,962,958,972,966,964,964,964,962,960,954,952,950,948,946,946,946,946,942,934,926,920,914,908,904,898,894,894,894,898,820,820,820,820,820|hl_R@0:984,984,984,984,984,984,984,984,984,984,984,984,984,984,984,984,984,984,984,984,984,980,980,978,980,982,982,980,978,976,974,974,972,974,976,976,974,968,962,956,954,954,952,950,946,942,944,946,820,820,820,820,820|hl_S@0:980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,972,962,956,958,958,958,960,960,962,962,962,960,960,962,960,958,958,960,956,954,952,952,952,950,948,946,944,944,944,944,944,944|hl_T@0:984,984,984,984,984,984,984,984,984,984,984,984,984,984,984,984,984,984,984,984,982,974,965,956,962,974,984,988,988,988,988,988,988,992,994,996,996,992,990,986,984,984,984,984,982,978,976,978,820,820,820,820,820|hl_U@0:980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,980,970,954,948,946,948,954,958,962,962,966,968,968,966,970,974,978,984,984,984,980,978,980,980,982,982,980,820,820,820,820,820|hl_V@0:990,990,990,990,990,990,990,990,990,990,990,990,1090,934,938,938,936,1012,1016,1014,1012,970,962,956,972,976,974,968,962,962,964,964,966,966,966,964,962,958,960,964,970,972,970,968,966,964,966,966,966,966,966,966,966|hl_W@0:990,990,990,990,990,990,990,990,820,820,820,820,992,990,988,986,984,978,974,974,972,992,986,984,984,986,982,978,976,976,974,972,970,970,972,972,970,966,960,954,950,948,946,944,942,938,936,938,938,938,938,938,938|hl_X@0:1009,1009,1009,1009,1009,1009,1009,1009,1009,1009,1009,1009,1009,1009,1009,1009,1009,1009,1009,1009,1009,1005,1001,1001,1005,1009,1011,1009,1009,1009,1011,1011,1011,1011,1011,1011,1011,1011,1011,1011,1011,1011,1011,1011,1011,1011,1011,1011,1011,1011,1011,1011,1011|hl_Y@0:980,978,970,962,954,946,938,930,922,914,908,908,908,908,908,910,912,914,922,930,938,938,942,940,932,930,934,940,944,948,946,948,950,950,950,952,954,962,966,966,964,962,960,960,962,962,964,962,820,820,820,820,820|hl_Z@0:921,921,921,921,921,921,921,921,921,921,921,921,921,921,921,921,921,921,921,921,921,921,921,921,921,921,921,907,927,967,1007,1013,1013,1013,1013,1013,1013,1013,1013,1013,1013,1013,1013,1013,1013,1013,1013,1013,1013,1013,1013,1013,1013";
+
+        // 每层每行的自适应羽化半宽（px）：离线按该行缝值到实体（alpha>60）的最小净空计算，
+        // clamp(净空-10, 8, 80)——渐隐必须在触到实体内容前完成，否则缝线两侧变换差会把
+        // 伸指/拇指画出两份（重影）。运行时按行线性取样，无条目回退 80。
+        const string FeatherData =
+            "hl_A:80,80,80,80,80,80,80,80,80,80,80,80,69,80,80,80,80,80,80,80,80,65,41,41,45,50,51,44,42,43,46,51,56,64,70,74,78,79,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80|hl_B:80,80,80,80,80,80,80,80,80,80,80,80,66,55,50,47,46,12,8,8,9,8,8,8,8,15,8,8,8,10,13,18,22,30,37,41,43,44,48,58,75,80,80,80,80,80,80,80,80,80,80,80,80|hl_Base:80,80,80,80,80,80,80,80,80,80,80,80,15,80,80,80,80,80,80,80,80,41,45,49,51,50,45,36,34,33,36,39,41,45,50,50,52,53,55,64,80,80,80,80,80,80,80,80,33,80,80,80,80|hl_C:80,80,80,80,80,80,80,80,80,80,80,80,80,19,43,80,51,35,26,21,8,4,4,8,14,15,17,20,21,22,22,24,24,18,15,14,13,11,25,38,55,70,80,80,80,80,80,80,80,80,80,80,80|hl_D:80,80,80,80,80,80,80,80,80,80,80,80,80,76,71,71,72,76,80,80,80,23,28,35,37,44,43,38,37,37,40,45,51,57,64,68,71,73,77,80,80,80,80,80,80,80,80,80,80,80,80,80,80|hl_E:80,80,80,80,80,80,80,71,58,54,53,18,80,80,80,80,80,80,80,80,23,17,21,25,32,38,37,34,34,37,42,47,53,59,64,66,70,72,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80|hl_Enter:80,80,80,80,80,80,80,80,80,80,80,80,80,80,74,70,68,68,69,73,76,77,80,80,63,57,54,51,54,51,51,52,55,57,61,62,63,67,70,74,80,80,80,80,80,80,80,80,33,80,80,80,80|hl_F:80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,23,32,41,43,50,49,44,41,43,44,51,55,63,70,74,77,79,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80|hl_G:80,80,80,80,80,80,80,80,80,80,80,80,64,54,49,48,49,50,53,57,63,23,11,11,15,22,23,20,21,21,24,29,34,42,49,52,56,57,61,71,80,80,80,80,80,80,80,80,71,80,80,80,80|hl_H:80,80,80,80,80,80,80,80,80,80,80,80,31,30,33,33,34,34,36,39,43,46,50,54,8,8,8,8,8,8,8,8,8,8,15,15,21,27,32,36,46,59,74,80,80,80,80,80,33,80,80,80,80|hl_I:80,80,80,80,80,80,80,80,80,80,80,80,80,74,56,44,34,26,8,8,8,8,11,17,15,8,8,8,8,8,8,9,13,14,16,15,18,27,39,55,73,80,80,80,80,80,80,14,33,80,80,80,80|hl_J:80,80,80,80,80,80,80,80,80,80,80,80,80,80,70,66,64,64,65,69,72,24,36,52,55,52,47,39,36,34,39,41,44,48,53,54,53,52,55,66,80,80,80,80,80,80,80,80,33,80,80,80,80|hl_K:80,80,80,80,80,80,80,80,80,80,80,80,80,80,70,66,64,64,65,69,72,24,36,52,54,52,46,38,36,35,39,42,43,47,51,53,53,53,56,65,80,80,80,80,80,80,80,80,33,80,80,80,80|hl_L:80,80,80,80,80,80,80,80,80,80,80,80,80,80,70,66,64,64,65,69,72,24,36,51,54,54,47,39,36,34,39,43,45,47,53,53,53,53,56,66,80,80,80,80,80,80,80,80,33,80,80,80,80|hl_M:80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,78,70,63,61,61,63,64,66,67,68,68,66,68,73,80,80,80,80,80,80,80,80,80,33,80,80,80,80|hl_N:80,80,80,80,80,80,80,80,80,80,80,80,11,80,80,80,80,62,61,61,58,59,59,61,61,56,9,8,8,8,11,12,13,13,17,17,21,27,33,40,52,63,73,80,80,80,80,80,33,80,80,80,80|hl_O:80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,75,71,69,66,62,67,69,73,23,25,22,20,15,10,8,8,8,9,11,16,17,20,25,26,30,42,56,75,80,80,80,80,80,80,80,80,80,80|hl_P:80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,76,74,74,75,79,80,80,80,8,31,26,24,22,24,22,23,24,24,28,37,39,46,50,56,64,77,80,80,80,80,80,80,80,33,80,80,80,80|hl_Q:80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,32,25,31,37,43,50,51,48,50,56,62,69,75,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80|hl_R:80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,21,16,17,22,27,32,31,28,29,32,37,43,48,55,60,64,67,69,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80|hl_S:80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,25,35,45,49,55,55,48,47,47,50,55,60,67,74,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80|hl_T:80,80,80,80,80,80,80,80,48,37,33,32,31,32,33,36,43,47,49,51,53,23,32,45,45,38,29,20,19,21,24,29,33,37,42,44,46,48,57,69,80,80,80,80,80,80,80,80,72,80,80,80,80|hl_U:80,80,80,80,80,80,80,80,69,58,54,54,54,56,57,59,60,61,63,49,42,38,45,49,42,33,25,19,18,18,22,24,28,30,32,31,31,37,44,56,72,80,80,80,80,80,80,80,33,80,80,80,80|hl_V:80,80,80,80,80,80,80,80,80,80,80,80,15,80,80,80,80,69,67,68,69,27,34,40,35,37,39,40,42,47,48,53,55,63,70,75,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80|hl_W:80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,8,11,15,23,28,31,30,30,33,38,45,50,59,64,68,72,73,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80|hl_X:80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,77,76,75,74,10,8,8,8,8,8,8,8,8,8,8,8,8,8,9,10,11,14,23,36,46,63,78,80,80,80,80,80,80,80,80,80,80,80|hl_Y:80,80,80,80,80,80,80,80,31,29,31,31,31,8,8,8,8,8,8,19,30,31,38,35,29,18,11,8,8,8,8,10,11,14,15,14,15,17,27,38,52,67,80,80,80,80,80,80,33,80,80,80,80|hl_Z:80,80,80,80,80,80,80,80,80,80,80,80,80,18,10,8,8,8,8,10,11,12,13,17,22,26,8,8,8,18,8,8,8,16,23,27,29,30,34,44,57,62,74,80,80,80,80,80,80,80,80,80,80";
+
+        readonly Dictionary<string, SeamLine> seamTable = new Dictionary<string, SeamLine>();
+        readonly Dictionary<string, float[]> featherTable = new Dictionary<string, float[]>();
+        static readonly List<Mesh> builtMeshes = new List<Mesh>(); // Start 清理时销毁，防重编译泄漏
+
+        // 缝值采样：线性插值；无数据层回退双手间隙中线（新素材实测 ≈990，1960 画布）
+        static float SeamSample(SeamLine seam, float by)
+        {
+            if (seam == null || seam.xs == null || seam.xs.Length == 0) return 990f;
+            float t = (by - seam.y0) / 20f;
+            int i = Mathf.Clamp(Mathf.FloorToInt(t), 0, seam.xs.Length - 2);
+            float f = Mathf.Clamp01(t - i);
+            return Mathf.Lerp(seam.xs[i], seam.xs[i + 1], f);
+        }
+
+        // 自适应羽化半宽采样：按 base y 线性插值；无数据层回退 80
+        float FeatherSample(string layer, float by)
+        {
+            if (!featherTable.TryGetValue(layer, out var fs) || fs == null || fs.Length == 0) return 80f;
+            float t = Mathf.Clamp(by / 20f, 0f, fs.Length - 1.001f);
+            int i = Mathf.Clamp(Mathf.FloorToInt(t), 0, fs.Length - 2);
+            return Mathf.Lerp(fs[i], fs[i + 1], t - i);
+        }
+
+        void ParseSeamData()
+        {
+            seamTable.Clear();
+            foreach (var entry in SeamData.Split('|'))
+            {
+                var e = entry.Trim();
+                if (e.Length == 0) continue;
+                int colon = e.IndexOf(':'), at = e.IndexOf('@');
+                if (colon < 0 || at < 0 || at > colon) continue;
+                if (!float.TryParse(e.Substring(at + 1, colon - at - 1), out var y0)) continue;
+                var parts = e.Substring(colon + 1).Split(',');
+                var xs = new float[parts.Length];
+                for (int i = 0; i < parts.Length; i++)
+                    if (!float.TryParse(parts[i], out xs[i])) xs[i] = 660f;
+                seamTable[e.Substring(0, at)] = new SeamLine { y0 = y0, xs = xs };
+            }
+            featherTable.Clear();
+            foreach (var entry in FeatherData.Split('|'))
+            {
+                var e = entry.Trim();
+                if (e.Length == 0) continue;
+                int colon = e.IndexOf(':');
+                if (colon <= 0) continue;
+                var parts = e.Substring(colon + 1).Split(',');
+                var fs = new float[parts.Length];
+                for (int i = 0; i < parts.Length; i++)
+                    if (!float.TryParse(parts[i], out fs[i])) fs[i] = 80f;
+                featherTable[e.Substring(0, colon)] = fs;
+            }
+        }
+
+        // URP/Particles/Unlit 透明（Alpha 混合）变体 —— 与 SurvivorFX 同配方，WebGL 无裁剪风险
+        static Material NewHandMat(Texture2D tex, float alpha)
+        {
+            var shader = Shader.Find("Universal Render Pipeline/Particles/Unlit")
+                         ?? Shader.Find("Particles/Standard Unlit")
+                         ?? Shader.Find("Sprites/Default"); // 兜底：普通混合、吃顶点色
+            var m = new Material(shader);
+            m.SetTexture(BaseMapID, tex);
+            m.SetFloat("_Surface", 1f);        // Transparent
+            m.SetFloat("_Blend", 0f);          // Alpha（SurvivorFX 用 2=Additive，这里要正叠）
+            m.SetFloat("_SrcBlend", 5f);       // SrcAlpha
+            m.SetFloat("_DstBlend", 10f);      // OneMinusSrcAlpha
+            m.SetFloat("_ZWrite", 0f);
+            m.SetFloat("_Cull", 0f);           // 双面：俯仰角大时背面不可穿帮
+            m.SetFloat("_Smoothness", 0f);
+            m.EnableKeyword("_SURFACE_TYPE_TRANSPARENT");
+            m.SetOverrideTag("RenderType", "Transparent");
+            m.renderQueue = 3000;
+            m.SetColor(BaseColorID, new Color(1f, 1f, 1f, alpha));
+            return m;
+        }
+
+        static Mesh handsQuad;
+        // 单位 Quad：local +Y 边贴 v=1（图片顶部 = 指尖），朝 +Z 正面
+        static Mesh HandsQuad()
+        {
+            if (handsQuad != null) return handsQuad;
+            var mesh = new Mesh { name = "TypingHandsQuad" };
+            mesh.vertices = new[]
+            {
+                new Vector3(-0.5f,  0.5f, 0f),
+                new Vector3( 0.5f,  0.5f, 0f),
+                new Vector3( 0.5f, -0.5f, 0f),
+                new Vector3(-0.5f, -0.5f, 0f),
+            };
+            mesh.uv = new[] { new Vector2(0, 1), new Vector2(1, 1), new Vector2(1, 0), new Vector2(0, 0) };
+            // 绕序必须是"从 +Z 看为顺时针"（Unity 正面约定）。此前 {0,3,2},{0,2,1} 从 +Z 看是
+            // 逆时针 → 正面朝下，双面渲染下从上方看到的是背面 = 整个手部/文字水平镜像
+            //（左手食指层跑到键盘右侧、文字倒读——10-26 实测翻车）。
+            mesh.triangles = new[] { 0, 2, 3, 0, 1, 2 };
+            mesh.RecalculateNormals();
+            mesh.RecalculateBounds();
+            handsQuad = mesh;
+            return mesh;
+        }
+
+        // （旧 HandSplitU 直线分割与共享半幅 Quad 已删除，见 BuildHalfMesh 上方注释）
+
+        void BuildProgressText()
+        {
+            // 位姿（位置/朝向）由 UpdateHandsTransform 每帧指定；这里只建组件和内容
+            var go = new GameObject("TypingProgressText");
+            go.transform.SetParent(transform, false);
+
+            var font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+            progressText = go.AddComponent<TextMesh>();
+            progressText.font = font;
+            progressText.fontSize = 64;
+            progressText.characterSize = 1f;
+            progressText.anchor = TextAnchor.MiddleCenter;
+            progressText.alignment = TextAlignment.Center;
+            progressText.richText = true;
+            progressText.color = Color.white;
+            var mr = go.GetComponent<MeshRenderer>();
+            mr.sharedMaterial = font.material;
+            mr.shadowCastingMode = ShadowCastingMode.Off;
+            mr.receiveShadows = false;
+            progressTextRenderer = mr;
+
+            progressText.text = BuildRichText();
+        }
+
+        MeshRenderer progressTextRenderer;
+        float targetTextWidth;   // 目标世界宽度 = caseWidth × textWidthRatio
+        int textUnfittedFrames;
+
+        // 每帧把进度文字宽度适配到 targetTextWidth。
+        // 关键教训（10-26）：TextMesh 的 world bounds 已包含当前 localScale——若直接
+        // s = 目标/实测，实测是"当前缩放后的宽度"，重复适配会算出 s = 目标/目标 = 1，
+        // 文字瞬间弹回巨大（每敲一键 UpdateTarget 重测一次 → 尺寸在正确/巨大间振荡）。
+        // 修法：先除掉当前缩放得到"单位宽度"，s = 目标/单位宽度 = 绝对缩放，幂等可重复。
+        void LateUpdate()
+        {
+            if (progressText == null || progressTextRenderer == null) return;
+            float worldW = ExtentAlong(progressTextRenderer.bounds, rightAxis);
+            float curS = Mathf.Abs(progressText.transform.lossyScale.x);
+            if (worldW > 0.05f && curS > 1e-5f)
+            {
+                float unitW = worldW / curS; // 缩放 = 1 时的世界宽度
+                float s = Mathf.Clamp(targetTextWidth / unitW, 0.0005f, 2f);
+                // x 带镜像符号：旋转基底的 +X 若与 F→J 反向，文字会倒读，负缩放纠正
+                progressText.transform.localScale = new Vector3(mirrorSign * s, s, s);
+                textUnfittedFrames = 0;
+            }
+            else if (++textUnfittedFrames == 120)
+            {
+                Debug.LogWarning("[TypingHands] 进度文字宽度适配失败（包围盒始终为空）。");
+            }
+        }
+
+        // 进度富文本：已完成=暗绿灰，当前=亮绿，未到=浅灰绿
+        string BuildRichText()
+        {
+            string src = practiceText ?? "";
+            var sb = new StringBuilder();
+            sb.Append("<color=#4e5f4c>");
+            AppendEscaped(sb, src, 0, cursor);
+            sb.Append("</color>");
+            if (cursor < src.Length)
+            {
+                sb.Append("<color=#8dffa8>");
+                AppendEscaped(sb, src, cursor, cursor + 1);
+                sb.Append("</color>");
+                sb.Append("<color=#a9b4a7>");
+                AppendEscaped(sb, src, cursor + 1, src.Length);
+                sb.Append("</color>");
+            }
+            return sb.ToString();
+        }
+
+        static void AppendEscaped(StringBuilder sb, string s, int start, int end)
+        {
+            for (int i = start; i < end && i < s.Length; i++)
+            {
+                char c = s[i];
+                // TextMesh 富文本只解析 <label> 标签：& 是普通字符不转义
+                // （转成 &amp; 会按字面显示，10-27 实测翻车）；< > 必须转义防吞标签
+                if (c == '<') sb.Append("&lt;");
+                else if (c == '>') sb.Append("&gt;");
+                else sb.Append(c);
+            }
+        }
+
+        // ---- 逻辑 ----
+
+        void UpdateTarget()
+        {
+            foreach (var l in allLayers) l.active = false;
+            targetCode = KeyCode.None;
+            pressKeyL = pressKeyR = KeyCode.None; // 重置分半下压分配
+
+            // 单词打字模式：手势/分半下压跟随目标单词的当前字母（键盘发光由 WordTrailTyping
+            // 驱动，这里只负责手部贴图——否则练习文本的光标字符会展示错误手势）
+            var wt = Keyboard3D.WordTrailTyping.Instance;
+            if (wt != null && wt.isActiveAndEnabled)
+            {
+                // FingerMap 字母分支只认小写字符（c>='a' 判断的是原字符）；
+                // 单词字母不需要 Shift 手势，转小写查询 → 裸键层 hl_X
+                if (wt.TryGetTargetLetter(out var wordChar) && FingerMap.Resolve(char.ToLowerInvariant(wordChar), out var ft))
+                {
+                    if (!string.IsNullOrEmpty(ft.keyCode))
+                    {
+                        string baseName = ArtLayerName(ft.keyCode);
+                        string wantLayer = string.IsNullOrEmpty(ft.shiftKeyCode)
+                            ? "hl_" + baseName
+                            : "hl_" + baseName + "_" + ft.shiftKeyCode;
+                        SetLayerActive(wantLayer);
+                    }
+                    if (ft.leftLayer != "" && FingerMap.TryGetKeyCode(ft.keyCode, out var kl)) pressKeyL = kl;
+                    if (ft.rightLayer != "" && FingerMap.TryGetKeyCode(ft.keyCode, out var kr)) pressKeyR = kr;
+                    if (ft.shiftKeyCode == "ShiftLeft") pressKeyL = KeyCode.LeftShift;
+                    else if (ft.shiftKeyCode == "ShiftRight") pressKeyR = KeyCode.RightShift;
+                }
+                else if (wt.WaitingForEnter && FingerMap.Resolve('\n', out var et))
+                {
+                    // 整词输完等待 Enter：手势指向 Enter（右手小指），与练习文本路径同一套图层规则
+                    if (!string.IsNullOrEmpty(et.keyCode))
+                    {
+                        string enterBase = ArtLayerName(et.keyCode);
+                        SetLayerActive(string.IsNullOrEmpty(et.shiftKeyCode)
+                            ? "hl_" + enterBase
+                            : "hl_" + enterBase + "_" + et.shiftKeyCode);
+                    }
+                    if (et.rightLayer != "" && FingerMap.TryGetKeyCode(et.keyCode, out var ekr)) pressKeyR = ekr;
+                    if (et.leftLayer != "" && FingerMap.TryGetKeyCode(et.keyCode, out var ekl)) pressKeyL = ekl;
+                }
+                if (progressText != null) progressText.text = BuildRichText();
+                return;
+            }
+
+            string src = practiceText ?? "";
+            if (cursor < src.Length && FingerMap.Resolve(src[cursor], out var t))
+            {
+                // 网站素材按"按键"出图：层名 = hl_<素材名>，含 Shift 的字符用
+                // hl_<素材名>_<Shift侧>（合成图已把 Shift 手势烘焙进去）。
+                // 逻辑键码要先转素材名（KeyF→F、BracketLeft→LeftBracket）。
+                // 没有对应贴图的键（数字行、引号等）自动只留键盘绿光。
+                if (!string.IsNullOrEmpty(t.keyCode))
+                {
+                    // 网站素材是"整组替换"：先清掉上一字符的全部激活层，再点亮当前组
+                    // （此前只置 true 从不清除，打过的层会永久亮着叠加成乱线）
+                    for (int i = 0; i < allLayers.Count; i++) allLayers[i].active = false;
+                    string baseName = ArtLayerName(t.keyCode);
+                    // 需要 Shift 的字符只亮合成层（hl_<键>_<Shift侧>）——它已把对侧手按
+                    // Shift 的手势烘焙进同一张图（与参考站一致）。若再点亮裸键层/Shift 键层，
+                    // 等于 2~3 张完整双手图叠加 → 多重轮廓重影（10-27 实测翻车）
+                    string wantLayer;
+                    if (!string.IsNullOrEmpty(t.shiftKeyCode))
+                        wantLayer = "hl_" + baseName + "_" + t.shiftKeyCode;
+                    else
+                        wantLayer = "hl_" + baseName; // 粉描边手指层高亮（手不动，只换高亮）
+                    var hit = SetLayerActive(wantLayer);
+                    Debug.Log($"[TypingHands] 字符 '{src[cursor]}' (键码={t.keyCode}, Shift侧={(string.IsNullOrEmpty(t.shiftKeyCode) ? "无" : t.shiftKeyCode)}) → 手部贴图 {(hit != null ? hit.name + ".png" : wantLayer + ".png 【缺失!】")}");
+                }
+                if (FingerMap.TryGetKeyCode(t.keyCode, out var kc))
+                    targetCode = kc;
+                // 分半下压分配（10-28）：FingerMap 的 leftLayer/rightLayer 谁亮 = 哪只手按键；
+                // Shift 组合时对侧手按 Shift（网站规则 Shift 永远与字符键异侧，不会同手冲突）
+                if (t.leftLayer != "" && FingerMap.TryGetKeyCode(t.keyCode, out var kl)) pressKeyL = kl;
+                if (t.rightLayer != "" && FingerMap.TryGetKeyCode(t.keyCode, out var kr)) pressKeyR = kr;
+                if (t.shiftKeyCode == "ShiftLeft") pressKeyL = KeyCode.LeftShift;
+                else if (t.shiftKeyCode == "ShiftRight") pressKeyR = KeyCode.RightShift;
+            }
+            // 单词打字模式（WordTrailTyping）接管键盘发光：按目标单词字母顺序点亮，
+            // 指法手不再每帧强制覆盖目标（否则练习文本的光标键会顶掉单词进度键）
+            if (Keyboard3D.WordTrailTyping.Instance == null)
+                kb.SetForcedTarget(targetCode); // None = 交还键盘随机目标
+            if (progressText != null)
+                progressText.text = BuildRichText(); // 宽度由 LateUpdate 每帧自动适配
+        }
+
+        // 逻辑键码 → 素材文件名段（生成器按键帽出图：字母是 hl_F 而非 hl_KeyF）
+        static string ArtLayerName(string code)
+        {
+            switch (code)
+            {
+                case "BracketLeft": return "LeftBracket";
+                case "BracketRight": return "RightBracket";
+            }
+            if (code.StartsWith("Key") && code.Length == 4) return code.Substring(3);
+            return code;
+        }
+
+        HandLayer SetLayerActive(string layer)
+        {
+            if (string.IsNullOrEmpty(layer) || !showKeyLayers) return null;
+            if (layerByName.TryGetValue(layer, out var l)) { l.active = true; return l; }
+            Debug.LogWarning($"[TypingHands] 缺少图层素材 {layer}：该键只亮绿光、无粉描边手指（请检查 Inspector 手势图层容器）");
+            return null;
+        }
+
+        // 分半下压（10-28 用户需求）：按键那只手跟随键帽行程下沉，无关手纹丝不动。
+        // 下沉量 = 该手被分配按键的实时按压量（kb.PressAmountOf，与键帽动画同源，严格同步）
+        // × 键行程（capHeight × PressDepthRatio）。Shift 组合（如 hl_Comma_ShiftLeft）
+        // 两手各按各的键，各自独立下沉；画布锚点固定（静止位姿），下沉纯靠半幅组本地偏移。
+        // handsRoot 的 local +Z = 表面法线，Vector3.back 即"压向键盘"
+        void UpdateHandDip()
+        {
+            if (leftGroup == null) return;
+            float depth = capHeight * kb.PressDepthRatio;
+            float l = pressKeyL != KeyCode.None ? kb.PressAmountOf(pressKeyL) : 0f;
+            float r = pressKeyR != KeyCode.None ? kb.PressAmountOf(pressKeyR) : 0f;
+            leftGroup.localPosition = anchorL + Vector3.back * (l * depth);
+            rightGroup.localPosition = anchorR + Vector3.back * (r * depth);
+        }
+
+        void Update()
+        {
+            UpdateHandsTransform(); // 手部/文字跟随键盘实时位姿
+            UpdateHandDip();        // 左右分半：按键手下压、无关手不动
+
+            // 单词打字模式：手势每帧跟随目标单词进度（WordTrailTyping 的待输入字母随时在变，
+            // UpdateTarget 不在本组件的事件路径里）；并跳过下方练习文本的按错判定——
+            // 否则 targetCode=None 会把每个单词键击都当错字闪红
+            var wordTrail = Keyboard3D.WordTrailTyping.Instance;
+            if (wordTrail != null && wordTrail.isActiveAndEnabled)
+            {
+                UpdateTarget();
+                AnimateLayers();
+                return;
+            }
+
+            // 修饰键与鼠标不参与对错判定（Shift 属于指法的一部分，由高亮层提示）
+            if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2)) return;
+            if (Input.anyKeyDown)
+            {
+                if (IsModifierDown()) { /* 仅修饰键：不判定 */ }
+                else if (targetCode != KeyCode.None && Input.GetKeyDown(targetCode))
+                {
+                    errorT = 0f;
+                    cursor++;
+                    if (cursor >= (practiceText ?? "").Length) { ReshufflePractice(); cursor = 0; } // 打完重新随机一轮
+                    UpdateTarget();
+                }
+                else
+                {
+                    errorT = errorFlashDuration;
+                }
+            }
+
+            AnimateLayers();
+        }
+
+        static bool IsModifierDown() =>
+            Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift) ||
+            Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.RightControl) ||
+            Input.GetKeyDown(KeyCode.LeftAlt) || Input.GetKeyDown(KeyCode.RightAlt) ||
+            Input.GetKeyDown(KeyCode.CapsLock) || Input.GetKeyDown(KeyCode.Tab);
+
+        void AnimateLayers()
+        {
+            if (errorT > 0f) errorT = Mathf.Max(0f, errorT - Time.deltaTime);
+            float flashK = errorFlashDuration > 0f ? errorT / errorFlashDuration : 0f;
+
+            // 网站的高亮是"整组替换"而非叠画：按键层已含完整双手（姿态与底图不同），
+            // 激活时底图必须完全隐藏——哪怕留 25% 也会叠出第二套手轮廓（10-27 实测翻车）
+            bool anyActive = false;
+            for (int i = 0; i < allLayers.Count; i++) anyActive |= allLayers[i].active;
+
+            if (baseMat != null)
+                baseMat.SetColor(BaseColorID, new Color(1f, 1f, 1f, baseOpacity * (anyActive ? 0f : 1f) * introFade));
+
+            for (int i = 0; i < allLayers.Count; i++)
+            {
+                var l = allLayers[i];
+                // 红闪只染激活层；非激活层恒定全透明。此前 Color.Lerp 把 alpha 也插值
+                // （errorColor 的 alpha=1），红闪期间非激活层被抬到 0.9×flashK 的不透明度
+                // → 全部 88 层同时显形，粉描边叠成满屏乱线（10-27 实测翻车）。
+                if (!l.active)
+                {
+                    l.mat.SetColor(BaseColorID, new Color(1f, 1f, 1f, 0f));
+                    continue;
+                }
+                float a = highlightOpacity * introFade; // 恒定亮度（呼吸脉冲已按需求移除）
+                Color c = Color.Lerp(new Color(1f, 1f, 1f, a), errorColor, flashK * 0.9f);
+                if (flashK <= 0f) c.a = a;
+                l.mat.SetColor(BaseColorID, c);
+            }
+        }
+    }
+}

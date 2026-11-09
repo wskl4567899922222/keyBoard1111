@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KeyBoard1015</title>
+    <style>
+      html, body { margin: 0; padding: 0; width: 100%; height: 100%; background: #fff; overflow: hidden; }
+      /* 加载期为白底过渡，场景就绪后由引擎自行绘制 */
+      #unity-canvas { width: 100%; height: 100%; display: block; background: #fff; }
+    </style>
+  </head>
+  <body>
+    <canvas id="unity-canvas" width="960" height="600" tabindex="-1"></canvas>
+    <script>
+      // WebGL 音频解锁补丁（2026-11-06）：
+      // Unity 2022.3 的音频插件只监听 mousedown/touchstart 来解锁 AudioContext，
+      // 键盘交互不会解锁 → 进场景后直接按 E 永远无声，必须先鼠标点一下。
+      // 这里钩住 AudioContext.prototype.resume 捕获 Unity 内部创建的 context，
+      // 再在首个 keydown（受信任的用户手势）里手动 resume。
+      (function () {
+        var Ctx = window.AudioContext || window.webkitAudioContext;
+        if (!Ctx) return;
+        var origResume = Ctx.prototype.resume;
+        Ctx.prototype.resume = function () {
+          if (!window.__kbAudioCtx) window.__kbAudioCtx = this; // Unity 每 400ms 会尝试 resume 一次 → 必被捕获
+          return origResume.apply(this, arguments);
+        };
+        function unlock() {
+          var c = window.__kbAudioCtx;
+          if (c && c.state !== "running") origResume.call(c).catch(function () {});
+        }
+        window.addEventListener("keydown", unlock, true);
+      })();
+    </script>
+    <script src="Build/115.loader.js?v=202611090958"></script>
+    <script>
+      // 极简启动：无 Unity logo、无进度条、无底部商标栏/全屏按钮。
+      // 三花括号占位符由构建时自动填入（兼容 .unityweb 等压缩后缀）
+      createUnityInstance(document.querySelector("#unity-canvas"), {
+        dataUrl: "Build/115.data.unityweb",
+        frameworkUrl: "Build/115.framework.js.unityweb",
+        codeUrl: "Build/115.wasm.unityweb",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "DefaultCompany",
+        productName: "KeyBoard1015",
+        productVersion: "0.1",
+      });
+    </script>
+  </body>
+</html>

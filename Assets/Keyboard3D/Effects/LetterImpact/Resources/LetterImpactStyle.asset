@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 888e7ac7ad2fcd84f884f916efbf5079, type: 3}
+  m_Name: LetterImpactStyle
+  m_EditorClassIdentifier: 
+  lifetime: 0.3
+  brightness: 1.35
+  whiteCore: 0.65
+  coverWidth: 1.18
+  coverHeight: 1.12
+  coverOpacity: 0.96
+  coverRelease: 0.075
+  coverHoldAfterSwitch: 0.018
+  edgeIrregularity: 0.1
+  coreSize: 0.42
+  coreLifetime: 0.09
+  sparkCount: 8
+  sparkTravel: 0.62
+  sparkLength: 0.16
+  sparkWidth: 0.035
+  sparkLifetime: 0.24
+  sparkBrightness: 0.85
