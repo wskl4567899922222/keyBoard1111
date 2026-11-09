@@ -194,19 +194,19 @@ MonoBehaviour:
     m_StrikethroughOffset: 21.2
     m_StrikethroughThickness: 4.5
     m_TabWidth: 17
-  m_GlyphTable:
   m_GlyphTable: []
-  m_CharacterTable:
   m_CharacterTable: []
   m_AtlasTextures:
   - {fileID: -7798743592787962723}
   m_AtlasTextureIndex: 0
   m_IsMultiAtlasTexturesEnabled: 0
   m_ClearDynamicDataOnBuild: 1
-  m_UsedGlyphRects:
   m_UsedGlyphRects: []
   m_FreeGlyphRects:
-  m_FreeGlyphRects: []
+  - m_X: 0
+    m_Y: 0
+    m_Width: 4095
+    m_Height: 4095
   m_fontInfo:
     Name: 
     PointSize: 0
