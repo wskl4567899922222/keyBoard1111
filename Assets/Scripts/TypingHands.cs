@@ -153,7 +153,7 @@ namespace ByteTyping
             // 现场微调请改这里（与 KeyboardModelInput 的 Awake 强制参数同一模式）。
             widthRatio = 1.05f;        // 画布宽 ≈ 键盘外壳宽
             heightRatio = 1f;          // 纵向不再压缩（宽高比取自贴图）
-            hoverHeight = 0.06f;       // 手掌轻悬键帽顶面（手掌固定模式，参考站视觉）
+            hoverHeight = 0.03f;       // 手掌贴键帽顶面（再降一档；有 ZTest Always 不会沉入键帽被遮挡）
             // offsetX/offsetZ 已废弃（2026-11-04 分手精确锚定取代"整体画布锚点+手工偏移"方案）
             baseOpacity = 0.7f;        // 网站叠加层整体透明度
             highlightOpacity = 0.9f;
@@ -608,14 +608,26 @@ namespace ByteTyping
             }
         }
 
-        // URP/Particles/Unlit 透明（Alpha 混合）变体 —— 与 SurvivorFX 同配方，WebGL 无裁剪风险
+        // 手部覆盖着色器（2026-11-09）：ByteTyping/HandsOverlay = ZTest Always 专属着色器，
+        // 双手永远画在键盘上方（按键下压时手指沉到键帽顶面以下也不再被键帽遮挡）。
+        // 原因：URP/Particles/Unlit 不暴露 _ZTest 属性（SetFloat 是空操作），只能专写着色器。
+        // 放在 Resources/Shaders 下保证 WebGL 构建不被裁剪（运行时 Shader.Find 才找得到）。
+        // 兜底链保留旧配方（无 ZTest Always，仅在 URP 缺失时退化）。
         static Material NewHandMat(Texture2D tex, float alpha)
         {
-            var shader = Shader.Find("Universal Render Pipeline/Particles/Unlit")
+            var shader = Shader.Find("ByteTyping/HandsOverlay")
+                         ?? Shader.Find("Universal Render Pipeline/Particles/Unlit")
                          ?? Shader.Find("Particles/Standard Unlit")
                          ?? Shader.Find("Sprites/Default"); // 兜底：普通混合、吃顶点色
             var m = new Material(shader);
             m.SetTexture(BaseMapID, tex);
+            if (shader.name == "ByteTyping/HandsOverlay")
+            {
+                // 专属着色器：混合/深度状态已在 ShaderLab 里硬编码（ZTest Always/双面/不写深度），
+                // 这里只管贴图与颜色（含运行时每帧动画的 _BaseColor.a）
+                m.SetColor(BaseColorID, new Color(1f, 1f, 1f, alpha));
+                return m;
+            }
             m.SetFloat("_Surface", 1f);        // Transparent
             m.SetFloat("_Blend", 0f);          // Alpha（SurvivorFX 用 2=Additive，这里要正叠）
             m.SetFloat("_SrcBlend", 5f);       // SrcAlpha

@@ -122,10 +122,14 @@ namespace Keyboard3D
         Dictionary<string, SyllableData> syllableByWord;        // 小写单词 → 音节拆分数据
         AudioSource splitSource;                                // 音节片段专用音源（要能中途 Stop，与 PlayOneShot 音源分开）
         float splitStopAt = float.NegativeInfinity;             // 当前片段应停止的时刻
+        float splitSeekTarget;                                  // 当前片段应定位到的秒数（seek 校正用）
+        float splitSeekUntil = float.NegativeInfinity;          // seek 校正窗口截止时刻
         readonly Dictionary<string, AudioClip> voiceClipCache = new Dictionary<string, AudioClip>();
         AudioSource voiceSource;                                 // 拼读块/单词发音共用（2D）
         bool voiceWarmed;        // WebGL：音频引擎首次交互才唤醒，同帧调度的音标音会被吞 → 首个音延后播
         const float FirstVoiceDelay = 0.1f;                      // 未预热时首个音标音的延后秒数
+        string pendingWholeWord;                                 // 拆分模式完词后待读的整词（等音节音播完）
+        float pendingWholeWordAt = float.NegativeInfinity;       // 整词音应播放的时刻
 
         [Tooltip("音效切换下拉框（拖入 Canvas 下的 Dropdown，选项即音效名）")]
         public TMPro.TMP_Dropdown arrivalDropdown;
@@ -406,7 +410,17 @@ namespace Keyboard3D
                 {
                     idx += sd.sylls[i].Length;
                     if (idx - 1 != index) continue;
-                    if (sd.segs != null && i < sd.segs.Count) PlaySplitSegment(sd, sd.segs[i]);
+                    // 优先按音节文本匹配分段（battery 等词条段数与音节数不一致时序号会错位），
+                    // 对不上再退回按序号取
+                    SyllableSeg seg = null;
+                    if (sd.segs != null)
+                    {
+                        string syllText = sd.sylls[i].Trim().ToLowerInvariant();
+                        foreach (var g in sd.segs)
+                            if (g?.t != null && g.t.Trim().ToLowerInvariant() == syllText) { seg = g; break; }
+                        if (seg == null && i < sd.segs.Count) seg = sd.segs[i];
+                    }
+                    if (seg != null) PlaySplitSegment(sd, seg);
                     return;
                 }
                 return;
@@ -423,6 +437,9 @@ namespace Keyboard3D
         }
 
         // 播英式拆分音频里 [s, s+d] 毫秒的片段（播够时长即停，用专用音源以便中途截断）
+        // split mp3 结构 = [整词, 音节1..N, 整词]：若 seek 失效从 0 播 → 听到的就是"整词"，
+        // 即"没打完就全读"的来源。WebGL 上 Play 前设 AudioSource.time 偶发被重置，
+        // 所以 Play 后再定位，并在 Update 里做短窗校正（time 掉回片段起点之前就重新 seek）
         void PlaySplitSegment(SyllableData sd, SyllableSeg seg)
         {
             var clip = GetVoiceClip("split_en/split_" + sd.wid);
@@ -433,19 +450,32 @@ namespace Keyboard3D
                 splitSource.playOnAwake = false;
                 splitSource.spatialBlend = 0f; // 与 voiceSource 同款 2D
             }
+            float startSec = Mathf.Clamp(seg.s / 1000f, 0f, Mathf.Max(0f, clip.length - 0.01f));
             splitSource.clip = clip;
-            splitSource.time = Mathf.Clamp(seg.s / 1000f, 0f, Mathf.Max(0f, clip.length - 0.01f));
             splitSource.volume = phonicsVolume;
             splitSource.Play();
+            splitSource.time = startSec; // Play 之后再定位（Play 前 set 在部分平台不生效）
             splitStopAt = Time.time + Mathf.Max(0.05f, seg.d / 1000f);
+            splitSeekTarget = startSec;
+            splitSeekUntil = Time.time + 0.5f; // 0.5s 内校正 seek 失效
         }
 
-        // 拼完单词（完词脉冲开始，按 Enter 之前）：读出整词发音
+        // 拼完单词（完词脉冲开始，按 Enter 之前）：读出整词发音。
+        // 音节拆分模式下多音节词打完最后一个字母时会先读该音节音标 → 整词音延迟到音节音播完后再读
         void OnWordPulseStarted(int wordId)
         {
             if (!PhonicsEnabled) return;
             if (phonicsByWord == null || voiceSource == null || session == null || session.Finished) return;
-            if (!phonicsByWord.TryGetValue(session.CurrentWord.ToLowerInvariant(), out var e)) return;
+            string w = session.CurrentWord.ToLowerInvariant();
+            if (SyllableSplitEnabled && syllableByWord != null &&
+                syllableByWord.TryGetValue(w, out var sdCheck) && sdCheck.sylls.Count > 1)
+            {
+                // 调度：等最后一个音节片段播完（splitStopAt）再读整词，避免叠音
+                pendingWholeWord = w;
+                pendingWholeWordAt = (splitStopAt > Time.time ? splitStopAt : Time.time) + 0.2f;
+                return;
+            }
+            if (!phonicsByWord.TryGetValue(w, out var e)) return;
             var clip = GetVoiceClip(e.audio);
             PlayVoice(clip);
         }
@@ -456,8 +486,28 @@ namespace Keyboard3D
         {
             if (trails == null || session == null) return;
             if (cam == null) cam = Camera.main;
-            // 音节片段播够 d 毫秒 → 截断（拆分音频里音节之间有静音间隔，不截会串音）
-            if (splitSource != null && splitSource.isPlaying && Time.time >= splitStopAt) splitSource.Stop();
+            // 音节片段播够 d 毫秒 → 截断（拆分音频里音节之间有静音间隔，不截会串音）；
+            // 截止前若发现播放位置掉回片段起点之前 → seek 失效（WebGL 偶发，从 0 播=整词音频）→ 重新定位
+            if (splitSource != null && splitSource.isPlaying)
+            {
+                if (Time.time >= splitStopAt) splitSource.Stop();
+                else if (Time.time < splitSeekUntil && splitSource.time < splitSeekTarget - 0.08f)
+                    splitSource.time = splitSeekTarget;
+            }
+
+            // 拆分模式完词：整词音调度到期 → 播放（单词已切换则作废）
+            if (pendingWholeWord != null)
+            {
+                if (!string.Equals(session.CurrentWord.ToLowerInvariant(), pendingWholeWord))
+                    pendingWholeWord = null;
+                else if (Time.time >= pendingWholeWordAt)
+                {
+                    if (phonicsByWord.TryGetValue(pendingWholeWord, out var pe) &&
+                        !string.IsNullOrEmpty(pe.audio))
+                        PlayVoice(GetVoiceClip(pe.audio));
+                    pendingWholeWord = null;
+                }
+            }
 
             // 单词屏幕锚定：固定在相机视野内（x 居中、y≈键盘上方），距离=键盘中心距。
             // 不用世界坐标"键盘顶部"：陡俯视角下它会投影进键帽区域被遮挡（探针 run120 实测）。
