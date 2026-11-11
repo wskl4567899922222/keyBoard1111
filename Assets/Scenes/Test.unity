@@ -1008,7 +1008,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 592e5ece5a440b246a2b45d4f69b2421, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.2
+      value: 2.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 592e5ece5a440b246a2b45d4f69b2421, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1403,6 +1403,9 @@ MonoBehaviour:
   - adult
   - degree
   randomOrder: 0
+  useOnlineData: 1
+  unitId: superword_book872_Unit_1
+  phonemeFromOnline: 0
   letterCapHeight: 0.5
   screenAnchorX: 0.5
   screenAnchorY: 0.78
@@ -1434,6 +1437,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b1b9c1f0ea1fcae439ed1a4d44ff05fd, type: 3}
   - {fileID: 8300000, guid: 78419f98379502c4dbfb2774bc94e7c1, type: 3}
   - {fileID: 8300000, guid: 5e1a9f876d3dafd47bc6b3dde25135fa, type: 3}
+  consonantDropdown: {fileID: 0}
+  consonantClipList: []
   palette:
   - {r: 1, g: 0.2, b: 0.3, a: 1}
   - {r: 1, g: 0.65, b: 0.12, a: 1}

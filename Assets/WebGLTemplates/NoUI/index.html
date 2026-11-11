@@ -37,6 +37,16 @@
     <script>
       // 极简启动：无 Unity logo、无进度条、无底部商标栏/全屏按钮。
       // 三花括号占位符由构建时自动填入（兼容 .unityweb 等压缩后缀）
+
+      // 外部 unitId 注入桥（2026-11-10）：
+      // - 宿主页面随时调 window.KB_SetUnitId('xxx')
+      // - 页面 URL 带 ?unitId=xxx 时启动后自动传入（C# 侧也会自读 absoluteURL，双保险）
+      window.KB_SetUnitId = function (id) {
+        var u = window.unityInstance;
+        if (!u || id == null || id === "") return;
+        try { u.SendMessage("Keyboard68_GlossGame", "SetUnitIdFromWeb", String(id)); } catch (e) {}
+      };
+
       createUnityInstance(document.querySelector("#unity-canvas"), {
         dataUrl: "Build/{{{ DATA_FILENAME }}}",
         frameworkUrl: "Build/{{{ FRAMEWORK_FILENAME }}}",
@@ -48,6 +58,11 @@
         companyName: "{{{ COMPANY_NAME }}}",
         productName: "{{{ PRODUCT_NAME }}}",
         productVersion: "{{{ PRODUCT_VERSION }}}",
+      }).then(function (inst) {
+        window.unityInstance = inst; // 捕获实例（本模板未暴露全局 unityInstance，必须在此保存）
+        var id = null;
+        try { id = new URLSearchParams(window.location.search).get("unitId"); } catch (e) {}
+        if (id) window.KB_SetUnitId(id);
       });
     </script>
   </body>

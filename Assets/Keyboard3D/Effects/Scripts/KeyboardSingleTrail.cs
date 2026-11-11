@@ -257,6 +257,11 @@ namespace KeyboardGame
         // —— 自然拼读叠加层支持（WordTrailTyping 建 WordPhonicsOverlay 用）——
         // 字母本地区间与整体度量（均为 word root 局部空间，字母 localScale 已计入，root 缩放除外）
         public Transform WordRoot => current != null ? current.root : null;
+        // 全部单词打完后的"单词已经全部学习"提示（WordTrailTyping.ShowAllLearned 用）：
+        // 单词显示锚点（targetB + wordOffset，与 PrepareWord 定位单词 root 完全一致）
+        public Vector3 WordAnchorPosition => targetB != null ? targetB.position + wordOffset : transform.position;
+        public Camera DisplayCamera => displayCamera;   // 单词朝向（root.rotation = 相机旋转）
+        public float LetterCapHeight => letterCapHeight; // 字母字高（提示文本按比例取高度）
 
         public bool TryGetWordLocalMetrics(out float minX, out float maxX, out float bottomY, out float letterH)
         {
@@ -332,6 +337,17 @@ namespace KeyboardGame
         {
             if(current==null||!current.prepared)return;
             ApplySyllableSplit(current,null);
+        }
+
+        /// <summary>音节拆分模式下该词无对齐分段数据（单音节/拼写对不齐/词表缺失）→ 整词统一深蓝 SyllableColorA
+        /// （音节拆分的第一个颜色；参考 app 对此类词整词显示深蓝，2026-11-10）。</summary>
+        public void ApplySyllableSolid()
+        {
+            if(current==null||!current.prepared)return;
+            RestoreSyllableLayout(current); // 幂等：先还原可能存在的加宽位移
+            ClearSyllableDots(current);
+            current.syllableStarts=null;
+            for(int i=0;i<current.letters.Count;i++)SetLetterColor(current,i,SyllableColorA);
         }
 
         void ApplySyllableSplit(WordView view,List<int> starts)

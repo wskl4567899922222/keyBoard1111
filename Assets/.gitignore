@@ -1,0 +1,5 @@
+
+# AI 工具本地环境（不入库）
+Tools/audiogen-venv/
+.playwright-cli/
+*.genie

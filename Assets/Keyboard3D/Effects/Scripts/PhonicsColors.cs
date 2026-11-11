@@ -4,16 +4,15 @@ namespace KeyboardGame
 {
     /// 自然拼读按段上色（对应 Flutter 端 phonics_handler.dart 的 letter_type 规则 + a3 配色方案）：
     ///
-    /// letter_type → 颜色完整映射（判定顺序与 dart getPhonicsLetterType 一致）：
+    /// letter_type → 颜色完整映射（判定顺序与 dart getPhonicsLetterType 完全一致，2026-11-10 校正）：
     ///   200 基础辅音                     → consonant  蓝   #42A5F5
     ///   100 基础元音                     → vowel      亮红 #FF5252
-    ///   101 元音组合 / 105 静音e
-    ///   104 L控制(len<3) / 103 R控制(len<3) → vowels    深红 #E53935
+    ///   101 元音组合 / 104 L控制 / 105 静音e / 103 R控制(len<3) → vowels 深红 #E53935
+    ///     （dart 第二个 if 无条件命中 104 → L控制恒为深红；其 104&&len<3 与 combo 分支里的 104 均不可达）
     ///   201 辅音连缀 / 202 辅音双写
     ///   203 辅音复合 / 206 辅音组合特例     → consonants 深蓝 #1E88E5
-    ///   103 R控制(len≥3) / 104 L控制(len≥3)
-    ///   102 复杂元音组合 / 204 元辅混合
-    ///   501 不规则组合                    → combo      紫   #7E57C2
+    ///   103 R控制(len≥3) / 102 复杂元音组合
+    ///   204 元辅混合 / 501 不规则组合      → combo      紫   #7E57C2
     ///   其他（DB 无记录）                 → other      灰   #9E9E9E
     ///
     /// 分段：词表内的词用参考项目音标 DB 的实际分段（WordSegments，逐词与参考 app 核对）；
@@ -57,6 +56,8 @@ namespace KeyboardGame
             { "banana", new[] { "b:c", "a:v", "n:c", "a:v", "n:c", "a:v" } },
             { "lemon",  new[] { "l:c", "e:v", "m:c", "o:v", "n:c" } },
             { "watermelon", new[] { "w:c", "a:v", "t:c", "e:v", "r:c", "m:c", "e:v", "l:c", "o:v", "n:c" } },
+            { "oh",     new[] { "oh:vg" } }, // 参考 app：oh(/əʊ/) 整段元音组合全红（通用启发式会误拆成 o红+h蓝）
+            { "everyone", new[] { "e:v", "ve:m", "r:c", "y:v", "one:m" } }, // 参考 app：e 亮红、ve 紫、r 蓝、y(/i/) 亮红、one(/wʌn/) 紫
         };
 
         /// <summary>整词逐字母颜色（按拼读段展开，段内字母同色）</summary>
@@ -125,7 +126,7 @@ namespace KeyboardGame
                     if (System.Array.IndexOf(Irregular501, seg) >= 0) { len = tryLen; color = Combo; return; }
                     if (System.Array.IndexOf(Special206, seg) >= 0) { len = tryLen; color = ConsonantGroup; return; }
                     if (System.Array.IndexOf(RControl3, seg) >= 0) { len = tryLen; color = Combo; return; }
-                    if (System.Array.IndexOf(LControl, seg) >= 0) { len = tryLen; color = Combo; return; } // 104 len≥3 → 元辅混合(紫)
+                    if (System.Array.IndexOf(LControl, seg) >= 0) { len = tryLen; color = VowelGroup; return; } // 104 L控制 → 元音组合深红（dart 无条件命中 104）
                     if (tryLen == 3 && System.Array.IndexOf(Blend201, seg) >= 0) { len = tryLen; color = ConsonantGroup; return; }
                 }
                 if (System.Array.IndexOf(VowelGroup101, seg) >= 0) { len = tryLen; color = VowelGroup; return; }

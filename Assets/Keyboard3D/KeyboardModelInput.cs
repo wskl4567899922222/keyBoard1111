@@ -764,7 +764,7 @@ namespace Keyboard3D
             // 跳过并提示，避免刷屏报错；FBX meta 已开 isReadable，正常都会走下面
             if (!src.isReadable)
             {
-                Debug.LogWarning($"[Keyboard3D] 网格 {src.name} 未开启 Read/Write，跳过 UV 重写（发光渐变/侧面压暗会失效）");
+               // Debug.LogWarning($"[Keyboard3D] 网格 {src.name} 未开启 Read/Write，跳过 UV 重写（发光渐变/侧面压暗会失效）");
                 return;
             }
             var mesh = Object.Instantiate(src);

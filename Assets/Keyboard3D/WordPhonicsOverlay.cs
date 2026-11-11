@@ -28,6 +28,14 @@ namespace Keyboard3D
         readonly List<int> chunkCounts = new List<int>();
         readonly List<Transform> sounds = new List<Transform>();        // 音标节点
         readonly List<int> soundChunkIdx = new List<int>();             // 各音标所属块（chunkStarts 下标）
+        readonly List<float> chunkMidX = new List<float>();             // 各块中心 x / 宽度（点击命中用）
+        readonly List<float> chunkW = new List<float>();
+        float bandTop, bandBottom;                                      // 可点击纵向范围（字母顶 → 音标底）
+
+        /// <summary>叠加层是否已构建（有块且 Build 成功）；外部位者据此决定释义行放在音标带下还是字母下。</summary>
+        public bool Built => chunkStarts.Count > 0;
+        /// <summary>音标带底部 y（word root 局部空间；中文释义行贴着它下面放）。</summary>
+        public float BandBottomLocal => bandBottom;
 
         static Sprite WhiteSquare()
         {
@@ -72,6 +80,8 @@ namespace Keyboard3D
             float soundH = letterH * 0.25f;    // 音标字高（2026-11-06 用户要求：在原 0.5 基础上缩小一倍）
             float barY = bottomY - gap1 - barH * 0.5f;
             float soundY = barY - barH * 0.5f - gap2 - soundH * 0.5f;
+            bandTop = barY + barH * 0.5f + gap1 + letterH; // 覆盖字母本身 + 下划线 + 音标
+            bandBottom = soundY - soundH * 0.5f;
 
             foreach (var c in chunks)
             {
@@ -82,6 +92,8 @@ namespace Keyboard3D
 
                 float w = x1 - x0;
                 float midX = (x0 + x1) * 0.5f;
+                chunkMidX.Add(midX);
+                chunkW.Add(w);
 
                 var bg = NewBar("Underline" + c.start, transform, new Vector3(midX, barY, -0.02f), new Vector3(w, barH, 1f), BgColor);
                 bgs.Add(bg.GetComponent<SpriteRenderer>());
@@ -135,6 +147,17 @@ namespace Keyboard3D
             return fills.Count > 0;
         }
 
+        /// <summary>点击命中检测：word-root 本地坐标落在某块的字母/下划线/音标带内 → 返回块下标，否则 null。</summary>
+        public int? ChunkIndexAtLocal(Vector2 localPos)
+        {
+            if (localPos.y < bandBottom || localPos.y > bandTop) return null;
+            for (int i = 0; i < chunkMidX.Count; i++)
+                if (localPos.x >= chunkMidX[i] - chunkW[i] * 0.5f &&
+                    localPos.x <= chunkMidX[i] + chunkW[i] * 0.5f)
+                    return i;
+            return null;
+        }
+
         /// <summary>刷新进度：typed = 当前单词已打对字母数（session.Position）。
         /// fill 是 bg（已按块宽缩放）的子级 → localScale 用 0~1 比例。</summary>
         public void SetProgress(int typed)
@@ -174,7 +197,8 @@ namespace Keyboard3D
         // 内置字体 LegacyRuntime/Arial 缺 IPA 扩展区字形：编辑器里动态回退到系统字体能显示，
         // WebGL 包访问不了系统字体 → 音标全变空白（2026-11-05 实测翻车）。
         // Segoe UI.ttf 已拷入 Resources/Fonts（动态渲染，字形随用随生成，WebGL 可用）。
-        static Font BuiltinFont()
+        /// <summary>内置动态字体（中/英/音标都靠 OS 字体回退渲染），公开给 WordTrailTyping 的完课提示复用。</summary>
+        public static Font BuiltinFont()
         {
             var f = Resources.Load<Font>("Fonts/SegoeUI");
             if (f != null) return f;

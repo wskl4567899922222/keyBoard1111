@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KeyBoard1015</title>
+    <style>
+      html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #b3c6ec; }
+      #unity-canvas { width: 100%; height: 100%; display: block; background: #fff; }
+
+      /* ---------- Loading 过渡层 ---------- */
+      /* 只有一张图：等比放大/缩小铺满整个窗口（cover），窗口非 16:9 时居中裁掉溢出部分 */
+      #loading-stage {
+        position: fixed; inset: 0;
+        background: url("loading.jpg") center / cover no-repeat;
+      }
+      /* 进度条：真实下载进度（舞台内百分比定位，随缩放自适应） */
+      #loading-track {
+        position: absolute;
+        left: 32.4%; width: 35.2%;
+        top: 87.7%; height: 5.5%;
+        border-radius: 999px;
+        background: #e9f1ff;
+        box-shadow: inset 0 2px 4px rgba(90, 110, 180, .25);
+        overflow: hidden;
+      }
+      #loading-fill {
+        width: 0%; height: 100%;
+        border-radius: 999px;
+        background: linear-gradient(90deg, #8f6fe8, #a98cf5);
+        transition: width .15s ease-out;
+      }
+      /* 整层淡出：场景就绪后 0.5s 渐隐并移除 */
+      #loading-overlay {
+        position: fixed; inset: 0; z-index: 10;
+        opacity: 1; transition: opacity .5s ease;
+      }
+      #loading-overlay.done { opacity: 0; pointer-events: none; }
+    </style>
+  </head>
+  <body>
+    <canvas id="unity-canvas" width="960" height="540" tabindex="-1"></canvas>
+
+    <div id="loading-overlay">
+      <div id="loading-stage">
+        <div id="loading-track"><div id="loading-fill"></div></div>
+      </div>
+    </div>
+
+    <script>
+      // WebGL 音频解锁补丁（2026-11-06）：
+      // Unity 2022.3 的音频插件只监听 mousedown/touchstart 来解锁 AudioContext，
+      // 键盘交互不会解锁 → 进场景后直接按 E 永远无声，必须先鼠标点一下。
+      // 这里钩住 AudioContext.prototype.resume 捕获 Unity 内部创建的 context，
+      // 再在首个 keydown（受信任的用户手势）里手动 resume。
+      (function () {
+        var Ctx = window.AudioContext || window.webkitAudioContext;
+        if (!Ctx) return;
+        var origResume = Ctx.prototype.resume;
+        Ctx.prototype.resume = function () {
+          if (!window.__kbAudioCtx) window.__kbAudioCtx = this; // Unity 每 400ms 会尝试 resume 一次 → 必被捕获
+          return origResume.apply(this, arguments);
+        };
+        function unlock() {
+          var c = window.__kbAudioCtx;
+          if (c && c.state !== "running") origResume.call(c).catch(function () {});
+        }
+        window.addEventListener("keydown", unlock, true);
+      })();
+    </script>
+    <script src="Build/{{{ LOADER_FILENAME }}}"></script>
+    <script>
+      // 启动 + loading 过渡：背景图 16:9 自适应，进度条随真实下载进度填充；
+      // 实例初始化完成后整层渐隐（含运行时初始化的最后一段，避免露出白屏尾巴）。
+
+      var loadingFill = document.getElementById("loading-fill");
+      var loadingOverlay = document.getElementById("loading-overlay");
+
+      // 外部 unitId 注入桥（2026-11-10）：
+      // - 宿主页面随时调 window.KB_SetUnitId('xxx')
+      // - 页面 URL 带 ?unitId=xxx 时启动后自动传入（C# 侧也会自读 absoluteURL，双保险）
+      window.KB_SetUnitId = function (id) {
+        var u = window.unityInstance;
+        if (!u || id == null || id === "") return;
+        try { u.SendMessage("Keyboard68_GlossGame", "SetUnitIdFromWeb", String(id)); } catch (e) {}
+      };
+
+      createUnityInstance(
+        document.querySelector("#unity-canvas"),
+        {
+          dataUrl: "Build/{{{ DATA_FILENAME }}}",
+          frameworkUrl: "Build/{{{ FRAMEWORK_FILENAME }}}",
+          codeUrl: "Build/{{{ CODE_FILENAME }}}",
+#if MEMORY_FILENAME
+          memoryUrl: "Build/{{{ MEMORY_FILENAME }}}",
+#endif
+          streamingAssetsUrl: "StreamingAssets",
+          companyName: "{{{ COMPANY_NAME }}}",
+          productName: "{{{ PRODUCT_NAME }}}",
+          productVersion: "{{{ PRODUCT_VERSION }}}",
+        },
+        function (progress) { // 真实下载进度（0→1，Unity loader 只传一个 progress 参数）
+          if (loadingFill && isFinite(progress)) loadingFill.style.width = Math.round(progress * 100) + "%";
+        }
+      ).then(function (inst) {
+        window.unityInstance = inst; // 捕获实例（模板未暴露全局 unityInstance，必须在此保存）
+        var id = null;
+        try { id = new URLSearchParams(window.location.search).get("unitId"); } catch (e) {}
+        if (id) window.KB_SetUnitId(id);
+        // 下载完成 → 运行时初始化（wasm 实例化/首帧）还有一段，缓冲后渐隐，盖住最后的白屏
+        setTimeout(function () {
+          loadingOverlay.classList.add("done");
+          setTimeout(function () { loadingOverlay.remove(); }, 600);
+        }, 400);
+      });
+    </script>
+  </body>
+</html>
